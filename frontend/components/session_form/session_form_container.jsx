@@ -1,44 +1,28 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import SessionForm from './session_form';
+import { login, signup } from '../../actions/session_actions';
 
-class SessionForm extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: ""
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
+const mapStateToProps = (state, ownProps) => {
+  let props = {
+    loggedIn: state.current_user ? true : false,
+    errors: state.errors,
+    formType: "login"
+  };
+  if(ownProps.location.pathname === '/signup'){
+    props.formType = 'signup';
   }
+  return props;
+};
 
-  update (field){
-    return (e) => this.setState({[field]: e.target.value});
-  }
+const mapDispatchToProps = (dispatch, ownProps) => {
+  let action = ownProps.location.pathname === "/signup" ? signup : login;
+  return {
+    processForm: (user) => dispatch(action(user)),
+  };
+};
 
-  handleSubmit(e){
-    e.preventDefault();
-    const user = Object.assign({}, this.state );
-    this.props.processForm(user);
-  }
-
-  render(){
-    const formType = this.props.formType === 'signup' ? 'login' : 'signup';
-    const route = '/'+formType;
-    return (
-      <div>
-        <h1>{this.props.formType}</h1>
-        <h2 value={formType}><Link to={route}></Link></h2>
-        <form onSubmit={this.handleSubmit}>
-          <label>Username: <input type={'text'} onChange={this.update("username")} /> </label>
-          <label>Password:<input type={'text'} onChange={this.update("password")} /> </label>
-          <input type="submit" value={this.props.formType}/>
-        </form>
-        <p value={this.props.errors}></p>
-      </div>
-        );
-      }
-
-    }
-
-    export default withRouter(SessionForm);
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SessionForm));
