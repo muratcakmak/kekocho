@@ -22,7 +22,7 @@
     "lib": "lib",
     "test": "test"
   },
-  "engines":{
+  "engines": {
     "npm": "5.5.1",
     "node": "6.11.4"
   },
