@@ -1,10 +1,9 @@
 import React from 'react';
 
-const App = () => {
-  debugger
-  return (<div>
+const App = () => (
+  <div>
     <h1>Kekocho App</h1>
-  </div>);
-};
+  </div>
+);
 
 export default App;
