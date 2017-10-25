@@ -2,10 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 // @import "variables";
-
+html {
+  font-weight: 400;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+}
 body{
-  background: image-url('session_form_background.png');
+  background: image-url('session_form_background.png') no-repeat center center fixed;
   font-family: Georgia, Times, "Times New Roman", serif;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  word-wrap: break-word;
+  color: #333;
+  font-size: 13px;
 }
 input {
   display: block;
