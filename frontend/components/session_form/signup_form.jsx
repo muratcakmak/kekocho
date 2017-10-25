@@ -36,6 +36,8 @@ class SignupForm extends React.Component {
       <li>{error}</li>
     ));
     return (
+      <div>
+      <h1 className="logo" >Kekocho</h1>
       <div className="form-container">
         <h1>{this.props.formType}</h1>
         <h2 value={formType}><Link to={route}></Link></h2>
@@ -51,6 +53,7 @@ class SignupForm extends React.Component {
         </form>
         <p value={this.props.errors}></p>
       </div>
+    </div>
     );
   }
 
