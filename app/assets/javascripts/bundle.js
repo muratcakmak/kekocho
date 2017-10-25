@@ -25827,7 +25827,7 @@ var _merge2 = _interopRequireDefault(_merge);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var defaultState = { errors: [] };
+var defaultState = [];
 
 var SessionErrorsReducer = function SessionErrorsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
@@ -25835,7 +25835,7 @@ var SessionErrorsReducer = function SessionErrorsReducer() {
 
   switch (action.type) {
     case _session_actions.RECEIVE_SESSION_ERRORS:
-      return action.errors;
+      return action.errors.responseJSON;
     case _session_actions.RECEIVE_CURRENT_USER:
       return [];
     default:
@@ -31256,7 +31256,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     loggedIn: state.current_user ? true : false,
-    errors: state.errors,
+    errors: state.errors.session,
     formType: "Login"
   };
 };
@@ -31297,7 +31297,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     loggedIn: state.current_user ? true : false,
-    errors: state.errors,
+    errors: state.errors.session,
     formType: 'Signup'
   };
 };
@@ -31380,6 +31380,13 @@ var SignupForm = function (_React$Component) {
     value: function render() {
       var formType = this.props.formType === 'signup' ? 'login' : 'signup';
       var route = '/' + formType;
+      var errors = this.props.errors.map(function (error) {
+        return _react2.default.createElement(
+          'li',
+          null,
+          error
+        );
+      });
       return _react2.default.createElement(
         'div',
         { className: 'form-container' },
@@ -31399,6 +31406,7 @@ var SignupForm = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'session-form-inputs' },
+            errors,
             _react2.default.createElement(
               'label',
               null,
@@ -31539,6 +31547,13 @@ var LoginForm = function (_React$Component) {
     value: function render() {
       var formType = this.props.formType === 'signup' ? 'login' : 'signup';
       var route = '/' + formType;
+      var errors = this.props.errors.map(function (error) {
+        return _react2.default.createElement(
+          'li',
+          null,
+          error
+        );
+      });
       return _react2.default.createElement(
         'div',
         { className: 'form-container' },
@@ -31558,6 +31573,7 @@ var LoginForm = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'session-form-inputs' },
+            errors,
             _react2.default.createElement(
               'label',
               null,

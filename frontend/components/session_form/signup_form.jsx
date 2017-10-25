@@ -27,12 +27,16 @@ class SignupForm extends React.Component {
   render(){
     const formType = this.props.formType === 'signup' ? 'login' : 'signup';
     const route = '/'+formType;
+    const errors = this.props.errors.map((error) => (
+      <li>{error}</li>
+    ));
     return (
       <div className="form-container">
         <h1>{this.props.formType}</h1>
         <h2 value={formType}><Link to={route}></Link></h2>
         <form className="session-form" onSubmit={this.handleSubmit}>
           <div className="session-form-inputs">
+            {errors}
             <label><input type={'text'} placeholder={"First name"} onChange={this.update("first_name")} /> </label>
             <label><input type={'text'} placeholder={"Last name"} onChange={this.update("last_name")} /> </label>
             <label><input type={'text'} placeholder={"Email"} onChange={this.update("email")} /> </label>
