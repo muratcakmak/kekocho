@@ -5006,7 +5006,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-
+  window.receiveErrors = _session_actions.receiveErrors;
   _reactDom2.default.render(_react2.default.createElement(_root2.default, { store: store }), root);
 });
 
@@ -25835,11 +25835,14 @@ var SessionErrorsReducer = function SessionErrorsReducer() {
 
   switch (action.type) {
     case _session_actions.RECEIVE_SESSION_ERRORS:
-      return action.errors.responseJSON;
+      if (action.errors.responseJSON) {
+        return action.errors.responseJSON;
+      }
+      return action.errors;
     case _session_actions.RECEIVE_CURRENT_USER:
       return [];
     default:
-      return state;
+      return defaultState;
   }
 };
 
@@ -31265,6 +31268,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     login: function login(user) {
       return dispatch((0, _session_actions.login)(user));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _session_actions.receiveErrors)([]));
     }
   };
 };
@@ -31306,6 +31312,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     signup: function signup(user) {
       return dispatch((0, _session_actions.signup)(user));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _session_actions.receiveErrors)([]));
     }
   };
 };
@@ -31360,6 +31369,11 @@ var SignupForm = function (_React$Component) {
   }
 
   _createClass(SignupForm, [{
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
+    }
+  }, {
     key: 'update',
     value: function update(field) {
       var _this2 = this;
@@ -31527,6 +31541,11 @@ var LoginForm = function (_React$Component) {
   }
 
   _createClass(LoginForm, [{
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
+    }
+  }, {
     key: 'update',
     value: function update(field) {
       var _this2 = this;

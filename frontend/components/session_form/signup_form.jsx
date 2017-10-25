@@ -14,6 +14,10 @@ class SignupForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillUnmount(){
+    this.props.clearErrors();
+  }
+
   update (field){
     return (e) => this.setState({[field]: e.target.value});
   }
@@ -23,6 +27,7 @@ class SignupForm extends React.Component {
     const user = Object.assign({}, this.state );
     this.props.signup(user);
   }
+
 
   render(){
     const formType = this.props.formType === 'signup' ? 'login' : 'signup';
