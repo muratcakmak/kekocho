@@ -31254,7 +31254,6 @@ var _session_actions = __webpack_require__(8);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
   return {
     loggedIn: state.current_user ? true : false,
     errors: state.errors,
@@ -31383,7 +31382,7 @@ var SignupForm = function (_React$Component) {
       var route = '/' + formType;
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'form-container' },
         _react2.default.createElement(
           'h1',
           null,
@@ -31424,7 +31423,7 @@ var SignupForm = function (_React$Component) {
               _react2.default.createElement('input', { type: 'password', placeholder: "Password", onChange: this.update("password") }),
               ' '
             ),
-            _react2.default.createElement('input', { type: 'submit', value: this.props.formType })
+            _react2.default.createElement('input', { type: 'submit', value: this.props.formType, className: 'session-submit-button' })
           )
         ),
         _react2.default.createElement('p', { value: this.props.errors })
@@ -31542,7 +31541,7 @@ var LoginForm = function (_React$Component) {
       var route = '/' + formType;
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'form-container' },
         _react2.default.createElement(
           'h1',
           null,
@@ -31571,7 +31570,7 @@ var LoginForm = function (_React$Component) {
               _react2.default.createElement('input', { type: 'password', placeholder: "Password", onChange: this.update("password") }),
               ' '
             ),
-            _react2.default.createElement('input', { type: 'submit', value: this.props.formType })
+            _react2.default.createElement('input', { type: 'submit', value: this.props.formType, className: 'session-submit-button' })
           )
         ),
         _react2.default.createElement('p', { value: this.props.errors })

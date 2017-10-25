@@ -4,7 +4,6 @@ import LoginForm from './login_form';
 import { login, signup } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   return {
     loggedIn: state.current_user ? true : false,
     errors: state.errors,

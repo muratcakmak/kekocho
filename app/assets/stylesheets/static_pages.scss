@@ -3,30 +3,59 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 // @import "variables";
 
+body{
+  background: image-url('session_form_background.png');
+  font-family: Georgia, Times, "Times New Roman", serif;
+}
+input {
+  display: block;
+  min-height: 27px;
+
+  display: block;
+  width: 100%;
+  background-color: #f6f6f6;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  min-height: 27px;
+  background: #fff;
+  outline: 0;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+}
 .session-form-container {
-    background: #fff;
-    border: 1px solid #e2e2e2;
-    box-shadow: 0 0 5px #888;
-    border-radius: 4px;
-    padding-top: 25px;
-    width: 650px;
-    position: absolute;
-    bottom: initial;
-    left: 0;
-    right: 0;
-    margin: auto;
-    overflow-y: hidden;
-    top: 10%;
-    height: 300px;
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0 0 5px #888;
+  border-radius: 4px;
+  padding-top: 25px;
+  width: 650px;
+  position: absolute;
+  bottom: initial;
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow-y: hidden;
+  top: 10%;
+  height: 300px;
 
 }
 
 .session-form-inputs{
   display: flex;
   flex-direction: column;
-  width: 100px;
-  align-items: flex-start;
+  padding: 5px;
+  width: 130px;
+  height: 145px;
+  justify-content: space-between;
 
+}
+.form-container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo{
@@ -37,11 +66,23 @@
   color: rgba(182, 33, 40, 1);
 }
 
-body{
-  background: image-url('session_form_background.png');
-  font-family: Georgia, Times, "Times New Roman", serif;
-}
+
 .greeting{
   display: flex;
-  flex-direction: column;
+  align-content: space-evenly;
+  justify-content: space-evenly;
+
+}
+
+.session-submit-button{
+  box-sizing: border-box;
+  border-radius: 3px;
+  display: inline-block;
+  text-align: center;
+  background: #3e78ad;
+  color: #fff;
+  border: 1px solid #3a66ad;
+  box-shadow: 0 1px 1px 0 rgba(200, 200, 200, 0.6);
+  font-size: 12px;
+  line-height: 1.4;
 }
