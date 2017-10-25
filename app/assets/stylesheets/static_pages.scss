@@ -1,3 +1,47 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
+
+.session-form-container {
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    box-shadow: 0 0 5px #888;
+    border-radius: 4px;
+    padding-top: 25px;
+    width: 650px;
+    position: absolute;
+    bottom: initial;
+    left: 0;
+    right: 0;
+    margin: auto;
+    overflow-y: hidden;
+    top: 10%;
+    height: 300px;
+
+}
+
+.session-form-inputs{
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  align-items: flex-start;
+
+}
+
+.logo{
+  font-family: 'Libre Baskerville', serif;
+  font-size: 36px;
+  font-weight: 1200;
+  text-align: center;
+  color: rgba(182, 33, 40, 1);
+}
+
+body{
+  background: image-url('session_form_background.png');
+  font-family: Georgia, Times, "Times New Roman", serif;
+}
+.greeting{
+  display: flex;
+  flex-direction: column;
+}

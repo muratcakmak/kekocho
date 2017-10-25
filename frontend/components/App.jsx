@@ -8,12 +8,14 @@ import { AuthRoute } from '../util/route_util';
 const App = () => {
   return(
     <div>
-      <header>
-        <h1>Kekocho App</h1>
-        <GreetingContainer />
-      </header>
-      <AuthRoute path="/login" component={SessionFormContainer} />
-      <AuthRoute path="/signup" component={SessionFormContainer} />
+      <div className="session-form-container">
+        <header>
+          <h1 className="logo" >Kekocho</h1>
+          <GreetingContainer />
+        </header>
+        <AuthRoute path="/login" component={SessionFormContainer} />
+        <AuthRoute path="/signup" component={SessionFormContainer} />
+      </div>
     </div>
   );
 };

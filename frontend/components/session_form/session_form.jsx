@@ -29,10 +29,12 @@ class SessionForm extends React.Component {
       <div>
         <h1>{this.props.formType}</h1>
         <h2 value={formType}><Link to={route}></Link></h2>
-        <form onSubmit={this.handleSubmit}>
-          <label>Username: <input type={'text'} onChange={this.update("username")} /> </label>
-          <label>Password:<input type={'password'} onChange={this.update("password")} /> </label>
-          <input type="submit" value={this.props.formType}/>
+        <form className="session-form" onSubmit={this.handleSubmit}>
+          <div className="session-form-inputs">
+            <label>Login <input type={'text'} placeholder={"Email"} onChange={this.update("username")} /> </label>
+            <label><input type={'password'} placeholder={"Password"} onChange={this.update("password")} /> </label>
+            <input type="submit" value={this.props.formType}/>
+          </div>
         </form>
         <p value={this.props.errors}></p>
       </div>

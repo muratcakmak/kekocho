@@ -14,7 +14,7 @@ class Greeting extends React.Component{
       );
     }else{
       return(
-        <div>
+        <div className="greeting">
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign up!</Link>
         </div>
