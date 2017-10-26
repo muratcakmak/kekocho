@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import GreetingContainer from '../greeting/greeting_container';
+import SearchBarContainer from '../search_bar/search_bar_container';
 
 class NavBar extends React.Component{
   render(){
@@ -19,7 +20,7 @@ class NavBar extends React.Component{
           </ul>
 
           <div className="header-search-container">
-            <input placeholder={"Search Kekocho"}></input>
+            <SearchBarContainer />
           </div>
           <div className="header-question-button-container">
             <button className="header-question-button">Add Question</button>
