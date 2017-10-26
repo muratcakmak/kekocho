@@ -4,8 +4,8 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  has_many :links
-  has_many :comments
+  has_many :questions
+  has_many :topics
 
   after_initialize :ensure_session_token
 
