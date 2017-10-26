@@ -1,2 +1,7 @@
-<h1>Api::Questions#index</h1>
-<p>Find me in app/views/api/questions/index.html.erb</p>
+# Under construction
+json.array! @questions do |question|
+  json.id question.id
+  json.body question.body
+  json.questionAuthorId question.question_author_id
+  json.authorIds json.array! question.answers, :id
+end

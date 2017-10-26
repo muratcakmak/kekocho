@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+lit = Topic.create(name:"Literature")
+tv = Topic.create(name: "TV Series")
+fit = Topic.create(name: "Fitness")
+
+
+$.ajax({
+  method: 'get',
+  url: 'api/topics'
+  })
