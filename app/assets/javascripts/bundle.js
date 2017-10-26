@@ -25914,6 +25914,13 @@ var logout = exports.logout = function logout() {
   });
 };
 
+var requestTopics = exports.requestTopics = function requestTopics() {
+  return $.ajax({
+    method: 'get',
+    url: 'api/topics'
+  });
+};
+
 /***/ }),
 /* 123 */
 /***/ (function(module, exports, __webpack_require__) {
