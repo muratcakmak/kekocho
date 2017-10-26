@@ -4,22 +4,18 @@
 // @import "variables";
 html {
   font-weight: 400;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 15px;
   line-height: 1.4;
 }
+
 body{
-  font-family: Georgia, Times, "Times New Roman", serif;
-  position: fixed;
-  word-wrap: break-word;
   color: #333;
-  font-size: 13px;
 }
 
 input {
   display: block;
   min-height: 27px;
-
   display: block;
   width: 100%;
   background-color: #f6f6f6;
