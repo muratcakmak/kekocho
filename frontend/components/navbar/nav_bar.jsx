@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import GreetingContainer from '../greeting/greeting_container';
 import SearchBarContainer from '../search_bar/search_bar_container';
+import QuestionButton from './question_button';
 
 class NavBar extends React.Component{
   render(){
@@ -22,10 +23,7 @@ class NavBar extends React.Component{
           <div className="header-search-container">
             <SearchBarContainer />
           </div>
-          <div className="header-question-button-container">
-            <button className="header-question-button">Add Question</button>
-          </div>
-
+          <QuestionButton />
         </nav>
       </header>
     );
