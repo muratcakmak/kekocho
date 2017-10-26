@@ -1,0 +1,2 @@
+class UserTopic < ApplicationRecord
+end
