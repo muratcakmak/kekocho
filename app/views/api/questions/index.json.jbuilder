@@ -30,7 +30,7 @@ json.comments do
   @questions.each do |question|
     question.answers.each do |answer|
       answer.comments do |comment|
-        debugger
+        
         json.set! comment.id do
           json.extract! comment, :id, :body
           json.commentAuthorId comment.comment_author_id
