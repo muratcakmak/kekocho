@@ -31137,7 +31137,7 @@ var App = function App() {
     null,
     _react2.default.createElement(_route_util.AuthRoute, { path: '/login', component: _login_form_container2.default }),
     _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _signup_form_container2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/feed', component: _content2.default })
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _content2.default })
   );
 };
 
@@ -32181,7 +32181,7 @@ var Auth = function Auth(_ref) {
       path = _ref.path,
       loggedIn = _ref.loggedIn;
   return _react2.default.createElement(_reactRouterDom.Route, { path: path, render: function render(props) {
-      return !loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/feed' });
+      return !loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' });
     } });
 };
 
