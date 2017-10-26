@@ -9,16 +9,13 @@ html {
   line-height: 1.4;
 }
 body{
-  background: image-url('session_form_background.png') no-repeat center center fixed;
   font-family: Georgia, Times, "Times New Roman", serif;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
   position: fixed;
   word-wrap: break-word;
   color: #333;
   font-size: 13px;
 }
+
 input {
   display: block;
   min-height: 27px;
@@ -35,6 +32,12 @@ input {
   border-radius: 3px;
   box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
 }
+
+.content-wrapper{
+  width: 100%;
+  height: 100%;
+}
+
 .session-form-container {
   background: #fff;
   border: 1px solid #e2e2e2;
@@ -97,4 +100,20 @@ input {
   box-shadow: 0 1px 1px 0 rgba(200, 200, 200, 0.6);
   font-size: 12px;
   line-height: 1.4;
+}
+
+.bg_container{
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background: #fff;
+  overflow: hidden;
+}
+
+.bg_image{
+  position: absolute;
+  background: image-url('session_form_background.png') no-repeat center center fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
 }

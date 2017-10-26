@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import GreetingContainer from '../greeting/greeting_container';
 
 class SignupForm extends React.Component {
 
@@ -37,26 +38,32 @@ class SignupForm extends React.Component {
     ));
     return (
       <div>
-      <h1 className="logo" >Kekocho</h1>
-      <div className="form-container">
-        <h1>{this.props.formType}</h1>
-        <h2 value={formType}><Link to={route}></Link></h2>
-        <form className="session-form" onSubmit={this.handleSubmit}>
-          <div className="session-form-inputs">
-            {errors}
-            <label><input type={'text'} placeholder={"First name"} onChange={this.update("first_name")} /> </label>
-            <label><input type={'text'} placeholder={"Last name"} onChange={this.update("last_name")} /> </label>
-            <label><input type={'text'} placeholder={"Email"} onChange={this.update("email")} /> </label>
-            <label><input type={'password'} placeholder={"Password"} onChange={this.update("password")} /> </label>
-            <input type="submit" value={this.props.formType} className="session-submit-button"/>
+        <div className="bg_container">
+          <div className="bg_image"></div>
+        </div>
+        <div className="session-form-container">
+          <h1 className="logo" >Kekocho</h1>
+          <GreetingContainer />
+          <div className="form-container">
+            <h1>{this.props.formType}</h1>
+            <h2 value={formType}><Link to={route}></Link></h2>
+            <form className="session-form" onSubmit={this.handleSubmit}>
+              <div className="session-form-inputs">
+                {errors}
+                <label><input type={'text'} placeholder={"First name"} onChange={this.update("first_name")} /> </label>
+                <label><input type={'text'} placeholder={"Last name"} onChange={this.update("last_name")} /> </label>
+                <label><input type={'text'} placeholder={"Email"} onChange={this.update("email")} /> </label>
+                <label><input type={'password'} placeholder={"Password"} onChange={this.update("password")} /> </label>
+                <input type="submit" value={this.props.formType} className="session-submit-button"/>
+              </div>
+            </form>
+            <p value={this.props.errors}></p>
           </div>
-        </form>
-        <p value={this.props.errors}></p>
+        </div>
       </div>
-    </div>
-    );
+      );
+    }
+
   }
 
-}
-
-export default withRouter(SignupForm);
+  export default withRouter(SignupForm);

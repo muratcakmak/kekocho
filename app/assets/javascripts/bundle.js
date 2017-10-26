@@ -31077,10 +31077,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(13);
 
-var _greeting_container = __webpack_require__(221);
-
-var _greeting_container2 = _interopRequireDefault(_greeting_container);
-
 var _login_form_container = __webpack_require__(223);
 
 var _login_form_container2 = _interopRequireDefault(_login_form_container);
@@ -31097,22 +31093,14 @@ var _route_util = __webpack_require__(226);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// className="session-form-container"
 var App = function App() {
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(
-      'div',
-      { className: 'session-form-container' },
-      _react2.default.createElement(
-        'header',
-        null,
-        _react2.default.createElement(_greeting_container2.default, null)
-      ),
-      _react2.default.createElement(_route_util.AuthRoute, { path: '/login', component: _login_form_container2.default }),
-      _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _signup_form_container2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _nav_bar_container2.default })
-    )
+    _react2.default.createElement(_route_util.AuthRoute, { path: '/login', component: _login_form_container2.default }),
+    _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _signup_form_container2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/feed', component: _nav_bar_container2.default })
   );
 };
 
@@ -31340,6 +31328,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(13);
 
+var _greeting_container = __webpack_require__(221);
+
+var _greeting_container2 = _interopRequireDefault(_greeting_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -31405,58 +31397,68 @@ var SignupForm = function (_React$Component) {
         'div',
         null,
         _react2.default.createElement(
-          'h1',
-          { className: 'logo' },
-          'Kekocho'
+          'div',
+          { className: 'bg_container' },
+          _react2.default.createElement('div', { className: 'bg_image' })
         ),
         _react2.default.createElement(
           'div',
-          { className: 'form-container' },
+          { className: 'session-form-container' },
           _react2.default.createElement(
             'h1',
-            null,
-            this.props.formType
+            { className: 'logo' },
+            'Kekocho'
           ),
+          _react2.default.createElement(_greeting_container2.default, null),
           _react2.default.createElement(
-            'h2',
-            { value: formType },
-            _react2.default.createElement(_reactRouterDom.Link, { to: route })
-          ),
-          _react2.default.createElement(
-            'form',
-            { className: 'session-form', onSubmit: this.handleSubmit },
+            'div',
+            { className: 'form-container' },
             _react2.default.createElement(
-              'div',
-              { className: 'session-form-inputs' },
-              errors,
+              'h1',
+              null,
+              this.props.formType
+            ),
+            _react2.default.createElement(
+              'h2',
+              { value: formType },
+              _react2.default.createElement(_reactRouterDom.Link, { to: route })
+            ),
+            _react2.default.createElement(
+              'form',
+              { className: 'session-form', onSubmit: this.handleSubmit },
               _react2.default.createElement(
-                'label',
-                null,
-                _react2.default.createElement('input', { type: 'text', placeholder: "First name", onChange: this.update("first_name") }),
-                ' '
-              ),
-              _react2.default.createElement(
-                'label',
-                null,
-                _react2.default.createElement('input', { type: 'text', placeholder: "Last name", onChange: this.update("last_name") }),
-                ' '
-              ),
-              _react2.default.createElement(
-                'label',
-                null,
-                _react2.default.createElement('input', { type: 'text', placeholder: "Email", onChange: this.update("email") }),
-                ' '
-              ),
-              _react2.default.createElement(
-                'label',
-                null,
-                _react2.default.createElement('input', { type: 'password', placeholder: "Password", onChange: this.update("password") }),
-                ' '
-              ),
-              _react2.default.createElement('input', { type: 'submit', value: this.props.formType, className: 'session-submit-button' })
-            )
-          ),
-          _react2.default.createElement('p', { value: this.props.errors })
+                'div',
+                { className: 'session-form-inputs' },
+                errors,
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  _react2.default.createElement('input', { type: 'text', placeholder: "First name", onChange: this.update("first_name") }),
+                  ' '
+                ),
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  _react2.default.createElement('input', { type: 'text', placeholder: "Last name", onChange: this.update("last_name") }),
+                  ' '
+                ),
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  _react2.default.createElement('input', { type: 'text', placeholder: "Email", onChange: this.update("email") }),
+                  ' '
+                ),
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  _react2.default.createElement('input', { type: 'password', placeholder: "Password", onChange: this.update("password") }),
+                  ' '
+                ),
+                _react2.default.createElement('input', { type: 'submit', value: this.props.formType, className: 'session-submit-button' })
+              )
+            ),
+            _react2.default.createElement('p', { value: this.props.errors })
+          )
         )
       );
     }
@@ -31494,7 +31496,7 @@ var Auth = function Auth(_ref) {
       path = _ref.path,
       loggedIn = _ref.loggedIn;
   return _react2.default.createElement(_reactRouterDom.Route, { path: path, render: function render(props) {
-      return !loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' });
+      return !loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/feed' });
     } });
 };
 
@@ -31522,6 +31524,10 @@ var _react = __webpack_require__(0);
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(13);
+
+var _greeting_container = __webpack_require__(221);
+
+var _greeting_container2 = _interopRequireDefault(_greeting_container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31586,46 +31592,56 @@ var LoginForm = function (_React$Component) {
         'div',
         null,
         _react2.default.createElement(
-          'h1',
-          { className: 'logo' },
-          'Kekocho'
+          'div',
+          { className: 'bg_container' },
+          _react2.default.createElement('div', { className: 'bg_image' })
         ),
         _react2.default.createElement(
           'div',
-          { className: 'form-container' },
+          { className: 'session-form-container' },
           _react2.default.createElement(
             'h1',
-            null,
-            this.props.formType
+            { className: 'logo' },
+            'Kekocho'
           ),
+          _react2.default.createElement(_greeting_container2.default, null),
           _react2.default.createElement(
-            'h2',
-            { value: formType },
-            _react2.default.createElement(_reactRouterDom.Link, { to: route })
-          ),
-          _react2.default.createElement(
-            'form',
-            { className: 'session-form', onSubmit: this.handleSubmit },
+            'div',
+            { className: 'form-container' },
             _react2.default.createElement(
-              'div',
-              { className: 'session-form-inputs' },
-              errors,
+              'h1',
+              null,
+              this.props.formType
+            ),
+            _react2.default.createElement(
+              'h2',
+              { value: formType },
+              _react2.default.createElement(_reactRouterDom.Link, { to: route })
+            ),
+            _react2.default.createElement(
+              'form',
+              { className: 'session-form', onSubmit: this.handleSubmit },
               _react2.default.createElement(
-                'label',
-                null,
-                _react2.default.createElement('input', { type: 'text', placeholder: "Email", onChange: this.update("email") }),
-                ' '
-              ),
-              _react2.default.createElement(
-                'label',
-                null,
-                _react2.default.createElement('input', { type: 'password', placeholder: "Password", onChange: this.update("password") }),
-                ' '
-              ),
-              _react2.default.createElement('input', { type: 'submit', value: this.props.formType, className: 'session-submit-button' })
-            )
-          ),
-          _react2.default.createElement('p', { value: this.props.errors })
+                'div',
+                { className: 'session-form-inputs' },
+                errors,
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  _react2.default.createElement('input', { type: 'text', placeholder: "Email", onChange: this.update("email") }),
+                  ' '
+                ),
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  _react2.default.createElement('input', { type: 'password', placeholder: "Password", onChange: this.update("password") }),
+                  ' '
+                ),
+                _react2.default.createElement('input', { type: 'submit', value: this.props.formType, className: 'session-submit-button' })
+              )
+            ),
+            _react2.default.createElement('p', { value: this.props.errors })
+          )
         )
       );
     }
@@ -31686,6 +31702,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(13);
 
+var _greeting_container = __webpack_require__(221);
+
+var _greeting_container2 = _interopRequireDefault(_greeting_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31707,9 +31727,67 @@ var NavBar = function (_React$Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'h1',
-        null,
-        'NavBar'
+        'header',
+        { className: 'header' },
+        _react2.default.createElement(
+          'nav',
+          { className: 'header-nav' },
+          _react2.default.createElement(
+            'h1',
+            { className: 'header-logo' },
+            _react2.default.createElement(
+              'a',
+              { href: '#' },
+              'Kekocho'
+            )
+          ),
+          _react2.default.createElement(_greeting_container2.default, null),
+          _react2.default.createElement(
+            'ul',
+            { className: 'header-list' },
+            _react2.default.createElement(
+              'li',
+              null,
+              _react2.default.createElement(
+                'a',
+                { href: '#' },
+                'Home'
+              )
+            ),
+            _react2.default.createElement(
+              'li',
+              null,
+              _react2.default.createElement(
+                'a',
+                { href: '#' },
+                'Answer'
+              )
+            ),
+            _react2.default.createElement(
+              'li',
+              null,
+              _react2.default.createElement(
+                'a',
+                { href: '#' },
+                'Notifications'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'header-search-container' },
+            _react2.default.createElement('input', { placeholder: "Search Kekocho" })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'header-question-button-container' },
+            _react2.default.createElement(
+              'button',
+              { className: 'header-question-button' },
+              'Add Question'
+            )
+          )
+        )
       );
     }
   }]);
