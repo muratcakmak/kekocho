@@ -2,13 +2,16 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import QuestionFeedContainer from './question_feed_container';
 import SideBarContainer from './side_bar_container';
-
+import NavBarContainer from '../navbar/nav_bar_container';
 class Content extends React.Component{
   render(){
     return (
       <div>
-        <SideBarContainer />
-        <QuestionFeedContainer />
+        <NavBarContainer />
+        <div className="content">
+          <SideBarContainer />
+          <QuestionFeedContainer />
+        </div>
       </div>
     );
   }
