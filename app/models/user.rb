@@ -5,7 +5,14 @@ class User < ApplicationRecord
   attr_reader :password
 
   has_many :questions
-  has_many :topics
+  has_many :user_topics
+
+  has_many :topics,
+    through: :user_topics,
+    source: :topic
+
+  has_many :comments
+  has_many :answers
 
   after_initialize :ensure_session_token
 
