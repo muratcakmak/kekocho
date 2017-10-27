@@ -5,14 +5,14 @@ class QuestionIndexItem extends React.Component {
     super(props);
   }
     render(){
+    const answer = this.props.firstAnswer;
     return (<div className="posts">
       <article className="post">
           <div className="post-body">
             <h2><a href="#">{this.props.question.body}</a></h2>
             <p>
-              Ambo, quia consociatae gaudent Parlamenti maioritate, possint gubernium constituere. Hae duae, ut mihi videtur, differunt a nationali socialismo sive Nazismo qui olim in Germania viguit; hoc erat regimen totalitarium ubi civium libertas conculcabatur et etniae vel Judaei odio philetico vexabantur.
+              {answer ? answer.body : ""}
             </p>
-
             <footer className="post-footer">
               <ul className="post-footer-info">
                 <li><a href="#">Answerer Name</a></li>
