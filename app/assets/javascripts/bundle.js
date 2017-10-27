@@ -31227,12 +31227,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // className="session-form-container"
 var App = function App() {
+
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(_route_util.AuthRoute, { path: '/login', component: _login_form_container2.default }),
-    _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _signup_form_container2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _content2.default })
+    _react2.default.createElement(
+      _reactRouterDom.Switch,
+      null,
+      _react2.default.createElement(_route_util.AuthRoute, { path: '/login', component: _login_form_container2.default }),
+      _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _signup_form_container2.default }),
+      _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/', component: _content2.default })
+    )
   );
 };
 
@@ -32157,7 +32162,8 @@ var QuestionFeed = function (_React$Component) {
         //   questionItems.push(<li>{question.body}</li>)
         // ));
         Object.values(this.props.entities.questions).map(function (question) {
-          return questionIndexItems.push(_react2.default.createElement(_question_item_index2.default, { key: question.id, question: question }));
+
+          questionIndexItems.push(_react2.default.createElement(_question_item_index2.default, { key: question.id, question: question, firstAnswer: question.firstAnswer }));
         });
       }
 
@@ -32225,6 +32231,7 @@ var QuestionIndexItem = function (_React$Component) {
   _createClass(QuestionIndexItem, [{
     key: "render",
     value: function render() {
+      var answer = this.props.firstAnswer;
       return _react2.default.createElement(
         "div",
         { className: "posts" },
@@ -32246,7 +32253,7 @@ var QuestionIndexItem = function (_React$Component) {
             _react2.default.createElement(
               "p",
               null,
-              "Ambo, quia consociatae gaudent Parlamenti maioritate, possint gubernium constituere. Hae duae, ut mihi videtur, differunt a nationali socialismo sive Nazismo qui olim in Germania viguit; hoc erat regimen totalitarium ubi civium libertas conculcabatur et etniae vel Judaei odio philetico vexabantur."
+              answer ? answer.body : ""
             ),
             _react2.default.createElement(
               "footer",
@@ -32302,7 +32309,7 @@ var _side_bar2 = _interopRequireDefault(_side_bar);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  if (state.session.hasOwnProperty("currentUser") && state.session.currentUser && state.session.currentUser.hasOwnProperty("topics")) {
+  if (state.session.currentUser) {
     return {
       topics: state.session.currentUser.topics
     };
@@ -32396,7 +32403,7 @@ exports.default = SideBar;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.AuthRoute = undefined;
+exports.ProtectedRoute = exports.AuthRoute = undefined;
 
 var _react = __webpack_require__(0);
 
@@ -32417,11 +32424,22 @@ var Auth = function Auth(_ref) {
     } });
 };
 
+var Protected = function Protected(_ref2) {
+  var Component = _ref2.component,
+      path = _ref2.path,
+      loggedIn = _ref2.loggedIn;
+  return _react2.default.createElement(_reactRouterDom.Route, { path: path, render: function render(props) {
+      return loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/login' });
+    } });
+};
+
 var mapStateToProps = function mapStateToProps(state) {
   return { loggedIn: Boolean(state.session.currentUser) };
 };
 
 var AuthRoute = exports.AuthRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Auth));
+
+var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Protected));
 
 /***/ })
 /******/ ]);
