@@ -17,7 +17,6 @@ class QuestionIndexItem extends React.Component {
               <ul className="post-footer-info">
                 <li><a href="#">Answerer Name</a></li>
               </ul>
-
             </footer>
           </div>
         </article>
