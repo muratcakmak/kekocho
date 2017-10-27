@@ -7,9 +7,16 @@ class Api::QuestionsController < ApplicationController
   end
 
   def create
+    @question = Question.new(question_params)
+    if @question.save
+      render :show
+    else
+      render json: @quesion.errors.full_messages, status: 422
+    end
   end
 
   def show
+
   end
 
   def edit
@@ -19,5 +26,8 @@ class Api::QuestionsController < ApplicationController
   end
 
   def destroy
+  end
+  def question_params
+    params.require(:question).permit(:body, :question_author_id)
   end
 end
