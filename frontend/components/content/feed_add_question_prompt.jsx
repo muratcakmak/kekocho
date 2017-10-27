@@ -9,10 +9,11 @@ class FeedAddQuestionPrompt extends React.Component {
 
   showModal(){
     console.log("Show modal");
+    this.props.addAskQuestionModal();
   }
 
   render(){
-    debugger
+
     return (
       <div className="feed_add_question_prompt">
         <div>
