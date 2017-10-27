@@ -4,7 +4,7 @@ import { addAskQuestionModal } from '../../actions/ui_actions';
 import QuestionButton from './question_button';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+  
   return{
   };
 };
