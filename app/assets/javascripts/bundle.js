@@ -555,66 +555,6 @@ module.exports = emptyFunction;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-/**
- * Use invariant() to assert state which your program assumes to be true.
- *
- * Provide sprintf-style format (only %s is supported) and arguments
- * to provide information about what broke and what you were
- * expecting.
- *
- * The invariant message will be stripped in production, but the invariant
- * will remain to ensure logic does not differ in production.
- */
-
-var validateFormat = function validateFormat(format) {};
-
-if (process.env.NODE_ENV !== 'production') {
-  validateFormat = function validateFormat(format) {
-    if (format === undefined) {
-      throw new Error('invariant requires an error message argument');
-    }
-  };
-}
-
-function invariant(condition, format, a, b, c, d, e, f) {
-  validateFormat(format);
-
-  if (!condition) {
-    var error;
-    if (format === undefined) {
-      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-    } else {
-      var args = [a, b, c, d, e, f];
-      var argIndex = 0;
-      error = new Error(format.replace(/%s/g, function () {
-        return args[argIndex++];
-      }));
-      error.name = 'Invariant Violation';
-    }
-
-    error.framesToPop = 1; // we don't care about invariant's own frame
-    throw error;
-  }
-}
-
-module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -692,6 +632,66 @@ var requestQuestions = exports.requestQuestions = function requestQuestions() {
     });
   };
 };
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
+
+var validateFormat = function validateFormat(format) {};
+
+if (process.env.NODE_ENV !== 'production') {
+  validateFormat = function validateFormat(format) {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+  };
+}
+
+function invariant(condition, format, a, b, c, d, e, f) {
+  validateFormat(format);
+
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(format.replace(/%s/g, function () {
+        return args[argIndex++];
+      }));
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+}
+
+module.exports = invariant;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 10 */
@@ -1710,7 +1710,7 @@ var _greeting = __webpack_require__(226);
 
 var _greeting2 = _interopRequireDefault(_greeting);
 
-var _session_actions = __webpack_require__(9);
+var _session_actions = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1741,7 +1741,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(8);
+  var invariant = __webpack_require__(9);
   var warning = __webpack_require__(18);
   var ReactPropTypesSecret = __webpack_require__(33);
   var loggedTypeFailures = {};
@@ -5068,7 +5068,7 @@ var _root = __webpack_require__(194);
 
 var _root2 = _interopRequireDefault(_root);
 
-var _session_actions = __webpack_require__(9);
+var _session_actions = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5104,7 +5104,7 @@ document.addEventListener('DOMContentLoaded', function () {
  This source code is licensed under the MIT license found in the
  LICENSE file in the root directory of this source tree.
 */
-var f=__webpack_require__(13),p=__webpack_require__(17);__webpack_require__(8);var r=__webpack_require__(7);
+var f=__webpack_require__(13),p=__webpack_require__(17);__webpack_require__(9);var r=__webpack_require__(7);
 function t(a){for(var b=arguments.length-1,d="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,e=0;e<b;e++)d+="\x26args[]\x3d"+encodeURIComponent(arguments[e+1]);b=Error(d+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var u={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function v(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}v.prototype.isReactComponent={};v.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?t("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};v.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function w(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}function x(){}x.prototype=v.prototype;var y=w.prototype=new x;y.constructor=w;f(y,v.prototype);y.isPureReactComponent=!0;function z(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}var A=z.prototype=new x;A.constructor=z;f(A,v.prototype);A.unstable_isAsyncReactComponent=!0;A.render=function(){return this.props.children};
@@ -5144,7 +5144,7 @@ if (process.env.NODE_ENV !== "production") {
 var objectAssign$1 = __webpack_require__(13);
 var require$$0 = __webpack_require__(18);
 var emptyObject = __webpack_require__(17);
-var invariant = __webpack_require__(8);
+var invariant = __webpack_require__(9);
 var emptyFunction = __webpack_require__(7);
 var checkPropTypes = __webpack_require__(32);
 
@@ -6887,7 +6887,7 @@ if (process.env.NODE_ENV === 'production') {
  LICENSE file in the root directory of this source tree.
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0);__webpack_require__(8);var l=__webpack_require__(34),n=__webpack_require__(13),ba=__webpack_require__(47),ca=__webpack_require__(7),da=__webpack_require__(17),ea=__webpack_require__(48),fa=__webpack_require__(49),ha=__webpack_require__(50),ia=__webpack_require__(51);
+var aa=__webpack_require__(0);__webpack_require__(9);var l=__webpack_require__(34),n=__webpack_require__(13),ba=__webpack_require__(47),ca=__webpack_require__(7),da=__webpack_require__(17),ea=__webpack_require__(48),fa=__webpack_require__(49),ha=__webpack_require__(50),ia=__webpack_require__(51);
 function w(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:w("227");
 function ja(a){switch(a){case "svg":return"http://www.w3.org/2000/svg";case "math":return"http://www.w3.org/1998/Math/MathML";default:return"http://www.w3.org/1999/xhtml"}}
 var ka={Namespaces:{html:"http://www.w3.org/1999/xhtml",mathml:"http://www.w3.org/1998/Math/MathML",svg:"http://www.w3.org/2000/svg"},getIntrinsicNamespace:ja,getChildNamespace:function(a,b){return null==a||"http://www.w3.org/1999/xhtml"===a?ja(b):"http://www.w3.org/2000/svg"===a&&"foreignObject"===b?"http://www.w3.org/1999/xhtml":a}},la=null,oa={};
@@ -7213,7 +7213,7 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var react = __webpack_require__(0);
-var invariant = __webpack_require__(8);
+var invariant = __webpack_require__(9);
 var ExecutionEnvironment = __webpack_require__(34);
 var _assign = __webpack_require__(13);
 var EventListener = __webpack_require__(47);
@@ -24654,7 +24654,7 @@ module.exports = performance || {};
 
 
 var emptyFunction = __webpack_require__(7);
-var invariant = __webpack_require__(8);
+var invariant = __webpack_require__(9);
 var warning = __webpack_require__(18);
 var assign = __webpack_require__(13);
 
@@ -25204,7 +25204,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 var emptyFunction = __webpack_require__(7);
-var invariant = __webpack_require__(8);
+var invariant = __webpack_require__(9);
 var ReactPropTypesSecret = __webpack_require__(33);
 
 module.exports = function() {
@@ -25904,7 +25904,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _session_actions = __webpack_require__(9);
+var _session_actions = __webpack_require__(8);
 
 var _merge = __webpack_require__(36);
 
@@ -28093,7 +28093,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _session_actions = __webpack_require__(9);
+var _session_actions = __webpack_require__(8);
 
 var _merge = __webpack_require__(36);
 
@@ -28133,7 +28133,7 @@ var _merge = __webpack_require__(36);
 
 var _merge2 = _interopRequireDefault(_merge);
 
-var _session_actions = __webpack_require__(9);
+var _session_actions = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31257,7 +31257,7 @@ var _login_form = __webpack_require__(225);
 
 var _login_form2 = _interopRequireDefault(_login_form);
 
-var _session_actions = __webpack_require__(9);
+var _session_actions = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31358,9 +31358,10 @@ var LoginForm = function (_React$Component) {
       var formType = this.props.formType === 'signup' ? 'login' : 'signup';
       var route = '/' + formType;
       var errors = this.props.errors.map(function (error) {
+        console.log(error);
         return _react2.default.createElement(
           'li',
-          null,
+          { key: error },
           error
         );
       });
@@ -31400,11 +31401,10 @@ var LoginForm = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'session-form-inputs' },
-                errors,
                 _react2.default.createElement(
                   'label',
                   null,
-                  _react2.default.createElement('input', { type: 'text', placeholder: "Email", onChange: this.update("email") }),
+                  _react2.default.createElement('input', { type: 'email', placeholder: "Email", onChange: this.update("email") }),
                   ' '
                 ),
                 _react2.default.createElement(
@@ -31416,7 +31416,11 @@ var LoginForm = function (_React$Component) {
                 _react2.default.createElement('input', { type: 'submit', value: this.props.formType, className: 'session-submit-button' })
               )
             ),
-            _react2.default.createElement('p', { value: this.props.errors })
+            _react2.default.createElement(
+              'div',
+              { className: this.props.errors.length > 0 ? "error-style" : "" },
+              errors
+            )
           )
         )
       );
@@ -31458,16 +31462,27 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Greeting = function (_React$Component) {
   _inherits(Greeting, _React$Component);
 
-  function Greeting() {
+  function Greeting(props) {
     _classCallCheck(this, Greeting);
 
-    return _possibleConstructorReturn(this, (Greeting.__proto__ || Object.getPrototypeOf(Greeting)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Greeting.__proto__ || Object.getPrototypeOf(Greeting)).call(this, props));
+
+    _this.logout = _this.logout.bind(_this);
+    return _this;
   }
 
   _createClass(Greeting, [{
+    key: 'logout',
+    value: function logout() {
+      var _this2 = this;
+
+      this.props.logout().then(function () {
+        return _this2.props.history.push('/login');
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
-
       var currentUser = this.props.currentUser;
       if (currentUser) {
         return _react2.default.createElement(
@@ -31482,7 +31497,7 @@ var Greeting = function (_React$Component) {
           ),
           _react2.default.createElement(
             'button',
-            { className: 'session-submit-button', onClick: this.props.logout },
+            { className: 'session-submit-button', onClick: this.logout },
             'Logout'
           )
         );
@@ -31508,7 +31523,7 @@ var Greeting = function (_React$Component) {
   return Greeting;
 }(_react2.default.Component);
 
-exports.default = Greeting;
+exports.default = (0, _reactRouterDom.withRouter)(Greeting);
 
 /***/ }),
 /* 227 */
@@ -31529,7 +31544,7 @@ var _signup_form = __webpack_require__(228);
 
 var _signup_form2 = _interopRequireDefault(_signup_form);
 
-var _session_actions = __webpack_require__(9);
+var _session_actions = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31674,7 +31689,6 @@ var SignupForm = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'session-form-inputs' },
-                errors,
                 _react2.default.createElement(
                   'label',
                   null,
@@ -31690,7 +31704,7 @@ var SignupForm = function (_React$Component) {
                 _react2.default.createElement(
                   'label',
                   null,
-                  _react2.default.createElement('input', { type: 'text', placeholder: "Email", onChange: this.update("email") }),
+                  _react2.default.createElement('input', { type: 'email', placeholder: "Email", onChange: this.update("email") }),
                   ' '
                 ),
                 _react2.default.createElement(
@@ -31702,7 +31716,11 @@ var SignupForm = function (_React$Component) {
                 _react2.default.createElement('input', { type: 'submit', value: this.props.formType, className: 'session-submit-button' })
               )
             ),
-            _react2.default.createElement('p', { value: this.props.errors })
+            _react2.default.createElement(
+              'div',
+              { className: this.props.errors.length > 0 ? "error-style" : "" },
+              errors
+            )
           )
         )
       );
@@ -32063,7 +32081,7 @@ var _question_feed = __webpack_require__(235);
 
 var _question_feed2 = _interopRequireDefault(_question_feed);
 
-var _session_actions = __webpack_require__(9);
+var _session_actions = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32207,7 +32225,6 @@ var QuestionIndexItem = function (_React$Component) {
   _createClass(QuestionIndexItem, [{
     key: "render",
     value: function render() {
-      debugger;
       return _react2.default.createElement(
         "div",
         { className: "posts" },
