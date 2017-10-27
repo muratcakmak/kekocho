@@ -11,6 +11,7 @@ class LoginForm extends React.Component {
       password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
   componentWillUnmount(){
@@ -25,6 +26,16 @@ class LoginForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state );
     this.props.login(user);
+  }
+  handleDemoLogin(e){
+    e.preventDefault();
+    const demoUser = {
+      email: "oguzhanmc@gmail.com",
+      password: "password"
+    };
+    this.setState(demoUser);
+
+    this.props.login(demoUser);
   }
 
   render(){
@@ -50,6 +61,7 @@ class LoginForm extends React.Component {
                 <label><input type={'email'} placeholder={"Email"} onChange={this.update("email")} /> </label>
                 <label><input type={'password'} placeholder={"Password"} onChange={this.update("password")} /> </label>
                 <input type="submit" value={this.props.formType} className="session-submit-button"/>
+                <input type="submit" onClick={this.handleDemoLogin} value={"Demo Login"} className="session-submit-button"/>
               </div>
             </form>
             <div className={ this.props.errors.length > 0 ? "error-style" : "" }>
