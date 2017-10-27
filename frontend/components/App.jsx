@@ -8,7 +8,7 @@ import Content from './content/content';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 // className="session-form-container"
 const App = () => {
-  debugger
+
   return(
     <div>
       <Switch>
