@@ -1,15 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
 class Greeting extends React.Component{
 
-  render(){
+  constructor(props){
+    super(props);
+    this.logout = this.logout.bind(this);
+  }
 
+  logout(){
+    this.props.logout().then(() => this.props.history.push('/login'));
+  }
+
+  render(){
     const currentUser = this.props.currentUser;
     if (currentUser) {
       return(
         <div>
           <h1>Welcome {currentUser.email}!</h1>
-          <button className="session-submit-button" onClick={this.props.logout}>Logout</button>
+          <button className="session-submit-button" onClick={this.logout}>Logout</button>
         </div>
       );
     }else{
@@ -24,4 +33,4 @@ class Greeting extends React.Component{
 
 }
 
-export default Greeting;
+export default withRouter(Greeting);
