@@ -13,7 +13,6 @@ const UIReducer = (state = defaultState, action) => {
       console.log({modal: action.modal});
       return {modal: action.modal};
     case "REMOVE_ASK_QUESTION_MODAL":
-      debugger
       return {modal: action.modal};
     default:
       return defaultState;
