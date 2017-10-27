@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import SideBar from './side_bar';
 
 const mapStateToProps = (state, ownProps) =>{
-  if(state.session.hasOwnProperty("currentUser") && state.session.currentUser && state.session.currentUser.hasOwnProperty("topics") ){
+  if(state.session.currentUser){
     return {
       topics: state.session.currentUser.topics
     };
