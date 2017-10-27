@@ -21,9 +21,9 @@ export const logout = ()=> {
   });
 };
 
-export const requestTopics = () => (
+export const requestQuestions = () => (
   $.ajax({
-    method: 'get',
-    url: 'api/topics'
-    })
+  method: "get",
+  url: "api/questions"
+  })
 );
