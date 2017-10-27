@@ -15,9 +15,10 @@ class QuestionFeed extends React.Component{
       // Object.values(this.props.entities.questions).map((question) => (
       //   questionItems.push(<li>{question.body}</li>)
       // ));
-      Object.values(this.props.entities.questions).map((question) => (
-          questionIndexItems.push(<QuestionIndexItem key={question.id} question={question}/>)
-      ));
+      Object.values(this.props.entities.questions).map((question) => {
+
+        questionIndexItems.push(<QuestionIndexItem key={question.id} question={question} firstAnswer={question.firstAnswer}/>);
+      });
     }
 
     return (
