@@ -49,15 +49,16 @@ class SignupForm extends React.Component {
             <h2 value={formType}><Link to={route}></Link></h2>
             <form className="session-form" onSubmit={this.handleSubmit}>
               <div className="session-form-inputs">
-                {errors}
                 <label><input type={'text'} placeholder={"First name"} onChange={this.update("first_name")} /> </label>
                 <label><input type={'text'} placeholder={"Last name"} onChange={this.update("last_name")} /> </label>
-                <label><input type={'text'} placeholder={"Email"} onChange={this.update("email")} /> </label>
+                <label><input type={'email'} placeholder={"Email"} onChange={this.update("email")} /> </label>
                 <label><input type={'password'} placeholder={"Password"} onChange={this.update("password")} /> </label>
                 <input type="submit" value={this.props.formType} className="session-submit-button"/>
               </div>
             </form>
-            <p value={this.props.errors}></p>
+            <div className={ this.props.errors.length > 0 ? "error-style" : "" }>
+              {errors}
+            </div>
           </div>
         </div>
       </div>

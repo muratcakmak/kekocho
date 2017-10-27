@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     login: (user) => dispatch(login(user)),
     clearErrors: () => dispatch(receiveErrors([]))
-  };
+    };
 };
 
 export default withRouter(connect(
