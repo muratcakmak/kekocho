@@ -9,7 +9,7 @@ const EntityReducer = (state = defaultState, action) => {
     case RECEIVE_ALL_QUESTIONS:
       return merge({}, state, action.entities);
     default:
-      return defaultState;
+      return state;
   }
 };
 
