@@ -31393,6 +31393,7 @@ var LoginForm = function (_React$Component) {
       password: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.handleDemoLogin = _this.handleDemoLogin.bind(_this);
     return _this;
   }
 
@@ -31416,6 +31417,18 @@ var LoginForm = function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.login(user);
+    }
+  }, {
+    key: 'handleDemoLogin',
+    value: function handleDemoLogin(e) {
+      e.preventDefault();
+      var demoUser = {
+        email: "oguzhanmc@gmail.com",
+        password: "password"
+      };
+      this.setState(demoUser);
+
+      this.props.login(demoUser);
     }
   }, {
     key: 'render',
@@ -31478,7 +31491,8 @@ var LoginForm = function (_React$Component) {
                   _react2.default.createElement('input', { type: 'password', placeholder: "Password", onChange: this.update("password") }),
                   ' '
                 ),
-                _react2.default.createElement('input', { type: 'submit', value: this.props.formType, className: 'session-submit-button' })
+                _react2.default.createElement('input', { type: 'submit', value: this.props.formType, className: 'session-submit-button' }),
+                _react2.default.createElement('input', { type: 'submit', onClick: this.handleDemoLogin, value: "Demo Login", className: 'session-submit-button' })
               )
             ),
             _react2.default.createElement(
