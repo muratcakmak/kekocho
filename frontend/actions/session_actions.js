@@ -3,6 +3,7 @@ import * as SessionApiUtil from '../util/session_api_util';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const RECEIVE_ALL_QUESTIONS = 'RECEIVE_ALL_QUESTIONS';
+export const ADD_ASK_QUESTION_MODAL = 'ADD_ASK_QUESTION_MODAL';
 
 export const receiveCurrentUser = currentUser => {
   return ({
@@ -22,6 +23,12 @@ export const receiveQuestions = questions => {
   return ({
     type: RECEIVE_ALL_QUESTIONS,
     entities: questions
+  });
+};
+
+export const addAskQuestionModel = () => {
+  return ({
+    type: ADD_ASK_QUESTION_MODAL
   });
 };
 
