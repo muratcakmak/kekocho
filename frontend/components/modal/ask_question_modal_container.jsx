@@ -4,7 +4,7 @@ import AskQuestionModal from './ask_question_modal';
 import { removeAskQuestionModal } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+
   return{
     show: state.ui.modal.show
   };
