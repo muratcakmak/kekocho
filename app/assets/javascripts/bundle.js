@@ -28200,7 +28200,6 @@ var UIReducer = function UIReducer() {
       console.log({ modal: action.modal });
       return { modal: action.modal };
     case "REMOVE_ASK_QUESTION_MODAL":
-      debugger;
       return { modal: action.modal };
     default:
       return defaultState;
@@ -31838,9 +31837,9 @@ var _search_bar_container = __webpack_require__(231);
 
 var _search_bar_container2 = _interopRequireDefault(_search_bar_container);
 
-var _question_button = __webpack_require__(233);
+var _question_button_container = __webpack_require__(246);
 
-var _question_button2 = _interopRequireDefault(_question_button);
+var _question_button_container2 = _interopRequireDefault(_question_button_container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31914,7 +31913,7 @@ var NavBar = function (_React$Component) {
             { className: 'header-search-container' },
             _react2.default.createElement(_search_bar_container2.default, null)
           ),
-          _react2.default.createElement(_question_button2.default, null)
+          _react2.default.createElement(_question_button_container2.default, null)
         )
       );
     }
@@ -32038,13 +32037,21 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var QuestionButton = function (_React$Component) {
   _inherits(QuestionButton, _React$Component);
 
-  function QuestionButton() {
+  function QuestionButton(props) {
     _classCallCheck(this, QuestionButton);
 
-    return _possibleConstructorReturn(this, (QuestionButton.__proto__ || Object.getPrototypeOf(QuestionButton)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (QuestionButton.__proto__ || Object.getPrototypeOf(QuestionButton)).call(this, props));
+
+    _this.showModal = _this.showModal.bind(_this);
+    return _this;
   }
 
   _createClass(QuestionButton, [{
+    key: 'showModal',
+    value: function showModal() {
+      this.props.addAskQuestionModal();
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -32052,7 +32059,7 @@ var QuestionButton = function (_React$Component) {
         { className: 'header-question-button-container' },
         _react2.default.createElement(
           'button',
-          { className: 'header-question-button' },
+          { onClick: this.showModal, className: 'header-question-button' },
           'Add Question'
         )
       );
@@ -32674,7 +32681,7 @@ var _ui_actions = __webpack_require__(243);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
+
   return {
     show: state.ui.modal.show
   };
@@ -32761,6 +32768,44 @@ var AskQuestionModal = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = AskQuestionModal;
+
+/***/ }),
+/* 246 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(6);
+
+var _reactRouter = __webpack_require__(11);
+
+var _ui_actions = __webpack_require__(243);
+
+var _question_button = __webpack_require__(233);
+
+var _question_button2 = _interopRequireDefault(_question_button);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    addAskQuestionModal: function addAskQuestionModal() {
+      return dispatch((0, _ui_actions.addAskQuestionModal)());
+    }
+  };
+};
+
+exports.default = (0, _reactRouter.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_question_button2.default));
 
 /***/ })
 /******/ ]);
