@@ -7,6 +7,7 @@ json.questions do
       json.answerIds do
         json.array! question.answers, :id
       end
+      json.firstAnswer question.answers.first
     end
   end
 end
@@ -30,7 +31,7 @@ json.comments do
   @questions.each do |question|
     question.answers.each do |answer|
       answer.comments do |comment|
-        
+
         json.set! comment.id do
           json.extract! comment, :id, :body
           json.commentAuthorId comment.comment_author_id
