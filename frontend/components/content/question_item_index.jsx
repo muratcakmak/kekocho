@@ -27,7 +27,3 @@ class QuestionIndexItem extends React.Component {
 
 
   export default QuestionIndexItem;
-  //
-  // <a href="#" className="post-thumb thumb" title="Sennacy">
-  //   <img src="./images/cat.jpg" alt="">
-  //   </a>
