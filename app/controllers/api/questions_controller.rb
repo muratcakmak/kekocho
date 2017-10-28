@@ -11,7 +11,7 @@ class Api::QuestionsController < ApplicationController
     if @question.save
       render :show
     else
-      render json: @quesion.errors.full_messages, status: 422
+      render json: @question.errors.full_messages, status: 422
     end
   end
 
