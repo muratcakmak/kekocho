@@ -16,7 +16,8 @@ class Api::QuestionsController < ApplicationController
   end
 
   def show
-
+    debugger
+    @question = Question.find(params[:id])
   end
 
   def edit
