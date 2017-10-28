@@ -8,6 +8,7 @@ class AskQuestionModal extends React.Component{
     super(props);
     this.close = this.close.bind(this);
     this.handleQuestion = this.handleQuestion.bind(this);
+    debugger
     this.state = {
       body: "",
       question_author_id: this.props.user.id
