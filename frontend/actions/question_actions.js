@@ -10,6 +10,9 @@ export const receiveQuestion = question => {
 };
 
 export const createQuestion = question => dispatch => {
-
   return QuestionApiUtil.createQuestion(question).then(question => dispatch(receiveQuestion(question)));
+};
+
+export const fetchQuestion = questionId => dispatch => {
+  return QuestionApiUtil.fetchQuestion(questionId).then(question => dispatch(receiveQuestion(question)));
 };
