@@ -12,7 +12,6 @@ class NavBar extends React.Component{
           <h1 className="header-logo">
             <a href="#">Kekocho</a>
           </h1>
-          <GreetingContainer />
 
           <ul className="header-list">
             <li><a href="#">Home</a></li>
@@ -24,7 +23,9 @@ class NavBar extends React.Component{
             <SearchBarContainer />
           </div>
           <QuestionButtonContainer />
+          <GreetingContainer />
         </nav>
+
       </header>
     );
   }

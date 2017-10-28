@@ -4,6 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 import { login, logout, receiveErrors } from './actions/session_actions';
 import { addAskQuestionModal } from './actions/ui_actions';
+import { createQuestion } from './actions/question_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -25,5 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.receiveErrors = receiveErrors;
+  window.createQuestion = createQuestion;
   ReactDOM.render(<Root store={ store }/>, root);
 });
