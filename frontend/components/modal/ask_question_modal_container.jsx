@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
   if(state.session.currentUser){
     return {
       show: state.ui.modal.show,
-    user: state.session.currentUser};
+      user: state.session.currentUser};
   }
   return{
     show: state.ui.modal.show,
