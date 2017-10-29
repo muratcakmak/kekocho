@@ -1,23 +1,25 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import NavBarContainer from './navbar/nav_bar_container';
 import Content from './content/content';
+import QuestionShowContainer from './question_show/question_show_container';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-// className="session-form-container"
-const App = () => {
-
+const App = (props) => {
   return(
     <div>
+      <ProtectedRoute path="/" component={NavBarContainer} />
       <Switch>
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
         <ProtectedRoute exact path="/" component={Content} />
+        <Route exact path="/api/questions/:questionId" component={QuestionShowContainer}/>
+        <Route path="/" render={() => <Redirect to="/"/>} />
       </Switch>
     </div>
       );
     };
 
-    export default App;
+    export default withRouter(App);
