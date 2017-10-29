@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 
 class QuestionIndexItem extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class QuestionIndexItem extends React.Component {
     return (<div className="posts">
       <article className="post">
           <div className="post-body">
-            <h2><a href="#">{this.props.question.body}</a></h2>
+            <h2><Link to={`/api/questions/${this.props.question.id}`}>{this.props.question.body}</Link></h2>
             <p>
               {answer ? answer.body : ""}
             </p>
