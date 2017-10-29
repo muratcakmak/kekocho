@@ -44,35 +44,58 @@ class LoginForm extends React.Component {
     const errors = this.props.errors.map((error) => {
       console.log(error);
       return <li key={error}>{error}</li>;
-    });
-    return (
-      <div>
-        <div className="bg_container">
-          <div className="bg_image"></div>
-        </div>
-        <div className="session-form-container">
-          <h1 className="logo" >Kekocho</h1>
-          <GreetingContainer />
-          <div className="form-container">
-            <h1>{this.props.formType}</h1>
-            <h2 value={formType}><Link to={route}></Link></h2>
-            <form className="session-form" onSubmit={this.handleSubmit}>
-              <div className="session-form-inputs">
-                <label><input type={'email'} placeholder={"Email"} onChange={this.update("email")} /> </label>
-                <label><input type={'password'} placeholder={"Password"} onChange={this.update("password")} /> </label>
-                <input type="submit" value={this.props.formType} className="session-submit-button"/>
-                <input type="submit" onClick={this.handleDemoLogin} value={"Demo Login"} className="session-submit-button"/>
+      });
+      return (
+        <div>
+          <div className="bg_container">
+            <div className="bg_image"></div>
+          </div>
+          <div className="login-form-container">
+            <h1 className="logo" >Kekocho</h1>
+            <h2 className="tagline">A place to share knowledge and better understand the world</h2>
+            <div className="content-inner">
+              <div className="signup-login">
+                <div className="signup">
+                  <div className="signup-explanation">
+                    <Link to="/signup">Continue With Email</Link>. By signing up you indicate that you have read and agree to the Terms of Service and Privacy Policy.</div>
+                </div>
+                <div className="login">
+                  <div className="form-container">
+                    <h1>{this.props.formType}</h1>
+                    <h2 value={formType}><Link to={route}></Link></h2>
+                    <form className="login-form" onSubmit={this.handleSubmit}>
+                      <div className="login-form-inputs">
+                        <label><input type={'email'} placeholder={"Email"} onChange={this.update("email")} /> </label>
+                        <label><input type={'password'} placeholder={"Password"} onChange={this.update("password")} /> </label>
+                        <input type="submit" value={this.props.formType} className="session-submit-button"/>
+                        <input type="submit" onClick={this.handleDemoLogin} value={"Demo Login"} className="session-submit-button"/>
+                      </div>
+                    </form>
+                    <div className={ this.props.errors.length > 0 ? "error-style" : "" }>
+                      {errors}
+                    </div>
+                  </div>
+                </div>
               </div>
-            </form>
-            <div className={ this.props.errors.length > 0 ? "error-style" : "" }>
-              {errors}
+            </div>
+            <h3 className="inspired">Inspired by Quora. Made by Oguzhan Cakmak</h3>
+
+            <div className="footer-nav">
+              <ul className="nav-list">
+                <li className="linkedin"><a href="https://www.linkedin.com/in/omuratcakmak/">LinkedIn</a></li>
+                <li className="github"><a href="https://github.com/muratcakmak">Github</a></li>
+                <li className="personal-page"><a href="/business">Personal Page</a></li>
+              </ul>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+
   }
 
-}
+  export default withRouter(LoginForm);
 
-export default withRouter(LoginForm);
+
+
+  // <GreetingContainer />

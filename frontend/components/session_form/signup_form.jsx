@@ -44,7 +44,7 @@ class SignupForm extends React.Component {
         <div className="session-form-container">
           <h1 className="logo" >Kekocho</h1>
           <GreetingContainer />
-          <div className="form-container">
+          <div className="signup-form-container">
             <h1>{this.props.formType}</h1>
             <h2 value={formType}><Link to={route}></Link></h2>
             <form className="session-form" onSubmit={this.handleSubmit}>
