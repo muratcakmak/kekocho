@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import QuestionFeed from './question_feed';
-import { requestQuestions } from '../../actions/question_actions';
-
+import { requestFeedData } from '../../actions/feed_actions';
 const mapStateToProps = (state, ownProps) => {
   return{
     entities: state.entities
@@ -11,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    requestQuestions: () => dispatch(requestQuestions())
+    requestFeedData: () => dispatch(requestFeedData())
   };
 };
 

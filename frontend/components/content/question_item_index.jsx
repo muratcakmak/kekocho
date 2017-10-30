@@ -5,6 +5,12 @@ class QuestionIndexItem extends React.Component {
   constructor(props) {
     super(props);
   }
+
+
+  rawMarkup(rawMarkup){
+        return { __html: rawMarkup };
+    }
+
   render(){
     const answer = this.props.firstAnswer;
     return (
@@ -16,7 +22,7 @@ class QuestionIndexItem extends React.Component {
           <div className="question-body">
             <h2><Link to={`/api/questions/${this.props.question.id}`}>{this.props.question.body}</Link></h2>
             <p>
-              {answer ? answer.body : ""}
+              {answer ? <span dangerouslySetInnerHTML={this.rawMarkup(answer.body)} /> : null}
             </p>
           </div>
           <footer className="question-footer">
