@@ -6,10 +6,11 @@ import FeedAddQuestionPromptContainer from './feed_add_question_prompt_container
 class QuestionFeed extends React.Component{
 
   componentDidMount(){
-    this.props.requestQuestions();
+    this.props.requestFeedData();
   }
   render(){
     const questionIndexItems = [];
+    debugger
     if(this.props.entities.hasOwnProperty("questions")){
       Object.values(this.props.entities.questions).map((question) => {
         questionIndexItems.push(<QuestionIndexItem key={question.id} question={question} firstAnswer={question.firstAnswer}/>);

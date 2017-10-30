@@ -6,7 +6,6 @@ class QuestionShow extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      body: "",
       answer_author_id: "",
       question_id: ""
     };
@@ -14,13 +13,13 @@ class QuestionShow extends React.Component{
   }
 
   componentDidMount(){
-    
     const qid = this.props.match.params.questionId;
     this.props.fetchQuestion(qid);
+
   }
 
   componentWillReceiveProps(nextProps) {
-    
+
     if(nextProps.match.params.questionId !== this.props.match.params.questionId){
       this.props.fetchQuestion(nextProps.match.params.questionId);
     }
@@ -31,25 +30,26 @@ class QuestionShow extends React.Component{
   }
 
   render(){
-    
     const question = this.props.question;
     if (!question) {
       return <div>Loading...</div>;
-    }
-    return (
-      <div className="qs-content">
-        <section className="qs-content-main">
-          <div className="qs-q-text">{question.body}</div>
-          <h1>Asked by {this.props.user.firstName + " " + this.props.user.lastName } </h1>
-          <button onClick={ this.showAnswerComponent }>Answer</button>
-          <AnswerEditorContainer />
-        </section>
-        <section className="qs-content-sidebar">
-          Sidebar
-        </section>
-     </div>
-    );
-  }
-}
+      }
+      return (
+        <div className="qs-content">
+          <section className="qs-content-main">
+            <div className="qs-q-text">{question.body}</div>
+            <h1>Asked by {this.props.user.firstName + " " + this.props.user.lastName } </h1>
+            <button onClick={ this.showAnswerComponent }>Answer</button>
 
-export default QuestionShow;
+            <AnswerEditorContainer question_id={question.id} />
+
+          </section>
+          <section className="qs-content-sidebar">
+            Sidebar
+          </section>
+        </div>
+      );
+    }
+  }
+
+  export default QuestionShow;
