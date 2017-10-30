@@ -4,20 +4,25 @@
 // @import "variables";
 html {
   font-weight: 400;
-  font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
   font-size: 15px;
   line-height: 1.4;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 body{
+  background: #fafafa;
   color: #333;
+  height: 100%;
+  word-wrap: break-word;
+  font-size: 13px;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
 input {
   display: block;
   min-height: 27px;
   display: block;
-  width: 100%;
   background-color: #f6f6f6;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -27,6 +32,7 @@ input {
   border: 1px solid #e2e2e2;
   border-radius: 3px;
   box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+  font-size: 13px;
 }
 
 .content-wrapper{
@@ -48,13 +54,11 @@ input {
   margin: auto;
   overflow-y: hidden;
   top: 10%;
-  height: 509px;
-
+  height: auto;
 }
 
 .login-form{
   display: flex;
-  width: 90%;
 }
 
 .login-form-inputs{
@@ -64,27 +68,25 @@ input {
   width: 130px;
   height: 145px;
   justify-content: space-between;
-  width: 80%;
+  width: 100%;
 
 }
 
 .content-inner{
   padding: 32px;
-  height: 230px;
 }
 
 .form-container{
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: flex-start;
 }
 
 .signup-form-container{
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 
@@ -151,6 +153,10 @@ input {
   box-shadow: 0 1px 1px 0 rgba(200, 200, 200, 0.6);
   font-size: 12px;
   line-height: 1.4;
+}
+
+.login-signup-button{
+  margin-left: 13px;
 }
 
 
@@ -222,5 +228,50 @@ input {
   margin: auto;
   overflow-y: hidden;
   top: 10%;
-  height: 509px;
+}
+
+.session-first-last-name{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.hidden-signup{
+  display: none;
+}
+
+.session-form{
+  color: #666;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.session-form-actions{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+.session-input{
+  background-color: #EEE;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.session-email-password{
+  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.session-title{
+  font-weight: bold;
+}
+
+.signup-name-half{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 11px;
+  font-weight: 600;
 }

@@ -44,3 +44,12 @@ q:before, q:after {
 blockquote, q {
   quotes: "" "";
 }
+
+a {
+  cursor: pointer;
+  color: #2b6dad;
+}
+
+a:hover{
+  text-decoration: underline;
+}

@@ -1,8 +1,13 @@
-.feed_add_question_prompt{
-  width: 602px;
-  height: 80px;
-  display: flex;
-  flex-direction: column;
+.feed-add-question-prompt{
+  border: 1px solid #efefef;
+  background-color: #fff;
+  border-radius: 4px;
+  border-bottom: 1px solid #e2e2e2;
+  margin-bottom: 8px;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 16px;
+  padding-bottom: 12px;
 }
 
 .modal-wrapper {
