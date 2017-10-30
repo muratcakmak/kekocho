@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import GreetingContainer from '../greeting/greeting_container';
-
+import SignupFormContainer from './signup_form_container';
 class LoginForm extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      showSignup: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemoLogin = this.handleDemoLogin.bind(this);
+    this.toggleSignup = this.toggleSignup.bind(this);
   }
 
   componentWillUnmount(){
@@ -34,11 +36,17 @@ class LoginForm extends React.Component {
       password: "password"
     };
     this.setState(demoUser);
-
     this.props.login(demoUser);
   }
 
+  toggleSignup(){
+
+    const toggledSignup = !this.state.showSignup;
+    this.setState({showSignup: toggledSignup});
+  }
+
   render(){
+
     const formType = this.props.formType === 'signup' ? 'login' : 'signup';
     const route = '/'+formType;
     const errors = this.props.errors.map((error) => {
@@ -57,17 +65,26 @@ class LoginForm extends React.Component {
               <div className="signup-login">
                 <div className="signup">
                   <div className="signup-explanation">
-                    <Link to="/signup">Continue With Email</Link>. By signing up you indicate that you have read and agree to the Terms of Service and Privacy Policy.</div>
+                    <div className={ !this.state.showSignup ? "hidden-signup" : "" }>
+                      <SignupFormContainer cancel={ ()=> this.toggleSignup() }/>
+                    </div>
+                    <div  className={ this.state.showSignup ? "hidden-signup" : "" } >
+                      <a onClick={ this.toggleSignup }>Continue With Email.</a> By signing up you indicate that you have read and agree to the Terms of Service and Privacy Policy.</div>
+                    </div>
+
                 </div>
                 <div className="login">
                   <div className="form-container">
-                    <h1>{this.props.formType}</h1>
+                    <div className="session-title">{this.props.formType}</div>
                     <h2 value={formType}><Link to={route}></Link></h2>
                     <form className="login-form" onSubmit={this.handleSubmit}>
                       <div className="login-form-inputs">
-                        <label><input type={'email'} placeholder={"Email"} onChange={this.update("email")} /> </label>
-                        <label><input type={'password'} placeholder={"Password"} onChange={this.update("password")} /> </label>
-                        <input type="submit" value={this.props.formType} className="session-submit-button"/>
+                        <label><input className="session-input session-email-password" type={'email'} placeholder={"Email"} onChange={this.update("email")} /> </label>
+                        <label><input className="session-input session-email-password" type={'password'} placeholder={"Password"} onChange={this.update("password")} /> </label>
+                          <div className="session-form-actions">
+                          <a>Forgot Password?</a>
+                          <input  type="submit" value={this.props.formType} className="session-submit-button login-signup-button"/>
+                        </div>
                         <input type="submit" onClick={this.handleDemoLogin} value={"Demo Login"} className="session-submit-button"/>
                       </div>
                     </form>

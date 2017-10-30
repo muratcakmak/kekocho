@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
     loggedIn: state.current_user ? true : false,
     errors: state.errors.session,
     formType: "Login"
-  };
+    };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

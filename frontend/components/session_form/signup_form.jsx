@@ -10,9 +10,10 @@ class SignupForm extends React.Component {
       first_name: "",
       last_name: "",
       email: "",
-      password: ""
+      password: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleSignup = this.toggleSignup.bind(this);
   }
 
   componentWillUnmount(){
@@ -29,6 +30,10 @@ class SignupForm extends React.Component {
     this.props.signup(user);
   }
 
+  toggleSignup(){
+    this.props.cancel();
+  }
+
 
   render(){
     const formType = this.props.formType === 'signup' ? 'login' : 'signup';
@@ -38,33 +43,52 @@ class SignupForm extends React.Component {
     ));
     return (
       <div>
-        <div className="bg_container">
-          <div className="bg_image"></div>
-        </div>
-        <div className="session-form-container">
-          <h1 className="logo" >Kekocho</h1>
-          <GreetingContainer />
-          <div className="signup-form-container">
-            <h1>{this.props.formType}</h1>
-            <h2 value={formType}><Link to={route}></Link></h2>
-            <form className="session-form" onSubmit={this.handleSubmit}>
-              <div className="session-form-inputs">
-                <label><input type={'text'} placeholder={"First name"} onChange={this.update("first_name")} /> </label>
-                <label><input type={'text'} placeholder={"Last name"} onChange={this.update("last_name")} /> </label>
-                <label><input type={'email'} placeholder={"Email"} onChange={this.update("email")} /> </label>
-                <label><input type={'password'} placeholder={"Password"} onChange={this.update("password")} /> </label>
-                <input type="submit" value={this.props.formType} className="session-submit-button"/>
+        <div className="signup-form-container">
+          <div className="session-title">{this.props.formType}</div>
+          <h2 value={formType}><Link to={route}></Link></h2>
+          <form className="session-form" onSubmit={this.handleSubmit}>
+            <div className="session-form-inputs">
+              <div className="session-first-last-name">
+
+                <div className="signup-name-half">
+                  <label>FIRST NAME</label>
+                  <input className="session-input" type={'text'} onChange={this.update("first_name")} />
+                </div>
+
+                <div className="signup-name-half">
+                  <label>LAST NAME</label>
+                  <input className="session-input" type={'text'} onChange={this.update("last_name")} />
+                </div>
+
               </div>
-            </form>
-            <div className={ this.props.errors.length > 0 ? "error-style" : "" }>
-              {errors}
+
+              <div className="signup-name-half">
+              <label>EMAIL</label>
+                <input className="session-input session-email-password" type={'email'} onChange={this.update("email")} />
+                </div>
+
+                <div className="signup-name-half">
+              <label>PASSWORD</label>
+                <input className="session-input session-email-password" type={'password'} onChange={this.update("password")} />
+                </div>
+
+              <div>
+                By clicking "Sign Up" you indicate that you have read and agree to the Terms of Service and Privacy Policy.
+              </div>
+              <div className="session-form-actions">
+                <a onClick={this.toggleSignup}>Cancel</a>
+                <input type="submit" value={this.props.formType} className="session-submit-button login-signup-button"/>
+              </div>
             </div>
+          </form>
+          <div className={ this.props.errors.length > 0 ? "error-style" : "" }>
+            {errors}
           </div>
         </div>
       </div>
-      );
-    }
-
+    );
   }
 
-  export default withRouter(SignupForm);
+}
+
+export default withRouter(SignupForm);
