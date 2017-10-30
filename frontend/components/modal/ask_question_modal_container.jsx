@@ -5,11 +5,6 @@ import { removeAskQuestionModal } from '../../actions/ui_actions';
 import { createQuestion } from '../../actions/question_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  if(state.session.currentUser){
-    return {
-      show: state.ui.modal.show,
-      user: state.session.currentUser};
-  }
   return{
     show: state.ui.modal.show,
   };
@@ -17,8 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    removeAskQuestionModal: () => dispatch(removeAskQuestionModal()),
-    createQuestion: (question) => dispatch(createQuestion(question))
+
   };
 };
 
