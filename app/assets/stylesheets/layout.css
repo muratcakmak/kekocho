@@ -3,16 +3,14 @@
   flex-wrap: wrap;
   margin: 0 auto;
   width: 900px;
-  border: 1px solid #ccc;
   border-top: 0;
 }
 
 .content-sidebar {
-  width: 200px;
+  width: 155px;
   min-height: 200px;
   padding: 20px;
   padding-right: 19px;
-  border-right: 1px solid #ccc;
 }
 
 .content-main {

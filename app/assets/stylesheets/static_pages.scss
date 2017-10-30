@@ -35,6 +35,10 @@ input {
   font-size: 13px;
 }
 
+textarea{
+  resize: none;
+}
+
 .content-wrapper{
   width: 100%;
   height: 100%;
