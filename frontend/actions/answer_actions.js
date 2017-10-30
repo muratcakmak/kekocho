@@ -5,13 +5,12 @@ export const RECEIVE_ANSWER = 'RECEIVE_ANSWER';
 export const receiveAnswer = answer => {
   return ({
     type: RECEIVE_ANSWER,
-    entities: { answers: answer }
+    answer
   });
 };
 
 export const createAnswer = answer => dispatch => {
   return AnswerApiUtil.createAnswer(answer).then(answer => {
-    
-    return dispatch(receiveAnswer(answer))
+    return dispatch(receiveAnswer(answer));
   });
 };

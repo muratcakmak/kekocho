@@ -20,10 +20,3 @@ export const logout = ()=> {
     url: `/api/session`,
   });
 };
-
-export const requestQuestions = () => (
-  $.ajax({
-  method: "get",
-  url: "api/questions"
-  })
-);

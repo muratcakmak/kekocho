@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import QuestionFeed from './question_feed';
-import { requestQuestions } from '../../actions/session_actions';
+import { requestQuestions } from '../../actions/question_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return{

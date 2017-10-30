@@ -13,6 +13,13 @@ export const fetchQuestion = (questionId) => {
   });
 };
 
+export const requestQuestions = () => (
+  $.ajax({
+  method: "get",
+  url: "api/questions"
+  })
+);
+
 // { body: "What is the best question?", user_id: 6}
 
 // $.ajax({
