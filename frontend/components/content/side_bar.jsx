@@ -6,12 +6,12 @@ class SideBar extends React.Component{
   render(){
     const topicElements = this.props.topics.map((topic) => {
       return (
-        <li key={topic.id}>{topic.name}</li>
+        <li className="sidebar-item"key={topic.id}>{topic.name}</li>
       );
     });
     return (
       <section className="content-sidebar">
-        <h1>Feeds</h1>
+        <h3 className="title" >Feeds</h3>
         <ul>
           {topicElements}
         </ul>

@@ -17,7 +17,6 @@ class QuestionFeed extends React.Component{
     }
     return (
       <section className="content-main">
-        <h1>Question Feed</h1>
         <FeedAddQuestionPromptContainer />
         <ul>
           {questionIndexItems}
