@@ -5,6 +5,7 @@ import { fetchQuestion } from '../../actions/question_actions';
 import { createAnswer } from '../../actions/answer_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  
   if(state.entities.questions){
     return{
       user: state.session.currentUser,

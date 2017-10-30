@@ -1,0 +1,34 @@
+.qs-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 900px;
+  border-top: 0;
+}
+
+.qs-content-sidebar {
+  width: 155px;
+  min-height: 200px;
+  padding: 20px;
+  padding-right: 19px;
+}
+
+.qs-content-main {
+  width: 620px;
+  min-height: 200px;
+  padding: 20px;
+}
+
+.qs-q-text{
+  color:rgb(38, 38, 38);
+  display:inline;
+  font-family:q_serif, Georgia, Times, "Times New Roman", "Hiragino Kaku Gothic Pro", Meiryo, serif;
+  font-size:23px;
+  font-weight:bold;
+  height:auto;
+  line-height:29.9px;
+  tab-size:4;
+  text-size-adjust:100%;
+  width:auto;
+  word-wrap:break-word;
+}

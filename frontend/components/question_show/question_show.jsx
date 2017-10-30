@@ -1,57 +1,52 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AnswerEditorContainer from '../answer_editor/answer_editor_container';
 
 class QuestionShow extends React.Component{
   constructor(props){
-    
     super(props);
-    this.handleAnswer = this.handleAnswer.bind(this);
     this.state = {
       body: "",
       answer_author_id: "",
       question_id: ""
     };
+    this.showAnswerComponent = this.showAnswerComponent.bind(this);
   }
 
   componentDidMount(){
+    
     const qid = this.props.match.params.questionId;
-    this.setState({question_id: qid, answer_author_id: this.props.user.id});
     this.props.fetchQuestion(qid);
   }
 
   componentWillReceiveProps(nextProps) {
+    
     if(nextProps.match.params.questionId !== this.props.match.params.questionId){
       this.props.fetchQuestion(nextProps.match.params.questionId);
     }
   }
 
-  handleAnswer(e){
-    e.preventDefault();
-    this.props.createAnswer(this.state);
-  }
+  showAnswerComponent(){
 
-  update(field){
-    return (e) => this.setState({[field]: e.target.value});
   }
 
   render(){
+    
     const question = this.props.question;
     if (!question) {
       return <div>Loading...</div>;
     }
     return (
-      <div>
-       <h3>{question.body}</h3>
-       <h1>Asked by </h1>
-       <Link to="/">Back to Index</Link>
-         <form className="modal-form" onSubmit={this.handleAnswer} >
-           <div className="modal-header">
-             <textarea placeholder="Write your answer" className="modal-textarea" onChange={this.update("body")}></textarea>
-           </div>
-           <div className="modal-footer">
-             <button className="session-submit-button modal-button">Post</button>
-           </div>
-         </form>
+      <div className="qs-content">
+        <section className="qs-content-main">
+          <div className="qs-q-text">{question.body}</div>
+          <h1>Asked by {this.props.user.firstName + " " + this.props.user.lastName } </h1>
+          <button onClick={ this.showAnswerComponent }>Answer</button>
+          <AnswerEditorContainer />
+        </section>
+        <section className="qs-content-sidebar">
+          Sidebar
+        </section>
      </div>
     );
   }
