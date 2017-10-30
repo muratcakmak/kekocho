@@ -13,11 +13,12 @@ class Greeting extends React.Component{
   }
 
   render(){
+    debugger
     const currentUser = this.props.currentUser;
     if (currentUser) {
       return(
         <div>
-          <h1>Welcome {currentUser.firstName} {currentUser.lastName}!</h1>
+          {/* <h1>{currentUser.firstName} {currentUser.lastName}!</h1> */} 
           <button className="session-submit-button" onClick={this.logout}>Logout</button>
         </div>
       );

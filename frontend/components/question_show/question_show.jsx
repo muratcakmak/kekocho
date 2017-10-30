@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 class QuestionShow extends React.Component{
   constructor(props){
-    debugger
+    
     super(props);
     this.handleAnswer = this.handleAnswer.bind(this);
     this.state = {

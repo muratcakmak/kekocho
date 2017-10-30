@@ -11,7 +11,7 @@ export const receiveAnswer = answer => {
 
 export const createAnswer = answer => dispatch => {
   return AnswerApiUtil.createAnswer(answer).then(answer => {
-    debugger
+    
     return dispatch(receiveAnswer(answer))
   });
 };
