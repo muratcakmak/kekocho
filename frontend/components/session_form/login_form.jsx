@@ -50,7 +50,6 @@ class LoginForm extends React.Component {
     const formType = this.props.formType === 'signup' ? 'login' : 'signup';
     const route = '/'+formType;
     const errors = this.props.errors.map((error) => {
-      console.log(error);
       return <li key={error}>{error}</li>;
       });
       return (
