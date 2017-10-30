@@ -10,6 +10,29 @@
   padding-bottom: 12px;
 }
 
+.feed-add-name{
+  font-size: 14px;
+  color: #999999;
+  padding: 10px;
+}
+
+.feed-add-name:hover{
+  text-decoration: underline;
+}
+
+.feed-add-question{
+  font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: #999999;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.feed-add-question:hover{
+  color: #2b6dad;
+}
+
 .modal-wrapper {
   position: fixed;
   z-index: 1;
