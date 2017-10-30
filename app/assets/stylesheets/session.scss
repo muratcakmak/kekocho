@@ -1,0 +1,64 @@
+
+.session-submit-button{
+  box-sizing: border-box;
+  border-radius: 3px;
+  display: inline-block;
+  text-align: center;
+  background: #3e78ad;
+  color: #fff;
+  border: 1px solid #3a66ad;
+  box-shadow: 0 1px 1px 0 rgba(200, 200, 200, 0.6);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.session-form-container {
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0 0 5px #888;
+  border-radius: 4px;
+  padding-top: 25px;
+  width: 650px;
+  position: absolute;
+  bottom: initial;
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow-y: hidden;
+  top: 10%;
+}
+
+.session-first-last-name{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.session-form{
+  color: #666;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.session-form-actions{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+.session-input{
+  background-color: #EEE;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.session-email-password{
+  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.session-title{
+  font-weight: bold;
+}
