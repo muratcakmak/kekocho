@@ -1,116 +1,69 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import ReactQuill from 'react-quill'; // ES6
+import ReactQuill from 'react-quill';
 
-// class AnswerAnswerEditor extends React.Component{
-//   constructor(props){
-//     super(props);
-//     this.handleAnswer = this.handleAnswer.bind(this);
-//   }
-//
-//   handleAnswer(e){
-//     e.preventDefault();
-//     this.props.createAnswer(this.state);
-//   }
-//
-//   update(field){
-//     return (e) => this.setState({[field]: e.target.value});
-//   }
-//
-//
-//
-//
-//   render(){
-//     return (
-//       <div>
-//         <ReactQuill
-//           modules={{
-//             toolbar: [
-//               [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
-//               [{size: []}],
-//               ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-//               [{'list': 'ordered'}, {'list': 'bullet'},
-//               {'indent': '-1'}, {'indent': '+1'}],
-//               ['link', 'image', 'video'],
-//               ['clean']
-//             ],
-//             clipboard: {
-//               // toggle to add extra line breaks when pasting HTML:
-//               matchVisual: false,
-//             }}}
-//             formats={[
-//               'header', 'font', 'size',
-//               'bold', 'italic', 'underline', 'strike', 'blockquote',
-//               'list', 'bullet', 'indent',
-//               'link', 'image', 'video'
-//             ]}
-//             bounds={'.app'}
-//             placeholder={this.props.placeholder}
-//             />
-//           <form className="modal-form" onSubmit={this.handleAnswer} >
-//             <div className="modal-header">
-//               <textarea placeholder="Write your answer" className="modal-textarea" onChange={this.update("body")}></textarea>
-//             </div>
-//             <div className="modal-footer">
-//               <button className="session-submit-button modal-button">Submit</button>
-//             </div>
-//           </form>
-//         </div>
-//       );
-//     }
-//   }
-
-  // export default AnswerAnswerEditor;
-
-
-
-  class AnswerEditor extends React.Component {
+class AnswerEditor extends React.Component {
   constructor (props) {
-    super(props)
-    this.state = { text: '' } // You can also pass a Quill Delta here
-    this.handleChange = this.handleChange.bind(this)
+    super(props);
+    this.state = {
+      body: "",
+      answer_author_id: "",
+      question_id: ""
+    };
+    this.handleAnswer = this.handleAnswer.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange (value) {
-  	this.setState({ text: value });
+  componentDidMount(){
+    
+    this.setState({
+      answer_author_id: this.props.user.id,
+      question_id: this.props.question_id
+    });
+  }
+
+  handleAnswer(e){
+    e.preventDefault();
+    this.props.createAnswer(this.state);
+  }
+
+  handleChange(html){
+    this.setState({ body: html});
   }
 
   render () {
-    
     return (
-        <ReactQuill style={{minHeight: 300, minWidth: 600}}  />
+      <form className="answer-form" onSubmit={this.handleAnswer} >
+        <div className="answer-header">
+          <p>Username goes here</p>
+        </div>
+        <div className="answer-body">
+          <ReactQuill onChange={this.handleChange} placeholder="Write your answer" style={{minHeight: 300, minWidth: 600}} theme="snow" modules={AnswerEditor.modules}formats={AnswerEditor.formats} />
+        </div>
+        <div className="answer-footer">
+          <button className="session-submit-button answer-button">Post</button>
+        </div>
+      </form>
     );
   }
 }
 
-/*
- * Quill modules to attach to editor
- * See https://quilljs.com/docs/modules/ for complete options
- */
 AnswerEditor.modules = {
   toolbar: [
-    [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
-    [{size: []}],
-    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-    [{'list': 'ordered'}, {'list': 'bullet'},
-     {'indent': '-1'}, {'indent': '+1'}],
-    ['link', 'image', 'video'],
+    ['bold', 'italic'],
+    [{'list': 'ordered'}, {'list': 'bullet'}],
+    ['link', 'image'],
     ['clean']
   ],
   clipboard: {
-    // toggle to add extra line breaks when pasting HTML:
     matchVisual: false,
   }
 };
-/*
- * Quill editor formats
- * See https://quilljs.com/docs/formats/
- */
+
 AnswerEditor.formats = [
-  'header', 'font', 'size',
-  'bold', 'italic', 'underline', 'strike', 'blockquote',
-  'list', 'bullet', 'indent',
-  'link', 'image', 'video'
+  'bold', 'italic', 'underline',
+  'list', 'bullet',
+  'link', 'image'
 ];
 
 export default AnswerEditor;
