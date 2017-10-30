@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import Textarea from 'react-textarea-autosize';
 
 class AskQuestionModal extends React.Component{
   // question_author_id: props.userId
@@ -8,7 +9,7 @@ class AskQuestionModal extends React.Component{
     super(props);
     this.close = this.close.bind(this);
     this.handleQuestion = this.handleQuestion.bind(this);
-    
+
     this.state = {
       body: "",
       question_author_id: this.props.user.id
@@ -25,6 +26,7 @@ class AskQuestionModal extends React.Component{
     this.close();
   }
 
+
   update(field){
     return (e)=> this.setState( { [field]: e.target.value } );
   }
@@ -34,18 +36,17 @@ class AskQuestionModal extends React.Component{
       return (
         <div className={"modal-wrapper"}>
           <div className={"modal-content"}>
-            <div>
-              <span onClick={this.close} className="model-close">&times;</span>
-            </div>
-            <div>
-              {this.props.user.email} asks
-            </div>
             <form className="modal-form" onSubmit={this.handleQuestion}>
+              <div>
+                <span onClick={this.close} className="model-close">&times;</span>
+              </div>
               <div className="modal-header">
-                <textarea placeholder="Ask a question?" onChange={this.update("body")} className="modal-textarea"></textarea>
+                {this.props.user.firstName + " " + this.props.user.lastName} added
+                <Textarea style={{overflow:"hidden"}} maxRows={5} placeholder="What is your question?" onChange={this.update("body")} className="modal-textarea"></Textarea>
               </div>
               <div className="modal-footer">
-                <button className="session-submit-button modal-button">Post</button>
+                <a onClick={this.close}>Cancel</a>
+                <button className="session-submit-button modal-button">Add Question</button>
               </div>
             </form>
           </div>

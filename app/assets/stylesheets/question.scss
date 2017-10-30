@@ -45,15 +45,20 @@
   background-color: rgba(0,0,0,0.4);
 }
 
+.modal-header{
+  color: #999;
+  font-size: 15px;
+}
+
 .modal-content{
+  width: 620px;
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
   border: 1px solid #888;
-  width: 80%;
-  height: 125px;
+  height: auto;
   display: flex;
   flex-flow: column;
+  border-radius: 5px;
 }
 
 .modal-form{
@@ -62,30 +67,39 @@
 
 .modal-header{
   height: 50%;
+  padding: 10px 20px 20px 20px;
 }
 
 .modal-footer{
   height: 50%;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 9px;
+  background: #f6f6f6;
+  border-radius: 5px;
 }
 
-.modal-textarea{
+.modal-textarea {
   width: 100%;
   outline: none;
   color: #000000;
   border: none;
   border-bottom: 2px solid #888888;
-  font-size: 28px;
+  font-size: 18px;
   font-family: Times;
   font-weight: 900;
+  padding-top: 3px;
 }
 
 .model-close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 8px;
 }
 
 .model-close:hover,
@@ -96,6 +110,7 @@
 }
 
 .modal-button{
-  width: 50px;
+  width: auto;
   height: 31px;
+  margin-left: 10px;
 }
