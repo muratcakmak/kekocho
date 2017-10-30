@@ -7,10 +7,8 @@ const defaultState = {modal: {
 };
 
 const UIReducer = (state = defaultState, action) => {
-  console.log(action.modal);
   switch (action.type) {
     case "ADD_ASK_QUESTION_MODAL":
-      console.log({modal: action.modal});
       return {modal: action.modal};
     case "REMOVE_ASK_QUESTION_MODAL":
       return {modal: action.modal};

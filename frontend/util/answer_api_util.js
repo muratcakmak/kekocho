@@ -5,3 +5,10 @@ export const createAnswer = (answer)=> {
     data: {answer}
   });
 };
+
+export const requestAllAnswers = ()=> {
+  return $.ajax({
+    method:"get",
+    url: "api/answers",
+  });
+};
