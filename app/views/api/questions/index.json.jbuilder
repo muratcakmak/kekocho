@@ -14,30 +14,31 @@ end
 
 json.answers do
   @questions.each do |question|
-    question.answers.each do |answer|
+    answer = question.answers.first
+    puts(answer)
+    if answer
       json.set! answer.id do
-        json.extract! question, :id, :body
+        json.extract! answer, :id, :body
         json.answerAuthorId answer.answer_author_id
         json.questionId answer.question_id
-        json.commentsArray do
-          json.array! answer.comments, :id
-        end
+        # json.commentsArray do
+        #   json.array! answer.comments, :id
+        # end
       end
     end
   end
 end
-
-json.comments do
-  @questions.each do |question|
-    question.answers.each do |answer|
-      answer.comments do |comment|
-
-        json.set! comment.id do
-          json.extract! comment, :id, :body
-          json.commentAuthorId comment.comment_author_id
-          json.answerId comment.answer_id
-        end
-      end
-    end
-  end
-end
+#
+# json.comments do
+#   @questions.each do |question|
+#     question.answers.each do |answer|
+#       answer.comments do |comment|
+#         json.set! comment.id do
+#           json.extract! comment, :id, :body
+#           json.commentAuthorId comment.comment_author_id
+#           json.answerId comment.answer_id
+#         end
+#       end
+#     end
+#   end
+# end
