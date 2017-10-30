@@ -17,7 +17,7 @@ class Greeting extends React.Component{
     if (currentUser) {
       return(
         <div>
-          <h1>Welcome {currentUser.email}!</h1>
+          <h1>Welcome {currentUser.firstName} {currentUser.lastName}!</h1>
           <button className="session-submit-button" onClick={this.logout}>Logout</button>
         </div>
       );

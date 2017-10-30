@@ -15,9 +15,9 @@ class FeedAddQuestionPrompt extends React.Component {
   render(){
 
     return (
-      <div className="feed_add_question_prompt">
+      <div className="feed-add-question-prompt">
         <div>
-          {this.props.currentUser ? this.props.currentUser.email : ""}
+          {this.props.currentUser ? this.props.currentUser.firstName + " " + this.props.currentUser.lastName : ""}
         </div>
         <div>
           <div onClick={this.showModal}>What is your question?</div>
