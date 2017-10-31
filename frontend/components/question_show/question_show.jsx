@@ -35,24 +35,35 @@ class QuestionShow extends React.Component{
     if (!question) {
       return <div>Loading...</div>;
       }
-      return (
-        <div className="qs-wrapper">
-        <div className="qs-content">
-          <section className="qs-content-main">
-            <div className="qs-q-text">{question.body}</div>
-            <h1>Asked by {this.props.user.firstName + " " + this.props.user.lastName } </h1>
-            <button onClick={ this.toggleAnswerComponent }>Answer</button>
-            <div className={ this.state.showAnswerEditor ? "" : "hidden-signup"}>
-              <AnswerEditorContainer question_id={question.id} cancel={ () => this.toggleAnswerComponent() }/>
+      else{
+        const answers = Object.values(question.answers).map((answer) =>{
+          return (
+            <div>
+              <li>{answer.body}</li>
+              <li>{answer.authorName}</li>
             </div>
+          );
+        });
 
-          </section>
-          <section className="qs-content-sidebar">
-            Sidebar
-          </section>
-        </div>
-        </div>
-      );
+        return (
+          <div className="qs-wrapper">
+            <div className="qs-content">
+              <section className="qs-content-main">
+                <div className="qs-q-text">{question.body}</div>
+                <h1>Asked by {question.authorName} </h1>
+                <button onClick={ this.toggleAnswerComponent }>Answer</button>
+                <div className={ this.state.showAnswerEditor ? "" : "hidden-signup"}>
+                  <AnswerEditorContainer question_id={question.id} cancel={ () => this.toggleAnswerComponent() }/>
+                </div>
+                {answers}
+              </section>
+              <section className="qs-content-sidebar">
+                Sidebar
+              </section>
+            </div>
+          </div>
+        );
+      }
     }
   }
 
