@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AnswerEditorContainer from '../answer_editor/answer_editor_container';
+import AnswerIndexItem from './answer_index_item';
 
 class QuestionShow extends React.Component{
   constructor(props){
@@ -36,15 +37,15 @@ class QuestionShow extends React.Component{
       return <div>Loading...</div>;
       }
       else{
-        const answers = Object.values(question.answers).map((answer) =>{
-          return (
-            <div>
-              <li>{answer.body}</li>
-              <li>{answer.authorName}</li>
-            </div>
-          );
-        });
-
+        //TODO: fix
+        let answers = [];
+        if(question.answers){
+          answers = Object.values(question.answers).map((answer) =>{
+            return (
+              <AnswerIndexItem key={answer.id} body={answer.body} author={answer.authorName} />
+            );
+          });
+        }
         return (
           <div className="qs-wrapper">
             <div className="qs-content">
@@ -55,7 +56,12 @@ class QuestionShow extends React.Component{
                 <div className={ this.state.showAnswerEditor ? "" : "hidden-signup"}>
                   <AnswerEditorContainer question_id={question.id} cancel={ () => this.toggleAnswerComponent() }/>
                 </div>
-                {answers}
+                <div>
+                  {answers.length} {answers.length <= 1 ? `Answer` : `Answers`} {}
+                </div>
+                <ul>
+                  { answers }
+                </ul>
               </section>
               <section className="qs-content-sidebar">
                 Sidebar

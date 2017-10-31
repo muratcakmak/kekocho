@@ -10,7 +10,7 @@ class QuestionFeed extends React.Component{
   }
   render(){
     const questionIndexItems = [];
-    debugger
+    
     if(this.props.entities.hasOwnProperty("questions")){
       Object.values(this.props.entities.questions).map((question) => {
         questionIndexItems.push(<QuestionIndexItem key={question.id} question={question} firstAnswer={question.firstAnswer}/>);

@@ -3,10 +3,10 @@ import * as AnswerApiUtil from '../util/answer_api_util';
 export const RECEIVE_ANSWER = 'RECEIVE_ANSWER';
 export const RECEIVE_ALL_ANSWERS = 'RECEIVE_ALL_ANSWERS';
 
-export const receiveAnswer = answer => {
+export const receiveAnswer = newAnswer => {
   return ({
     type: RECEIVE_ANSWER,
-    answer
+    newAnswer
   });
 };
 export const receiveAllAnswers = answers => {

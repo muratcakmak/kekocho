@@ -7,10 +7,10 @@ const defaultState = { };
 const AnswerReducer = (state = defaultState, action) => {
   switch (action.type) {
     case RECEIVE_FEED_DATA:
-      debugger
       return merge({}, state, action.answers);
     case RECEIVE_ANSWER:
-      return merge({}, state, { answers: action.answer });
+      
+      return merge({}, state, action.newAnswer);
     default:
       return state;
   }
