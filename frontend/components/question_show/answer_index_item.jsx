@@ -18,7 +18,7 @@ class AnswerIndexItem extends React.Component{
   }
 
   deleteAnswer(){
-    debugger
+
     this.props.deleteAnswer(this.props.answer.id);
   }
 
@@ -27,11 +27,12 @@ class AnswerIndexItem extends React.Component{
   }
 
   updateAnswer(){
-    debugger
+
     this.props.updateAnswer(this.props.answer);
   }
 
   render(){
+    
       const answer = this.props.answer
       return (
         <div className="as-wrapper">

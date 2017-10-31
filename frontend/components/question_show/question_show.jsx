@@ -12,6 +12,7 @@ class QuestionShow extends React.Component{
       showAnswerEditor: false
     };
     this.toggleAnswerComponent = this.toggleAnswerComponent.bind(this);
+    this.openEditModal = this.openEditModal.bind(this);
   }
 
   componentDidMount(){
@@ -31,16 +32,22 @@ class QuestionShow extends React.Component{
     this.setState({showAnswerEditor: !this.state.showAnswerEditor});
   }
 
+  openEditModal(){
+
+  }
+
   render(){
     const question = this.props.question;
+
     if (!question) {
       return <div>Loading...</div>;
       }
       else{
         //TODO: fix
         let answers = [];
-        if(question.answers){
-          answers = Object.values(question.answers).map((answer) =>{
+        
+        if(this.props.answers){
+          answers = this.props.answers.map((answer) =>{
             return (
               <AnswerIndexItemContainer answer={answer} currentUser={this.props.currentUser} />
             );
@@ -52,7 +59,8 @@ class QuestionShow extends React.Component{
               <section className="qs-content-main">
                 <div className="qs-q-text">{question.body}</div>
                 <h1>Asked by {question.authorName} </h1>
-                <button onClick={ this.toggleAnswerComponent }>Answer</button>
+                <button onClick={ this.toggleAnswerComponent }> Answer </button>
+                <button onClick={ this.openEditModal }> Edit </button>
                 <div className={ this.state.showAnswerEditor ? "" : "hidden-signup"}>
                   <AnswerEditorContainer question_id={question.id} cancel={ () => this.toggleAnswerComponent() }/>
                 </div>

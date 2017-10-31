@@ -5,8 +5,10 @@ import { fetchQuestion } from '../../actions/question_actions';
 import { createAnswer } from '../../actions/answer_actions';
 
 const mapStateToProps = (state, ownProps) => {
-
+  console.log(state.entities.questions[ownProps.match.params.questionId]);
+  
   return {
+    answers: state.entities.questions[ownProps.match.params.questionId].answerIds.map(id => state.entities.answers[id]),
     currentUser: state.session.currentUser,
     question: state.entities.questions[ownProps.match.params.questionId]
   };
