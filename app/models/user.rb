@@ -4,15 +4,15 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  has_many :questions
+  has_many :questions, dependent: :destroy
   has_many :user_topics
 
   has_many :topics,
     through: :user_topics,
     source: :topic
 
-  has_many :comments
-  has_many :answers
+  has_many :comments, dependent: :destroy
+  has_many :answers, dependent: :destroy
 
   after_initialize :ensure_session_token
 
