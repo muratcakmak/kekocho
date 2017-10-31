@@ -8,7 +8,7 @@ class QuestionIndexItem extends React.Component {
   }
 
   deleteQuestion(){
-    debugger
+    
     this.props.deleteQuestion(this.props.question.id);
   }
 
@@ -19,11 +19,12 @@ class QuestionIndexItem extends React.Component {
   render(){
     const answer = this.props.firstAnswer;
     const question = this.props.question;
-    debugger
       return (
         <div className="question-box">
           <div className="question-item">
             <div className="question-topic">
+              <li><a href="#">{question.authorName}</a></li>
+
               { question && this.props.currentUser.id === question.questionAuthorId?
                 <button onClick={this.deleteQuestion}>Delete</button>:
                                   null}
@@ -36,8 +37,7 @@ class QuestionIndexItem extends React.Component {
             </div>
             <footer className="question-footer">
               <ul className="question-footer-info">
-                <li><a href="#">Answerer Name</a></li>
-
+                { answer ? answer.authorName : null }
               </ul>
             </footer>
           </div>

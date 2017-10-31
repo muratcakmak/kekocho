@@ -4,24 +4,24 @@ export const RECEIVE_ANSWER = 'RECEIVE_ANSWER';
 export const RECEIVE_ALL_ANSWERS = 'RECEIVE_ALL_ANSWERS';
 export const REMOVE_ANSWER = 'REMOVE_ANSWER';
 
-export const removeAnswer = newAnswer => {
-  debugger
+export const removeAnswer = answer => {
+  
   return ({
     type: REMOVE_ANSWER,
-    newAnswer
+    answer
   });
 };
 
-export const receiveAnswer = newAnswer => {
-  debugger
+export const receiveAnswer = answer => {
+  
   return ({
     type: RECEIVE_ANSWER,
-    newAnswer
+    answer
   });
 };
 
 export const receiveAllAnswers = answers => {
-  debugger
+  
   return ({
     type: RECEIVE_ALL_ANSWERS,
     answers
@@ -29,7 +29,7 @@ export const receiveAllAnswers = answers => {
 };
 
 export const deleteAnswer = answerId => dispatch => {
-  debugger
+  
   return AnswerApiUtil.deleteAnswer(answerId).then(answer => {
     return dispatch(removeAnswer(answer));
   });
