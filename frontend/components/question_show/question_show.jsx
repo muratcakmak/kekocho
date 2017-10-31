@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AnswerEditorContainer from '../answer_editor/answer_editor_container';
-import AnswerIndexItem from './answer_index_item';
+import AnswerIndexItemContainer from './answer_index_item_container';
 
 class QuestionShow extends React.Component{
   constructor(props){
@@ -42,7 +42,7 @@ class QuestionShow extends React.Component{
         if(question.answers){
           answers = Object.values(question.answers).map((answer) =>{
             return (
-              <AnswerIndexItem key={answer.id} body={answer.body} author={answer.authorName} />
+              <AnswerIndexItemContainer answer={answer} currentUser={this.props.currentUser} />
             );
           });
         }
