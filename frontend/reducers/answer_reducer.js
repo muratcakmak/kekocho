@@ -7,15 +7,19 @@ import { RECEIVE_FEED_DATA } from '../actions/feed_actions';
 const defaultState = { };
 
 const AnswerReducer = (state = defaultState, action) => {
+  let newState = {};
   switch (action.type) {
     case RECEIVE_FEED_DATA:
       return merge({}, state, action.answers);
     case RECEIVE_ANSWER:
-    debugger
-      return merge({}, state, action.newAnswer);
+    //TODO: Work
+      newState = merge({}, state);
+      newState[action.answer.id] = action.answer;
+      return newState;
     case REMOVE_ANSWER:
-      debugger
-      let newState = merge({}, state);
+
+      newState = merge({}, state);
+      delete newState[action.answer.id];
       return newState;
     default:
       return state;

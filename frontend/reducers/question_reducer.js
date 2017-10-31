@@ -14,19 +14,20 @@ const QuestionReducer = (state = defaultState, action) => {
     case RECEIVE_FEED_DATA:
       return merge({}, state, action.questions);
     case REMOVE_QUESTION:
-      debugger
       newState = merge({}, state);
       delete newState[action.question.id];
       return newState;
     case RECEIVE_QUESTION:
       return merge({}, state, {[action.question.id]: action.question});
     case RECEIVE_ANSWER:
-      return merge({}, state, action.newAnswer.questions );
+      newState = merge({}, state);
+      newState[action.answer.questionId].answerIds.push(action.answer.id);
+      return newState;
     case REMOVE_ANSWER:
-      debugger
-      newState = Object.values(merge({}, state))[0];
-      delete newState.answers[action.newAnswer.answers.id];
-      return { [Object.keys(state)]: newState };
+      newState = merge({}, state);
+      const idx = newState[action.answer.questionId].answerIds.indexOf(action.answer.id);
+      newState[action.answer.questionId].answerIds.splice(idx, 1);
+      return newState;
     default:
       return state;
   }
