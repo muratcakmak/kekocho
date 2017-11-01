@@ -22,7 +22,7 @@ json.answers do
           json.answerAuthorId answer.answer_author_id
           json.questionId answer.question_id
           json.authorName (answer.answer_author.first_name + " " + answer.answer_author.last_name)
-          json.commentsArray answer.comments.pluck(:id)
+          json.commentIds answer.comments.pluck(:id)
         end
       end
     end
@@ -33,7 +33,7 @@ comments = []
 @questions.each do |question|
   question.answers.each do |answer|
     answer.comments.each do |comment|
-      comment.push(comment)
+      comments.push(comment)
     end
   end
 end
@@ -42,7 +42,7 @@ if comments.empty?
   json.comments({})
 else
   json.comments do
-    comments.each do
+    comments.each do |comment|
       json.set! comment.id do
         json.extract! comment, :id, :body
         json.commentAuthorId comment.comment_author_id
