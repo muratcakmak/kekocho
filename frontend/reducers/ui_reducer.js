@@ -1,5 +1,5 @@
 import merge from 'lodash/merge';
-import { ADD_ASK_QUESTION_MODAL } from '../actions/session_actions';
+import { SHOW_MODAL, HIDE_MODAL } from '../actions/session_actions';
 
 const defaultState = {modal: {
   show: false,
@@ -8,9 +8,9 @@ const defaultState = {modal: {
 
 const UIReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case "ADD_ASK_QUESTION_MODAL":
+    case "SHOW_MODAL":
       return {modal: action.modal};
-    case "REMOVE_ASK_QUESTION_MODAL":
+    case "HIDE_MODAL":
       return {modal: action.modal};
     default:
       return defaultState;

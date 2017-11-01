@@ -6,12 +6,21 @@ export const createQuestion = (question)=> {
   });
 };
 
+export const updateQuestion = (question)=> {
+  return $.ajax({
+  	method:"patch",
+  	url:`api/questions/${question.id}`,
+  	data: { question }
+  });
+};
+
 export const fetchQuestion = (questionId) => {
   return $.ajax({
 	method:"get",
 	url:`api/questions/${questionId}`,
   });
 };
+
 export const deleteQuestion = (questionId) => {
   return $.ajax({
 	method:"delete",
