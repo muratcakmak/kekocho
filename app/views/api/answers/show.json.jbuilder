@@ -3,7 +3,7 @@ json.answerAuthorId @answer.answer_author_id
 json.questionId @answer.question_id
 json.body @answer.body
 json.authorName @answer.answer_author.first_name + " " + @answer.answer_author.last_name
-
+json.commentIds @answer.comments.pluck(:id)
 # json.questions do
 #   json.set! @answer.question.id do
 #     json.answers do
