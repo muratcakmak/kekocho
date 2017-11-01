@@ -16,12 +16,16 @@ class Api::CommentsController < ApplicationController
   end
 
   def show
-    @comment = Comment.find(:id)
+    @comment = Comment.find(params[:id])
 
   end
 
   def edit
-    @comment = Comment.find(:id)
+
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
     if @comment.update_attributes(comment_params)
       render :show
     else
@@ -29,11 +33,8 @@ class Api::CommentsController < ApplicationController
     end
   end
 
-  def update
-  end
-
   def destroy
-    @comment = Comment.find(:id)
+    @comment = Comment.find(params[:id])
     if @comment.destroy!
       render :show
     else
