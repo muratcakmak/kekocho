@@ -37,6 +37,7 @@ export const deleteAnswer = answerId => dispatch => {
 
 export const createAnswer = answer => dispatch => {
   return AnswerApiUtil.createAnswer(answer).then(answer => {
+
     return dispatch(receiveAnswer(answer));
   });
 };
