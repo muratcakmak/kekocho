@@ -11,12 +11,12 @@ class QuestionShow extends React.Component{
       question_id: "",
       showAnswerEditor: false
     };
-    this.toggleAnswerComponent = this.toggleAnswerComponent.bind(this);
     this.openEditModal = this.openEditModal.bind(this);
+    this.toggleAnswerComponent = this.toggleAnswerComponent.bind(this);
   }
 
   componentDidMount(){
-    debugger
+
     const qid = this.props.match.params.questionId;
     this.props.fetchQuestion(qid).then((question) => this.setState({question_id: question.id}));
   }
@@ -32,7 +32,6 @@ class QuestionShow extends React.Component{
   }
 
   openEditModal(){
-
     this.props.showModal("edit", this.props.question.id);
   }
 
@@ -46,7 +45,9 @@ class QuestionShow extends React.Component{
         let answers = [];
 
         if(this.props.answers){
+          
           answers = this.props.answers.map((answer) =>{
+
             return (
               <AnswerIndexItemContainer answer={answer} currentUser={this.props.currentUser} />
             );

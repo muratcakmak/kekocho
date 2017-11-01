@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import EditAnswerEditorContainer from '../edit-answer-editor/edit_answer_editor_container';
+import CommentEditorContainer from '../comment_editor/comment_editor_container';
+import CommentIndexItemContainer from '../question_show/comment_index_item_container';
 
 class AnswerIndexItem extends React.Component{
   constructor(props){
@@ -42,17 +44,13 @@ class AnswerIndexItem extends React.Component{
   render(){
     const answer = this.props.answer;
     let comments = [];
-    debugger
     if(this.props.comments){
       comments = this.props.comments.map((comment) =>{
         return (
-          <li>{comment.body}</li>
+          <CommentIndexItemContainer comment={ comment } />
         );
       });
-
-      debugger
     }
-
     if(!this.state.editMode){
       return (
         <div className="as-wrapper">
@@ -62,8 +60,6 @@ class AnswerIndexItem extends React.Component{
           <div className="as-body">
             <li><span dangerouslySetInnerHTML={this.rawMarkup(answer.body)} /></li>
           </div>
-          <button></button>
-          <div>{ comments }</div>
           <div className="as-footer">
             { this.props.currentUser.id === answer.answerAuthorId ?
               <div>
@@ -73,18 +69,29 @@ class AnswerIndexItem extends React.Component{
               : null
             }
           </div>
-
+          <div>
+            <CommentEditorContainer answerId={answer.id} cancel={ "" }/>
+          </div>
+          <ul>
+            {
+              comments
+            }
+          </ul>
         </div>
-      );
-    }else{
-      return(
-        <EditAnswerEditorContainer answerId={ answer.id } question_id={ answer.questionId } content={ answer.body } cancel={ () => this.toggleEditMode() }/>
-      );
+        );
+      }
+      else{
+        return (
+          <EditAnswerEditorContainer answerId={ answer.id } question_id={ answer.questionId } content={ answer.body } cancel={ () => this.toggleEditMode() }/>
+        );
+      }
     }
+
+
+
   }
-}
 
-export default AnswerIndexItem;
+  export default AnswerIndexItem;
 
 
-// <CommentIndexItemContainer comment = { comment } currentUser={this.props.currentUser} />
+  // <CommentIndexItemContainer comment = { comment } currentUser={this.props.currentUser} />
