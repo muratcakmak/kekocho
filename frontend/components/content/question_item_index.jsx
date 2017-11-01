@@ -8,7 +8,7 @@ class QuestionIndexItem extends React.Component {
   }
 
   deleteQuestion(){
-    
+
     this.props.deleteQuestion(this.props.question.id);
   }
 
@@ -30,7 +30,7 @@ class QuestionIndexItem extends React.Component {
                                   null}
             </div>
             <div className="question-body">
-              <h2><Link to={`/api/questions/${this.props.question.id}`}>{this.props.question.body}</Link></h2>
+              <h2><Link to={`/questions/${this.props.question.id}`}>{this.props.question.body}</Link></h2>
               <p>
                 {answer ? <span dangerouslySetInnerHTML={this.rawMarkup(answer.body)} /> : null}
               </p>

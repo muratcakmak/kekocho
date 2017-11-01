@@ -17,7 +17,7 @@ const App = (props) => {
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
         <ProtectedRoute exact path="/" component={Content} />
-        <Route exact path="/api/questions/:questionId" component={QuestionShowContainer}/>
+        <Route exact path="/questions/:questionId" component={QuestionShowContainer}/>
         <Route path="/" render={() => <Redirect to="/"/>} />
       </Switch>
     </div>
