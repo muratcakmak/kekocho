@@ -8,7 +8,7 @@ class QuestionButton extends React.Component{
   }
 
   showModal(){
-    this.props.addAskQuestionModal();
+    this.props.showModal();
   }
 
   render(){

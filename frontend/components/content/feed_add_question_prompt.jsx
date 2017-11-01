@@ -8,7 +8,7 @@ class FeedAddQuestionPrompt extends React.Component {
   }
 
   showModal(){
-    this.props.addAskQuestionModal();
+    this.props.showModal("askQuestion");
   }
 
   render(){

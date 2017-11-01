@@ -22,7 +22,6 @@ class QuestionShow extends React.Component{
   }
 
   componentWillReceiveProps(nextProps) {
-
     if(nextProps.match.params.questionId !== this.props.match.params.questionId){
       this.props.fetchQuestion(nextProps.match.params.questionId);
     }
@@ -33,19 +32,19 @@ class QuestionShow extends React.Component{
   }
 
   openEditModal(){
-
+    
+    this.props.showModal("edit", this.props.question.id);
   }
 
   render(){
     const question = this.props.question;
-
     if (!question) {
       return <div>Loading...</div>;
       }
       else{
         //TODO: fix
         let answers = [];
-        
+
         if(this.props.answers){
           answers = this.props.answers.map((answer) =>{
             return (
@@ -53,6 +52,7 @@ class QuestionShow extends React.Component{
             );
           });
         }
+
         return (
           <div className="qs-wrapper">
             <div className="qs-content">
@@ -60,7 +60,12 @@ class QuestionShow extends React.Component{
                 <div className="qs-q-text">{question.body}</div>
                 <h1>Asked by {question.authorName} </h1>
                 <button onClick={ this.toggleAnswerComponent }> Answer </button>
-                <button onClick={ this.openEditModal }> Edit </button>
+                {question.questionAuthorId === this.props.currentUser.id ?
+                  <div className="header-question-button-container">
+                      <button onClick={this.openEditModal} className="header-question-button">Edit Question</button>
+                  </div>  :
+                    null
+                }
                 <div className={ this.state.showAnswerEditor ? "" : "hidden-signup"}>
                   <AnswerEditorContainer question_id={question.id} cancel={ () => this.toggleAnswerComponent() }/>
                 </div>
@@ -77,6 +82,8 @@ class QuestionShow extends React.Component{
             </div>
           </div>
         );
+
+
       }
     }
   }
