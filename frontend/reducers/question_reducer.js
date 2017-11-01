@@ -14,7 +14,6 @@ const QuestionReducer = (state = defaultState, action) => {
     case RECEIVE_FEED_DATA:
       return merge({}, state, action.questions);
     case REMOVE_QUESTION:
-      
       newState = merge({}, state);
       delete newState[action.question.id];
       return newState;

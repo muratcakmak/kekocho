@@ -2,6 +2,7 @@ import merge from 'lodash/merge';
 import difference from 'lodash/difference';
 
 import { RECEIVE_ANSWER, REMOVE_ANSWER } from '../actions/answer_actions';
+import { RECEIVE_COMMENT, REMOVE_COMMENT } from '../actions/comment_actions';
 import { RECEIVE_FEED_DATA } from '../actions/feed_actions';
 
 const defaultState = { };
@@ -17,9 +18,17 @@ const AnswerReducer = (state = defaultState, action) => {
       newState[action.answer.id] = action.answer;
       return newState;
     case REMOVE_ANSWER:
-
       newState = merge({}, state);
       delete newState[action.answer.id];
+      return newState;
+    case RECEIVE_COMMENT:
+      newState = merge({}, state);
+      newState[action.comment.answerId].commentIds.push(action.comment.id);
+      return newState;
+    case REMOVE_COMMENT:
+      newState = merge({}, state);
+      const idx = newState[action.comment.questionId].commentIds.indexOf(action.comment.id);
+      newState[action.comment.answerId].commentIds.splice(idx, 1);
       return newState;
     default:
       return state;
