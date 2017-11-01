@@ -5,13 +5,15 @@ import SignupFormContainer from './session_form/signup_form_container';
 import NavBarContainer from './navbar/nav_bar_container';
 import Content from './content/content';
 import QuestionShowContainer from './question_show/question_show_container';
+import ModalContainer from './modal/modal_container';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = (props) => {
   return(
     <div>
       <ProtectedRoute path="/" component={NavBarContainer} />
-      <Switch>
+          <ModalContainer />
+    <Switch>
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
         <ProtectedRoute exact path="/" component={Content} />
@@ -19,7 +21,7 @@ const App = (props) => {
         <Route path="/" render={() => <Redirect to="/"/>} />
       </Switch>
     </div>
-      );
-    };
+  );
+};
 
-    export default withRouter(App);
+export default withRouter(App);
