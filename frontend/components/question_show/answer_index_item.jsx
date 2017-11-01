@@ -8,7 +8,10 @@ class AnswerIndexItem extends React.Component{
     this.rawMarkup = this.rawMarkup.bind(this);
     this.deleteAnswer = this.deleteAnswer.bind(this);
     this.updateAnswer = this.updateAnswer.bind(this);
-    this.state = { editMode: false};
+    this.state = {
+      editMode: false,
+      showCommentEditor: false
+    };
     this.toggleEditMode = this.toggleEditMode.bind(this);
   }
 
@@ -38,6 +41,17 @@ class AnswerIndexItem extends React.Component{
 
   render(){
     const answer = this.props.answer;
+    let comments = [];
+    debugger
+    if(this.props.comments){
+      comments = this.props.comments.map((comment) =>{
+        return (
+          <li>{comment.body}</li>
+        );
+      });
+
+      debugger
+    }
 
     if(!this.state.editMode){
       return (
@@ -48,6 +62,8 @@ class AnswerIndexItem extends React.Component{
           <div className="as-body">
             <li><span dangerouslySetInnerHTML={this.rawMarkup(answer.body)} /></li>
           </div>
+          <button></button>
+          <div>{ comments }</div>
           <div className="as-footer">
             { this.props.currentUser.id === answer.answerAuthorId ?
               <div>
@@ -57,14 +73,18 @@ class AnswerIndexItem extends React.Component{
               : null
             }
           </div>
+
         </div>
       );
     }else{
       return(
         <EditAnswerEditorContainer answerId={ answer.id } question_id={ answer.questionId } content={ answer.body } cancel={ () => this.toggleEditMode() }/>
       );
-      }
     }
   }
+}
 
-  export default AnswerIndexItem;
+export default AnswerIndexItem;
+
+
+// <CommentIndexItemContainer comment = { comment } currentUser={this.props.currentUser} />
