@@ -7,10 +7,15 @@ import { showModal } from '../../actions/ui_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
+  debugger
+  if(state.entities.questions[ownProps.match.params.questionId]){
+    return {
+      answers: state.entities.questions[ownProps.match.params.questionId].answerIds.map(id => state.entities.answers[id]),
+      currentUser: state.session.currentUser,
+      question: state.entities.questions[ownProps.match.params.questionId]
+    };
+  }
   return {
-    answers: state.entities.questions[ownProps.match.params.questionId].answerIds.map(id => state.entities.answers[id]),
-    currentUser: state.session.currentUser,
-    question: state.entities.questions[ownProps.match.params.questionId]
   };
 };
 

@@ -16,9 +16,9 @@ class QuestionShow extends React.Component{
   }
 
   componentDidMount(){
+    debugger
     const qid = this.props.match.params.questionId;
-    this.props.fetchQuestion(qid);
-
+    this.props.fetchQuestion(qid).then((question) => this.setState({question_id: question.id}));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,7 +32,7 @@ class QuestionShow extends React.Component{
   }
 
   openEditModal(){
-    
+
     this.props.showModal("edit", this.props.question.id);
   }
 
