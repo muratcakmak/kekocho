@@ -6,7 +6,6 @@ import { deleteAnswer } from '../../actions/answer_actions';
 import { deleteQuestion } from '../../actions/question_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   return{
     currentUser: state.session.currentUser,
     entities: state.entities

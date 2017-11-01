@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import AnswerEditorContainer from '../answer_editor/answer_editor_container';
+import CommentEditorContainer from '../comment_editor/comment_editor_container'
 class AnswerIndexItem extends React.Component{
   constructor(props){
     super(props);
     this.rawMarkup = this.rawMarkup.bind(this);
     this.deleteAnswer = this.deleteAnswer.bind(this);
     this.updateAnswer = this.updateAnswer.bind(this);
+    this.state = { editMode: false};
+    this.toggleEditMode = this.toggleEditMode.bind(this);
   }
 
   componentDidMount(){
@@ -17,8 +20,11 @@ class AnswerIndexItem extends React.Component{
 
   }
 
-  deleteAnswer(){
+  toggleEditMode(){
+    this.setState({ editMode: !this.state.editMode});
+  }
 
+  deleteAnswer(){
     this.props.deleteAnswer(this.props.answer.id);
   }
 
@@ -27,13 +33,13 @@ class AnswerIndexItem extends React.Component{
   }
 
   updateAnswer(){
-
     this.props.updateAnswer(this.props.answer);
   }
 
   render(){
-    
-      const answer = this.props.answer
+    const answer = this.props.answer;
+
+    if(!this.state.editMode){
       return (
         <div className="as-wrapper">
           <div className="as-header">
@@ -45,14 +51,19 @@ class AnswerIndexItem extends React.Component{
           <div className="as-footer">
             { this.props.currentUser.id === answer.answerAuthorId ?
               <div>
-                <a onClick={this.updateAnswer}>Edit Answer</a>
+                <a onClick={this.toggleEditMode}>Edit Answer</a>
                 <a onClick={this.deleteAnswer}>Delete Answer</a>
               </div>
-               : null
-             }
+              : null
+            }
           </div>
         </div>
       );
+    }else{
+      return(
+        <CommentEditorContainer answerId={ answer.id } question_id={ answer.questionId } content={ answer.body } cancel={ () => this.toggleEditMode() }/>
+      );
+      }
     }
   }
 
