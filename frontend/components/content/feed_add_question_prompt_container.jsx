@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import FeedAddQuestionPrompt from './feed_add_question_prompt';
 import { withRouter } from 'react-router';
-import { addAskQuestionModal } from '../../actions/ui_actions';
+import { showModal } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
 
@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    addAskQuestionModal: () => dispatch(addAskQuestionModal())
+    showModal: (formType) => dispatch(showModal(formType))
   };
 };
 

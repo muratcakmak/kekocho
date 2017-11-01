@@ -16,7 +16,6 @@ class AnswerEditor extends React.Component {
   }
 
   componentDidMount(){
-    debugger
     this.setState({
       answer_author_id: this.props.user.id,
       question_id: this.props.question_id,
@@ -27,7 +26,7 @@ class AnswerEditor extends React.Component {
   handleAnswer(e){
     e.preventDefault();
     this.props.createAnswer(this.state);
-    this.setState({ body: "" })
+    this.setState({ body: "" });
     this.toggleAnswerComponent();
   }
 
