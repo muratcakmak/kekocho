@@ -1,20 +1,24 @@
-export const ADD_ASK_QUESTION_MODAL = 'ADD_ASK_QUESTION_MODAL';
-export const REMOVE_ASK_QUESTION_MODAL = 'REMOVE_ASK_QUESTION_MODAL';
+export const SHOW_MODAL = 'SHOW_MODAL';
+export const HIDE_MODAL = 'HIDE_MODAL';
 
-export const addAskQuestionModal = () => {
+export const showModal = (formType, questionId) => {
+
   return ({
-    type: ADD_ASK_QUESTION_MODAL,
+    type: SHOW_MODAL,
     modal: {
       show: true,
-      }
+      formType,
+      questionId
+    }
   });
 };
 
-export const removeAskQuestionModal = () => {
+export const hideModal = (formType) => {
   return ({
-    type: REMOVE_ASK_QUESTION_MODAL,
+    type: HIDE_MODAL,
     modal: {
       show: false,
-      }
+      formType
+    }
   });
 };
