@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AnswerEditorContainer from '../answer_editor/answer_editor_container';
-import CommentEditorContainer from '../comment_editor/comment_editor_container'
+import EditAnswerEditorContainer from '../edit-answer-editor/edit_answer_editor_container';
+
 class AnswerIndexItem extends React.Component{
   constructor(props){
     super(props);
@@ -61,7 +61,7 @@ class AnswerIndexItem extends React.Component{
       );
     }else{
       return(
-        <CommentEditorContainer answerId={ answer.id } question_id={ answer.questionId } content={ answer.body } cancel={ () => this.toggleEditMode() }/>
+        <EditAnswerEditorContainer answerId={ answer.id } question_id={ answer.questionId } content={ answer.body } cancel={ () => this.toggleEditMode() }/>
       );
       }
     }
