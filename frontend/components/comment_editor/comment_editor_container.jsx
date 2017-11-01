@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
 import CommentEditor from './comment_editor';
 import { withRouter } from 'react-router';
-import { createAnswer } from '../../actions/answer_actions';
+import { createComment } from '../../actions/comment_actions';
 
 const mapStateToProps = (state, ownProps) => {
-
+  
   return{
-    question_id: ownProps.question_id,
+    answerId: ownProps.answerId,
     user: state.session.currentUser
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    createAnswer: (answer) => dispatch(createAnswer(answer))
+    createComment: (comment) => dispatch(createComment(comment))
   };
 };
 
