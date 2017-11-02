@@ -39,6 +39,7 @@ class AnswerEditor extends React.Component {
     this.props.cancel();
   }
 
+
   render () {
     const user = this.props.user;
     return (
@@ -48,7 +49,13 @@ class AnswerEditor extends React.Component {
           <p>{user.firstName} {user.lastName}</p>
         </div>
         <div className="answer-body">
-          <ReactQuill onChange={this.handleChange} placeholder="Write your answer" theme="snow" modules={AnswerEditor.modules}formats={AnswerEditor.formats} />
+          <ReactQuill
+            onChange={this.handleChange}
+            placeholder="Write your answer"
+            theme="snow"
+            modules={AnswerEditor.modules}
+            formats={AnswerEditor.formats}
+            />
         </div>
         <div className="answer-footer">
           <button className="session-submit-button answer-button">Submit</button>
