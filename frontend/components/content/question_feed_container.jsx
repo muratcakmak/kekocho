@@ -8,7 +8,7 @@ import { deleteQuestion } from '../../actions/question_actions';
 const mapStateToProps = (state, ownProps) => {
   return{
     currentUser: state.session.currentUser,
-    entities: state.entities
+    questions: state.entities.questions
   };
 };
 

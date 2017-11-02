@@ -4,9 +4,7 @@ json.answers do
       json.extract! answer, :id, :body
       json.answerAuthorId answer.answer_author_id
       json.questionId answer.question_id
-      # json.commentsArray do
-      #   json.array! answer.comments, :id
-      # end
+      json.commentIds answer.comments.pluck(:id)
     end
   end
 end

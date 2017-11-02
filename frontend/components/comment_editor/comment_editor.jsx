@@ -26,7 +26,11 @@ class CommentEditor extends React.Component {
   handleComment(e){
 
     e.preventDefault();
-    this.props.createComment(this.state).then(() => this.toggleShowComments());
+    this.props.createComment(this.state).then(() => {
+      if(!this.props.show){
+        this.toggleShowComments();
+      }
+    });
     this.setState({ body: "" });
   }
 
@@ -49,11 +53,11 @@ class CommentEditor extends React.Component {
 
     return (
       <div className="answer-wrapper">
-      <form className="comment-form" onSubmit={this.handleComment} >
-        <div className="comment-header">
+      <form className="comment-editor-form" onSubmit={this.handleComment} >
+        <div className="comment-editor-header">
           <h2>{initials}</h2>
         </div>
-        <div className="comment-body">
+        <div className="comment-editor-body">
           <ReactQuill
             onChange={this.handleChange}
             placeholder="Write your comment"
@@ -61,7 +65,7 @@ class CommentEditor extends React.Component {
             width="320"
             />
         </div>
-        <div className="comment-footer">
+        <div className="comment-editor-footer">
           <button className="session-submit-button answer-button">Comment</button>
           <a onClick={this.toggleShowComments} style={{marginLeft: "10px"}}>Show</a>
         </div>

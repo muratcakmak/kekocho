@@ -1,22 +1,22 @@
-.comment-form{
+.comment-editor-form{
   display: flex;
   justify-content: space-between;
   background: #f6f6f6;
 }
 
-.comment-body{
-  width: 345px;
+.comment-editor-body{
+  width: 420px;
 }
 
-.comment-footer{
+.comment-editor-footer{
   padding: 8px;
 }
 
-p{
+.comment-editor-body  p {
   background: white;
 }
 
-.comment-header{
+.comment-editor-header{
   height: 32px;
   width: 32px;
   background: green;

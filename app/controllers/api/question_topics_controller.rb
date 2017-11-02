@@ -4,7 +4,7 @@ class Api::QuestionTopicsController < ApplicationController
   end
 
   def create
-    debugger
+    
     question = Question.find(params[:question_topic][:question_id])
     topic_name = params[:question_topic][:topic_name]
 

@@ -40,3 +40,38 @@
   width:auto;
   word-wrap:break-word;
 }
+
+.qs-answer-button{
+  padding-left: 26px;
+  background-image: url(//qsf.ec.quoracdn.net/-3-images.new_grid.ask_blue.svg-26-dfa8709bc22d57f8.svg);
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  background-position: 6px center;
+  color: #2b6dad;
+}
+
+
+.qs-button-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.qs-edit{
+  padding-left: 5px;
+}
+
+.qs-answer-number{
+  color: #333;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 8px;
+  font-size: 18px;
+  padding-top: 10px
+}
+
+.qs-ask{
+  color: grey;
+  font-weight: 300;
+}

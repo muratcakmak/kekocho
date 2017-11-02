@@ -16,7 +16,7 @@ class QuestionShow extends React.Component{
   }
 
   componentDidMount(){
-
+    $('html, body').scrollTop(0);
     const qid = this.props.match.params.questionId;
     this.props.fetchQuestion(qid).then((question) => this.setState({question_id: question.id}));
   }
@@ -46,7 +46,7 @@ class QuestionShow extends React.Component{
 
         if(this.props.answers){
 
-          answers = this.props.answers.map((answer) =>{
+          answers = this.props.answers.reverse().map((answer) =>{
 
             return (
               <AnswerIndexItemContainer key={answer.id} answer={answer} currentUser={this.props.currentUser} />
@@ -59,18 +59,21 @@ class QuestionShow extends React.Component{
             <div className="qs-content">
               <section className="qs-content-main">
                 <div className="qs-q-text">{question.body}</div>
-                <h1>Asked by {question.authorName} </h1>
-                <button onClick={ this.toggleAnswerComponent }> Answer </button>
-                {question.questionAuthorId === this.props.currentUser.id ?
-                  <div className="header-question-button-container">
-                      <button onClick={this.openEditModal} className="header-question-button">Edit Question</button>
-                  </div>  :
+                <div className="qs-ask">Asked by {question.authorName} </div>
+                <div className="qs-button-wrapper">
+                  <button onClick={ this.toggleAnswerComponent } className="qs-answer-button"> Answer </button>
+                  {question.questionAuthorId === this.props.currentUser.id ?
+                    <div className="header-question-button-container">
+                      <a onClick={this.openEditModal} className="qs-edit">Edit Question</a>
+                    </div>  :
                     null
-                }
+                  }
+                </div>
                 <div className={ this.state.showAnswerEditor ? "" : "hidden-signup"}>
                   <AnswerEditorContainer question_id={question.id} cancel={ () => this.toggleAnswerComponent() }/>
                 </div>
-                <div>
+
+                <div className="qs-answer-number">
                   {answers.length} {answers.length <= 1 ? `Answer` : `Answers`} {}
                 </div>
                 <ul>
@@ -78,7 +81,6 @@ class QuestionShow extends React.Component{
                 </ul>
               </section>
               <section className="qs-content-sidebar">
-                Sidebar
               </section>
             </div>
           </div>

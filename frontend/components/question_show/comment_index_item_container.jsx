@@ -4,6 +4,7 @@ import { deleteComment } from '../../actions/comment_actions';
 import CommentIndexItem from './comment_index_item';
 
 const mapStateToProps = (state, ownProps) => {
+  
   return{
     comment: ownProps.comment
   };

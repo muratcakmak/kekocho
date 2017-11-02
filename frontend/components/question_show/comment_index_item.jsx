@@ -14,18 +14,7 @@ class CommentIndexItem extends React.Component{
     };
   }
 
-  componentDidMount(){
-
-  }
-
-  componentWillReceiveProps(nextProps) {
-
-  }
-
-
-
   deleteComment(){
-
     this.props.deleteComment(this.props.comment.id);
   }
 
@@ -34,19 +23,25 @@ class CommentIndexItem extends React.Component{
   }
 
   render(){
+
     const comment = this.props.comment;
-    debugger
+    const initials = comment.authorName.split(" ").map((n)=>n[0]).join("");
     return (
-      <div className="as-wrapper">
-        <div className="as-header">
-          <li>{comment.authorName}</li>
-          <a onClick={this.deleteComment}>Delete Comment</a>
+      <div className="comment-wrapper">
+        <div className="comment-editor-header">
+          <h2>{initials}</h2>
         </div>
-        <div className="as-body">
-          <li><span dangerouslySetInnerHTML={this.rawMarkup(comment.body)} /></li>
-        </div>
-        <div>
-          <a onClick={this.deleteComment}>Delete Comment</a>
+        <div className="comment-content">
+          <div className="comment-header">
+            <div>
+              <div className="comment-author">{comment.authorName}</div>
+              <div className="comment-item">{comment.date}</div>
+            </div>
+            <a onClick={this.deleteComment} className="comment-item">Delete Comment</a>
+          </div>
+          <div className="comment-body">
+            <li><span dangerouslySetInnerHTML={this.rawMarkup(comment.body)} /></li>
+          </div>
         </div>
       </div>
     );

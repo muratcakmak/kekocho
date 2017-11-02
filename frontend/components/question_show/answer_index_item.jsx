@@ -32,7 +32,6 @@ class AnswerIndexItem extends React.Component{
   }
 
   toggleComments(){
-    debugger
     this.setState({ showComments: !this.state.showComments });
   }
 
@@ -50,36 +49,47 @@ class AnswerIndexItem extends React.Component{
 
   render(){
     const answer = this.props.answer;
+    const initials = answer.authorName.split(" ").map((n)=>n[0]).join("");
     let comments = [];
     if(this.props.comments){
-      comments = this.props.comments.map((comment) =>{
+      comments = this.props.comments.reverse().map((comment) =>{
         return (
           <CommentIndexItemContainer key={comment.id} comment={ comment } />
         );
-        debugger
       });
     }
     if(!this.state.editMode){
       return (
-        <div className="as-wrapper">
-          <div className="as-header">
-            <li>{answer.authorName}</li>
-          </div>
-          <div className="as-body">
-            <li><span dangerouslySetInnerHTML={this.rawMarkup(answer.body)} /></li>
-          </div>
-          <div className="as-footer">
-            { this.props.currentUser.id === answer.answerAuthorId ?
-              <div>
-                <a onClick={this.toggleEditMode}>Edit Answer</a>
-                <a onClick={this.deleteAnswer}>Delete Answer</a>
+        <div className="answer-comment-wrapper">
+
+          <div className="as-wrapper">
+            <div className="as-header">
+              <div className="as-profile-pic">
+                <h2>{initials}</h2>
               </div>
-              : null
-            }
+              <div className="as-name-date">
+                <div className="author-name">{answer.authorName}</div>
+                <li>{answer.date}</li>
+              </div>
+            </div>
+            <div className="as-content-holder">
+            <div className="as-body">
+              <li><span dangerouslySetInnerHTML={this.rawMarkup(answer.body)} /></li>
+            </div>
+            <div className="as-footer">
+              { this.props.currentUser.id === answer.answerAuthorId ?
+                <div className="as-footer-button">
+                  <a onClick={this.toggleEditMode}>Edit Answer</a>
+                  <a onClick={this.deleteAnswer}>Delete Answer</a>
+                </div>
+                : null
+              }
+            </div>
+            </div>
           </div>
           <div>
             <div>
-              <CommentEditorContainer answerId={answer.id} cancel={ () => this.toggleComments() }/>
+              <CommentEditorContainer answerId={answer.id} cancel={ () => this.toggleComments() } show={this.state.showComments}/>
             </div>
             {
               this.state.showComments ?

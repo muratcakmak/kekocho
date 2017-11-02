@@ -10,7 +10,7 @@ const TopicReducer = (state = defaultState, action) => {
   let newState = {};
   switch (action.type) {
     case RECEIVE_FEED_DATA:
-      debugger
+      
       return merge({}, state, action.topics);
     case RECEIVE_QUESTION:
       return merge({}, state, action.question.topics);
