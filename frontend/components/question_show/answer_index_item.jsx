@@ -12,9 +12,11 @@ class AnswerIndexItem extends React.Component{
     this.updateAnswer = this.updateAnswer.bind(this);
     this.state = {
       editMode: false,
-      showCommentEditor: false
+      showCommentEditor: false,
+      showComments: false,
     };
     this.toggleEditMode = this.toggleEditMode.bind(this);
+    this.toggleComments = this.toggleComments.bind(this);
   }
 
   componentDidMount(){
@@ -27,6 +29,11 @@ class AnswerIndexItem extends React.Component{
 
   toggleEditMode(){
     this.setState({ editMode: !this.state.editMode});
+  }
+
+  toggleComments(){
+    debugger
+    this.setState({ showComments: !this.state.showComments });
   }
 
   deleteAnswer(){
@@ -49,6 +56,7 @@ class AnswerIndexItem extends React.Component{
         return (
           <CommentIndexItemContainer key={comment.id} comment={ comment } />
         );
+        debugger
       });
     }
     if(!this.state.editMode){
@@ -70,28 +78,33 @@ class AnswerIndexItem extends React.Component{
             }
           </div>
           <div>
-            <CommentEditorContainer answerId={answer.id} cancel={ "" }/>
-          </div>
-          <ul>
+            <div>
+              <CommentEditorContainer answerId={answer.id} cancel={ () => this.toggleComments() }/>
+            </div>
             {
-              comments
+              this.state.showComments ?
+              <ul>
+                {
+                  comments
+                }
+              </ul> : null
             }
-          </ul>
+          </div>
         </div>
-        );
-      }
-      else{
-        return (
-          <EditAnswerEditorContainer answerId={ answer.id } question_id={ answer.questionId } content={ answer.body } cancel={ () => this.toggleEditMode() }/>
-        );
-      }
+      );
     }
-
-
-
+    else{
+      return (
+        <EditAnswerEditorContainer answerId={ answer.id } question_id={ answer.questionId } content={ answer.body } cancel={ () => this.toggleEditMode() }/>
+      );
+    }
   }
 
-  export default AnswerIndexItem;
 
 
-  // <CommentIndexItemContainer comment = { comment } currentUser={this.props.currentUser} />
+}
+
+export default AnswerIndexItem;
+
+
+// <CommentIndexItemContainer comment = { comment } currentUser={this.props.currentUser} />

@@ -35,10 +35,12 @@ class CommentIndexItem extends React.Component{
 
   render(){
     const comment = this.props.comment;
+    debugger
     return (
       <div className="as-wrapper">
         <div className="as-header">
           <li>{comment.authorName}</li>
+          <a onClick={this.deleteComment}>Delete Comment</a>
         </div>
         <div className="as-body">
           <li><span dangerouslySetInnerHTML={this.rawMarkup(comment.body)} /></li>

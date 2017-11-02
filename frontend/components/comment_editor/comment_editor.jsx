@@ -12,6 +12,7 @@ class CommentEditor extends React.Component {
     };
     this.handleComment = this.handleComment.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.toggleShowComments = this.toggleShowComments.bind(this);
   }
 
   componentDidMount(){
@@ -25,7 +26,7 @@ class CommentEditor extends React.Component {
   handleComment(e){
 
     e.preventDefault();
-    this.props.createComment(this.state);
+    this.props.createComment(this.state).then(() => this.toggleShowComments());
     this.setState({ body: "" });
   }
 
@@ -33,9 +34,17 @@ class CommentEditor extends React.Component {
     this.setState({ body: html});
   }
 
+  toggleShowComments(){
+    this.props.cancel();
+  }
+
+  componentWillReceiveProps(){
+
+  }
+
   render () {
     const user = this.props.user;
-    debugger
+
     const initials = user.userName.split(" ").map((n)=>n[0]).join("");
 
     return (
@@ -54,7 +63,7 @@ class CommentEditor extends React.Component {
         </div>
         <div className="comment-footer">
           <button className="session-submit-button answer-button">Comment</button>
-          <a onClick={this.toggleCommentComponent} style={{marginLeft: "10px"}} >Show</a>
+          <a onClick={this.toggleShowComments} style={{marginLeft: "10px"}}>Show</a>
         </div>
       </form>
       </div>

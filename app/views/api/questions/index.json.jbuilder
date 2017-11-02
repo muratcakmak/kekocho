@@ -2,13 +2,14 @@
 json.questions do
   @questions.each do |question|
     json.set! question.id do
-      json.extract! question, :id, :body
+      json.extract! question, :id, :body, :created_at
       json.questionAuthorId question.question_author_id
       json.authorName question.question_author.first_name + " " + question.question_author.last_name
       #TODO: Change to array
       json.answerIds question.answers.pluck(:id)
       json.firstAnswer question.answers.first
       json.topicIds question.topics.pluck(:id)
+      json.date question.created_at.to_s
     end
   end
 end
