@@ -7,6 +7,7 @@ import QuestionButtonContainer from './question_button_container';
 class NavBar extends React.Component{
   render(){
     return (
+      <div>
       <header className="header">
         <nav className="header-nav">
           <h1 className="header-logo">
@@ -69,6 +70,9 @@ class NavBar extends React.Component{
         </nav>
 
       </header>
+      <div className="header-hide">
+      </div>
+      </div>
     );
   }
 }
@@ -85,7 +89,7 @@ export default NavBar;
 
 
 
-// 
+//
 // <li>
 //   <div className="nav-bar-item">
 //     <span className="nav_item_icon"><svg width="25px" height="25px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg">
