@@ -11,4 +11,7 @@ Rails.application.routes.draw do
     resources :topics, only: [:show, :index]
   end
 
+  namespace :api do
+      get 'search/:query', to: 'search#index'
+  end
 end
