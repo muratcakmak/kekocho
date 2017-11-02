@@ -51,3 +51,23 @@ else
     end
   end
 end
+
+topics = []
+
+@questions.each do |question|
+  question.topics.each do |topic|
+    topics.push(topic)
+  end
+end
+
+if topics.empty?
+  json.topics({})
+else
+  json.topics do
+    topics.each do |topic|
+      json.set! topic.id do
+        json.extract! topic, :id, :name
+      end
+    end
+  end
+end

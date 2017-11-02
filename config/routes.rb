@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :answers
     resources :comments
     resources :topics, only: [:show, :index]
+    resources :question_topics, only: [:create, :destroy]
   end
 
   namespace :api do
