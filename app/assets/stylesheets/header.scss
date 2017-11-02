@@ -1,11 +1,12 @@
 .header {
   background: #fff;
   color: #fff;
-  color: RGB(180, 32, 38);
+  color: RGB(180, 32, 38, 0.25);
   border-bottom: 1px solid #ccc;
-  height: 53px;
-  display: flex;
-  align-items: center;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .header a {
