@@ -47,7 +47,7 @@ class AnswerIndexItem extends React.Component{
     if(this.props.comments){
       comments = this.props.comments.map((comment) =>{
         return (
-          <CommentIndexItemContainer comment={ comment } />
+          <CommentIndexItemContainer key={comment.id} comment={ comment } />
         );
       });
     }

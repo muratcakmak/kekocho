@@ -8,6 +8,7 @@ json.questions do
       #TODO: Change to array
       json.answerIds question.answers.pluck(:id)
       json.firstAnswer question.answers.first
+      json.topicIds question.topics.pluck(:id)
     end
   end
 end

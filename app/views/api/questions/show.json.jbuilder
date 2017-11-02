@@ -1,7 +1,7 @@
-
 json.extract! @question, :id, :body
 json.authorName @question.question_author.first_name + " " + @question.question_author.last_name
 json.answerIds @question.answers.pluck(:id)
+json.topicIds @question.topics.pluck(:id)
 
 json.answers do
   @question.answers.each do |answer|
@@ -31,6 +31,23 @@ else
         json.extract! comment, :id, :body
         json.commentAuthorId comment.comment_author_id
         json.answerId comment.answer_id
+      end
+    end
+  end
+end
+
+topics = []
+@question.topics.each do |topic|
+  topics.push(topic)
+end
+
+if topics.empty?
+  json.topics({})
+else
+  json.topics do
+    topics.each do |topic|
+      json.set! topic.id do
+        json.extract! topic, :id, :name
       end
     end
   end

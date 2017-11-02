@@ -5,6 +5,7 @@ import Root from './components/root';
 import { login, logout, receiveErrors } from './actions/session_actions';
 import { showModal } from './actions/ui_actions';
 import { createQuestion } from './actions/question_actions';
+import { createTopic } from './actions/topic_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -27,5 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.dispatch = store.dispatch;
   window.receiveErrors = receiveErrors;
   window.createQuestion = createQuestion;
+  window.createTopic = createTopic;
   ReactDOM.render(<Root store={ store }/>, root);
 });

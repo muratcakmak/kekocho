@@ -6,6 +6,8 @@ import NavBarContainer from './navbar/nav_bar_container';
 import Content from './content/content';
 import QuestionShowContainer from './question_show/question_show_container';
 import ModalContainer from './modal/modal_container';
+import TopicShowContainer from './topic/topic_show_container';
+
 import SearchResultContainer from '../components/search_bar/search_result_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = (props) => {
@@ -19,6 +21,7 @@ const App = (props) => {
         <AuthRoute path="/signup" component={SignupFormContainer} />
         <ProtectedRoute exact path="/" component={Content} />
         <Route exact path="/questions/:questionId" component={QuestionShowContainer}/>
+        <Route exact path="/topics/:topicId" component={TopicShowContainer}/>
         <Route path="/" render={() => <Redirect to="/"/>} />
       </Switch>
     </div>

@@ -45,11 +45,11 @@ class QuestionShow extends React.Component{
         let answers = [];
 
         if(this.props.answers){
-          
+
           answers = this.props.answers.map((answer) =>{
 
             return (
-              <AnswerIndexItemContainer answer={answer} currentUser={this.props.currentUser} />
+              <AnswerIndexItemContainer key={answer.id} answer={answer} currentUser={this.props.currentUser} />
             );
           });
         }

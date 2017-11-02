@@ -4,6 +4,7 @@ class Api::QuestionTopicsController < ApplicationController
   end
 
   def create
+    debugger
     question = Question.find(params[:question_topic][:question_id])
     topic_name = params[:question_topic][:topic_name]
 
@@ -11,7 +12,7 @@ class Api::QuestionTopicsController < ApplicationController
     @question_topic = QuestionTopic.new()
     @question_topic.question = question
     @question_topic.topic = topic
-    
+
     if @question_topic.save
       render :show
     else

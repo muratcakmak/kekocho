@@ -35,13 +35,16 @@ class CommentEditor extends React.Component {
 
   render () {
     const user = this.props.user;
+    debugger
+    const initials = user.userName.split(" ").map((n)=>n[0]).join("");
+
     return (
       <div className="answer-wrapper">
-      <form className="answer-form" onSubmit={this.handleComment} >
-        <div className="answer-header">
-          <p>{user.firstName} {user.lastName}</p>
+      <form className="comment-form" onSubmit={this.handleComment} >
+        <div className="comment-header">
+          <h2>{initials}</h2>
         </div>
-        <div className="answer-body">
+        <div className="comment-body">
           <ReactQuill
             onChange={this.handleChange}
             placeholder="Write your comment"
@@ -49,9 +52,9 @@ class CommentEditor extends React.Component {
             width="320"
             />
         </div>
-        <div className="answer-footer">
-          <button className="session-submit-button answer-button">Submit</button>
-          <a onClick={this.toggleCommentComponent} style={{marginLeft: "10px"}} >Cancel</a>
+        <div className="comment-footer">
+          <button className="session-submit-button answer-button">Comment</button>
+          <a onClick={this.toggleCommentComponent} style={{marginLeft: "10px"}} >Show</a>
         </div>
       </form>
       </div>
