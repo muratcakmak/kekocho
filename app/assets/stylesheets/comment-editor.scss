@@ -1,0 +1,27 @@
+.comment-form{
+  display: flex;
+  justify-content: space-between;
+  background: #f6f6f6;
+}
+
+.comment-body{
+  width: 345px;
+}
+
+.comment-footer{
+  padding: 8px;
+}
+
+p{
+  background: white;
+}
+
+.comment-header{
+  height: 32px;
+  width: 32px;
+  background: green;
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+  justify-content: center;
+}
