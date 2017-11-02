@@ -6,12 +6,12 @@ class Api::QuestionTopicsController < ApplicationController
   def create
     question = Question.find(params[:question_topic][:question_id])
     topic_name = params[:question_topic][:topic_name]
-    debugger
+
     topic = Topic.create(name: topic_name)
     @question_topic = QuestionTopic.new()
     @question_topic.question = question
     @question_topic.topic = topic
-    debugger
+    
     if @question_topic.save
       render :show
     else

@@ -15,18 +15,18 @@ class SearchBar extends React.Component{
   }
 
   handleSearch(e) {
-    debugger
+    
     e.preventDefault();
     this.props.sendSearch(this.state.query).then(
       (action) => {
-        debugger
+        
         return this.props.history.push(`/search`);
       }
     );
   }
 
   handleChange(field) {
-    debugger
+    
     return (e) => this.setState({ [field]: e.target.value });
   }
 
