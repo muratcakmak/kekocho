@@ -17,6 +17,14 @@ Authentication part of the app has two separate parts.
   It is controlled by Ruby on Rails framework which provides powerful libraries and secure environment. Encryption library BCrypt is repsonsible to create session tokens whenever user attempts to login. This session token is also stored in browser and send back appended every REST request.
 
 - Frontend Authentication
-  react-router-dom has methods to enable the apps control the routes. Thanks to rails application.html.erb file which has is the literally the page, database is check whether user is previously logged in or not. If there is logged-in user, she is directed to the main page, otherwise she can just see the login/signup page.
+  react-router-dom has methods to enable the apps control the routes. Thanks to rails application.html.erb file which has is the literally the page, database is check whether user is previously logged in or not. If there is logged-in user, they are directed to the main page, otherwise they can just see the login/signup page.
 
   ![Alt text](/readme_images/login.gif?raw=true "Login")
+
+### Model Layer
+
+  In Quora, user has many questions. Questions have many answers and topics. Answers have many comments and belongs to a particular question. A comment belongs to an answer and a topic has many questions.
+
+  Topic and question relationship is established by a joint table called topicQuestions. question_ids and corresponded topic ids are stored on the table.
+
+  When user wants to create a topic while editing a question, the request hits to the question_topic_controller. The controller checks whether the topic is already existed, and grabs the question id and create question_topic record on the table. Thanks to rails's inverse of association, everything works even though there is no database record exists while creating a joint table record.
