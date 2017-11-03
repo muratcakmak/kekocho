@@ -72,3 +72,21 @@
   display: flex;
   margin: 0 0 0 10px;
 }
+
+.topic-box{
+  margin-top: 0;
+  border: 1px solid #efefef;
+  background-color: #fff;
+  border-radius: 4px;
+  /* border-bottom: 1px solid #e2e2e2; */
+  margin-bottom: 16px;
+  /* padding-left: 18px; */
+  /* padding-right: 18px; */
+  /* padding-top: 16px; */
+  font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
+  display: flex;
+  align-items: center;
+  /* align-content: center; */
+  justify-content: center;
+  height: 24px;
+}

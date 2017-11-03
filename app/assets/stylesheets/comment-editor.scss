@@ -1,15 +1,15 @@
 .comment-editor-form{
   display: flex;
-  justify-content: space-between;
   background: #f6f6f6;
+  align-items: center;
+  justify-content: center;
 }
 
 .comment-editor-body{
-  width: 420px;
+  width: 360px;
 }
 
 .comment-editor-footer{
-  padding: 8px;
 }
 
 .comment-editor-body  p {
@@ -17,11 +17,14 @@
 }
 
 .comment-editor-header{
-  height: 32px;
-  width: 32px;
-  background: green;
-  display: flex;
-  align-items: center;
-  border-radius: 16px;
-  justify-content: center;
+  font-family: Helvetica, Arial, sans-serif;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 100%;
+  color: rgb(255, 255, 255);
+  background: #b92b27;
 }

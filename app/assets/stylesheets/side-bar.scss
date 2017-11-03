@@ -17,7 +17,14 @@ h3{
 }
 
 .sidebar-item{
+  display: block;
   margin-top: 13px;
+  text-decoration: none;
+  color: none;
+}
+
+.sidebar-item:hover{
+  color: #2f6bad;
 }
 
 .sidebar:hover{

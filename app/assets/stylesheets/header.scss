@@ -7,40 +7,39 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 9999;
 }
 
 .header a {
   display: block;
-  padding: 10px 20px;
   color: RGB(180,32,38);
   text-decoration: none;
 }
 
 .header-nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 0 auto;
   width: 900px;
 }
 
 .header-logo {
-  font-weight: 700;
+  font-weight: bold;
+  font-family: Times;
+  font-size: 20px;
 }
 
-.header-logo:hover {
-  background: #000;
-}
 
 .header-list {
   display: flex;
 }
 
 .header-list > li:hover {
-  border-bottom: 1px solid RGB(180,32,38);
+  background: rgb(246, 246, 246);
 }
 
 .header-search-container {
-  min-width: 300px;
+
 }
 
 .header-question-button {
@@ -66,8 +65,9 @@
   border: 1px solid #962520;
   background: #b92b27;
   color: #fff;
+  padding: 8px;
 }
 
 .header-hide{
-  height: 70px
+  height: 51px
 }
