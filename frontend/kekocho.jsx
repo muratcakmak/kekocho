@@ -9,13 +9,6 @@ import { createTopic } from './actions/topic_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
-  window.login = login;
-  window.logout = logout;
-  window.modal = {modal: {
-    show: true,
-    }
-  };
-  window.showModal = showModal;
   let store;
   if (window.currentUser) {
     const preloadedState = { session: { currentUser: window.currentUser } };
@@ -24,10 +17,5 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.receiveErrors = receiveErrors;
-  window.createQuestion = createQuestion;
-  window.createTopic = createTopic;
   ReactDOM.render(<Root store={ store }/>, root);
 });

@@ -45,16 +45,23 @@ class QuestionShow extends React.Component{
         //TODO: fix
         let answers = [];
 
+        const compare = (a,b) => {
+          if (a.id < b.id){
+            return -1;
+          }
+          if (a.id > b.id){
+            return 1;
+          }
+          return 0;
+        };
+
         if(this.props.answers){
-
-          answers = this.props.answers.reverse().map((answer) =>{
-
+          answers = this.props.answers.sort(compare).reverse().map((answer) =>{
             return (
               <AnswerIndexItemContainer key={answer.id} answer={answer} currentUser={this.props.currentUser} />
             );
           });
         }
-
         return (
           <div className="qs-wrapper">
             <div className="qs-content">

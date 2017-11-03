@@ -6,7 +6,7 @@ import FeedAddQuestionPromptContainer from '../content/feed_add_question_prompt_
 class SearchResult extends React.Component{
 
   render(){
-    
+
     let questionIndexItems = [];
 
     if(this.props.questions){
