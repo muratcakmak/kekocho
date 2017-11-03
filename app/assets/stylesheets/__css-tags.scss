@@ -1,0 +1,32 @@
+html {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+body{
+  background: rgb(250, 250, 250);
+  color: #333;
+  height: 100%;
+  word-wrap: break-word;
+  font-size: 13px;
+  overflow-y: auto;
+  overflow-x: auto;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+input {
+  display: block;
+  min-height: 27px;
+  display: block;
+  background-color: #f6f6f6;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  min-height: 27px;
+  background: #fff;
+  outline: 0;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+  font-size: 13px;
+}
