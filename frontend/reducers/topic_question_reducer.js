@@ -9,7 +9,7 @@ const TopicQuestionReducer = (state = defaultState, action) => {
     case RECEIVE_TOPIC_QUESTIONS:
       return action.topicQuestions;
     default:
-      return state;
+      return defaultState;
   }
 };
 
