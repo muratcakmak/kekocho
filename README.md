@@ -2,13 +2,14 @@
 ---
 ## kekocho
 
-### TLDR;
+### IT. IS. LIVE.
  [live version](https://kekocho.herokuapp.com/)
 
----
+### TLDR;
+
 Kekocho, a Quora clone, is a platform "to gain and share knowledge" that allows users to ask questions and get answers from people who have experience and knowledge in the domain.
 
-
+---
 ### Auth
 
 Authentication part of the app has two separate parts.
@@ -19,7 +20,14 @@ Authentication part of the app has two separate parts.
 - Frontend Authentication
   react-router-dom has methods to enable the apps control the routes. Thanks to rails application.html.erb file which has is the literally the page, database is check whether user is previously logged in or not. If there is logged-in user, they are directed to the main page, otherwise they can just see the login/signup page.
 
-  ![Alt text](/readme_images/login.gif?raw=true "Login")
+  ![Alt text](/readme_images/session.gif?raw=true "Login")
+
+---
+
+### Hosting
+  It is hosted on heroku. According to heroku.com, "Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud".
+
+---
 
 ### Model Layer
 
@@ -29,17 +37,21 @@ Authentication part of the app has two separate parts.
 
   When user wants to create a topic while editing a question, the request hits to the question_topic_controller. The controller checks whether the topic is already existed, and grabs the question id and create question_topic record on the table. Thanks to rails's inverse of association, everything works even though there is no database record exists while creating a joint table record.
 
-### Question Search
+---
 
+### Question Search
 
 ![Alt text](/readme_images/search.gif?raw=true "Search")
 
   pg_search handles the search part of the app. It uses improved algorithms to make search faster.
 
+---
+
 ### Question Modal
 
 ![Alt text](/readme_images/question_modal.jpg?raw=true "Question")
 
+---
 
 ### Future
 
