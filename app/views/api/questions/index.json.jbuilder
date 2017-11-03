@@ -7,7 +7,17 @@ json.questions do
       json.authorName question.question_author.first_name + " " + question.question_author.last_name
       #TODO: Change to array
       json.answerIds question.answers.pluck(:id)
-      json.firstAnswer question.answers.first
+      answer = question.answers.first
+      if answer
+        json.firstAnswer do
+          json.id answer.id
+          json.questionId answer.question_id
+          json.body answer.body
+          json.authorName (answer.answer_author.first_name + " " + answer.answer_author.last_name)
+          json.commentIds answer.comments.pluck(:id)
+          json.date answer.created_at.strftime("%d %b %Y")
+        end
+      end
       json.topicIds question.topics.pluck(:id)
       json.date question.created_at.strftime("%d %b %Y")
     end
@@ -49,6 +59,7 @@ else
       json.set! comment.id do
         json.extract! comment, :id, :body
         json.commentAuthorId comment.comment_author_id
+        json.authorName (comment.comment_author.first_name + " " + comment.comment_author.last_name)
         json.answerId comment.answer_id
         json.date comment.created_at.strftime("%d %b %Y")
       end

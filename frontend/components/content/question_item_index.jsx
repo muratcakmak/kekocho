@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import AnswerIndexItemContainer from '../question_show/answer_index_item_container';
 
 class QuestionIndexItem extends React.Component {
   constructor(props) {
@@ -18,22 +19,21 @@ class QuestionIndexItem extends React.Component {
 
   render(){
     const answer = this.props.firstAnswer;
+    debugger
     const question = this.props.question;
+    console.log(`first answer ${JSON.stringify(answer)}`);
       return (
         <div className="question-box">
           <div className="question-item">
             <div className="question-topic">
               <li><a href="#">{question.authorName}</a></li>
-
-              { question && this.props.currentUser.id === question.questionAuthorId?
-                <button onClick={this.deleteQuestion}>Delete</button>:
-                                  null}
             </div>
             <div className="question-body">
               <h2><Link to={`/questions/${this.props.question.id}`}>{this.props.question.body}</Link></h2>
-              <p>
-                {answer ? <span dangerouslySetInnerHTML={this.rawMarkup(answer.body)} /> : null}
-              </p>
+              { answer ?
+                <AnswerIndexItemContainer key={answer.id} answer={answer} currentUser={this.props.currentUser} />:
+                  null
+              }
             </div>
             <footer className="question-footer">
               <ul className="question-footer-info">
@@ -47,3 +47,11 @@ class QuestionIndexItem extends React.Component {
 
 
   export default QuestionIndexItem;
+
+
+
+
+  // <AnswerIndexItemContainer key={answer.id} answer={answer} currentUser={this.props.currentUser} />
+  // <p>
+  //   {answer ? <span dangerouslySetInnerHTML={this.rawMarkup(answer.body)} /> : null}
+  // </p>
