@@ -9,7 +9,7 @@
 Kekocho, a Quora clone, is a platform "to gain and share knowledge" that allows users to ask questions and get answers from people who have experience and knowledge in the domain.
 
 
-###Auth
+### Auth
 
 Authentication part of the app has two separate parts.
 
