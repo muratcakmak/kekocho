@@ -27,6 +27,7 @@ class EditAnswerEditor extends React.Component {
     e.preventDefault();
     this.props.updateAnswer(this.state);
     this.toggleEditorComponent();
+    this.setState({ body: "" });
   }
 
   handleChange(html){
@@ -48,7 +49,11 @@ class EditAnswerEditor extends React.Component {
           <p>{user.firstName} {user.lastName}</p>
         </div>
         <div className="answer-body">
-          <ReactQuill onChange={this.handleChange} theme="snow" value={ this.state.body} modules={EditAnswerEditor.modules} formats={EditAnswerEditor.formats} />
+          <ReactQuill onChange={this.handleChange}
+                        theme="snow"
+                        value={ this.state.body }
+                        modules={EditAnswerEditor.modules}
+                        formats={EditAnswerEditor.formats} />
         </div>
         <div className="answer-footer">
           <button className="session-submit-button answer-button">Submit</button>

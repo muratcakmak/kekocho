@@ -16,7 +16,8 @@ class QuestionShow extends React.Component{
   }
 
   componentDidMount(){
-    $('html, body').scrollTop(0);
+    window.scrollTo(0, 0);
+    // $('html, body').scrollTop(0);
     const qid = this.props.match.params.questionId;
     this.props.fetchQuestion(qid).then((question) => this.setState({question_id: question.id}));
   }

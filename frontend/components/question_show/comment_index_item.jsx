@@ -29,7 +29,7 @@ class CommentIndexItem extends React.Component{
     return (
       <div className="comment-wrapper">
         <div className="comment-editor-header">
-          <h2>{initials}</h2>
+            {initials}
         </div>
         <div className="comment-content">
           <div className="comment-header">

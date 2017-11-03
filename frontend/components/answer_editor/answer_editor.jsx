@@ -55,6 +55,7 @@ class AnswerEditor extends React.Component {
             theme="snow"
             modules={AnswerEditor.modules}
             formats={AnswerEditor.formats}
+            value={this.state.body}
             />
         </div>
         <div className="answer-footer">

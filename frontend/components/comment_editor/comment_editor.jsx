@@ -30,8 +30,8 @@ class CommentEditor extends React.Component {
       if(!this.props.show){
         this.toggleShowComments();
       }
+      this.setState({ body: "" });
     });
-    this.setState({ body: "" });
   }
 
   handleChange(html){
@@ -55,7 +55,7 @@ class CommentEditor extends React.Component {
       <div className="answer-wrapper">
       <form className="comment-editor-form" onSubmit={this.handleComment} >
         <div className="comment-editor-header">
-          <h2>{initials}</h2>
+          {initials}
         </div>
         <div className="comment-editor-body">
           <ReactQuill
@@ -63,6 +63,7 @@ class CommentEditor extends React.Component {
             placeholder="Write your comment"
             theme={ null }
             width="320"
+            value={ this.state.body }
             />
         </div>
         <div className="comment-editor-footer">

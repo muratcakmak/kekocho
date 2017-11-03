@@ -17,11 +17,11 @@ const App = (props) => {
           <ModalContainer />
     <Switch>
         <Route path="/search" component={SearchResultContainer} />
+        <Route exact path="/topics/:topicId" component={TopicShowContainer}/>
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
         <ProtectedRoute exact path="/" component={Content} />
         <Route exact path="/questions/:questionId" component={QuestionShowContainer}/>
-        <Route exact path="/topics/:topicId" component={TopicShowContainer}/>
         <Route path="/" render={() => <Redirect to="/"/>} />
       </Switch>
     </div>

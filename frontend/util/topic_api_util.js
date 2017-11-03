@@ -5,3 +5,10 @@ export const createTopic = (question_topic)=> {
     data: { question_topic }
   });
 };
+
+export const requestTopicQuestions = (topicId) => {
+  return $.ajax({
+    method: "get",
+    url: `api/topics/${topicId}`,
+  });
+};

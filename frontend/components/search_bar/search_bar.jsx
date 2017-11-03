@@ -9,24 +9,22 @@ class SearchBar extends React.Component{
     this.state = {
       query: '',
     };
-
     this.handleSearch = this.handleSearch.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleSearch(e) {
-    
     e.preventDefault();
     this.props.sendSearch(this.state.query).then(
       (action) => {
-        
-        return this.props.history.push(`/search`);
+        this.props.history.push(`/search`);
+        this.setState({query: ""});
       }
     );
   }
 
   handleChange(field) {
-    
+
     return (e) => this.setState({ [field]: e.target.value });
   }
 
@@ -36,7 +34,7 @@ class SearchBar extends React.Component{
         className="nav-search"
         onChange={this.handleChange('query')}
         onSubmit={this.handleSearch}>
-        <input className="search-input" placeholder="Search Quora"/>
+        <input className="search-input" placeholder="Search Quora" value={this.state.query}/>
       </form>
 
 

@@ -19,14 +19,14 @@ class QuestionIndexItem extends React.Component {
 
   render(){
     const answer = this.props.firstAnswer;
-    debugger
+
     const question = this.props.question;
     console.log(`first answer ${JSON.stringify(answer)}`);
       return (
         <div className="question-box">
           <div className="question-item">
             <div className="question-topic">
-              <li><a href="#">{question.authorName}</a></li>
+              <li><div>{question.authorName}</div></li>
             </div>
             <div className="question-body">
               <h2><Link to={`/questions/${this.props.question.id}`}>{this.props.question.body}</Link></h2>

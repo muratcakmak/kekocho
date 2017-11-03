@@ -65,7 +65,7 @@ class AnswerIndexItem extends React.Component{
           <div className="as-wrapper">
             <div className="as-header">
               <div className="as-profile-pic">
-                <h2>{initials}</h2>
+                <div className="as-initials-large">{initials}</div>
               </div>
               <div className="as-name-date">
                 <div className="author-name">{answer.authorName}</div>

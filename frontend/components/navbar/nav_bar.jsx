@@ -12,8 +12,9 @@ class NavBar extends React.Component{
         <nav className="header-nav">
           <h1 className="header-logo">
             <div className="nav-bar-title">
-
-              <a href="#">Kekocho</a>
+              <div className="nav-bar-title">
+                <Link to="/" style={{fontWeight: "900", fontSize: "25px"}}>Kekocho</Link>
+              </div>
             </div>
           </h1>
 
