@@ -30,12 +30,15 @@ class SearchBar extends React.Component{
 
   render(){
     return (
+      <div clasName="nav-search-container">
+
       <form
         className="nav-search"
         onChange={this.handleChange('query')}
         onSubmit={this.handleSearch}>
-        <input className="search-input" placeholder="Search Quora" value={this.state.query}/>
+        <input className="search-input" placeholder="Search Kekocho" value={this.state.query}/>
       </form>
+    </div>
 
 
     );

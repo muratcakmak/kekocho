@@ -1,9 +1,7 @@
 .header {
   background: #fff;
-  color: #fff;
   color: RGB(180, 32, 38, 0.25);
   border-bottom: 1px solid #ccc;
-  overflow: hidden;
   position: fixed;
   top: 0;
   width: 100%;
@@ -20,7 +18,7 @@
   display: flex;
   justify-content: space-evenly;
   margin: 0 auto;
-  width: 900px;
+  max-width: 900px;
 }
 
 .header-logo {
@@ -29,17 +27,39 @@
   font-size: 20px;
 }
 
-
 .header-list {
+  min-width: 200px;
   display: flex;
+  justify-content: space-around;
 }
 
-.header-list > li:hover {
+
+.header-list-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-list-item:hover {
   background: rgb(246, 246, 246);
 }
 
-.header-search-container {
+.header-link{
+  width: 100%;
+  margin: 0 auto;
+}
 
+
+.header-search-container {
+  display: flex;
+  flex-direction: row-reverse;
+  min-width: 180px;
+  background: image-url('search.png') no-repeat 10px center;
+  background-size: 15px 15px;
+  outline: 0;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(200, 200, 200, 0.3);
 }
 
 .header-question-button {
@@ -70,4 +90,64 @@
 
 .header-hide{
   height: 51px
+}
+
+
+.selector-input{
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  padding-left: 26px;
+  background: url(//qsf.ec.quoracdn.net/-3-images.new_grid.QuoraSearch.png-26-cadc30f3f88e3504.png) no-repeat 8px center;
+  background-size: 13px;
+  width: 100%;
+}
+
+.text{
+  max-height: 29px;
+  min-height: auto;
+  background-color: #f4f4f4;
+  outline: 0;
+  border: 1px solid #e2e2e2;
+
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+  transition: border-color .2s;
+  transition: border-color .2s 180ms ease-in-out 0s;
+  box-sizing: border-box;
+  font-size: 15px;
+  line-height: 1.4;
+  display: block;
+  border-radius: 2px;
+
+  overflow-y: hidden;
+  white-space: nowrap;
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  transition: border-color,height,background-color .2s;
+}
+
+.nav-bar-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-bar-title{
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  line-height: 50px;
+}
+
+.nav-bar-logo{
+  font-weight: bold;
+  font-family: Times;
+  font-size: 20px;
+}
+
+.search-input{
+  border: none;
+  font-size: 14px;
+  color: #e2e2e2;
 }
