@@ -9,6 +9,11 @@ class NavBar extends React.Component{
     super(props);
 
     this.myFunction = this.myFunction.bind(this);
+    this.logout = this.logout.bind(this);
+  }
+
+  logout(){
+    this.props.logout().then(() => this.props.history.push('/login'));
   }
 
   myFunction() {
@@ -88,7 +93,7 @@ class NavBar extends React.Component{
                 <div class="comment-editor-header">
                   {initials}
                   <div class="header-avatar-dropdown">
-                    <GreetingContainer />
+                    <a onClick={this.logout} className="header-logout">Logout</a>
                   </div>
                 </div>
               </div>
@@ -100,11 +105,6 @@ class NavBar extends React.Component{
               </div>
             </div>
 
-
-
-            <div className="header-item">
-              <a className="header-hamburger-icon" onClick={this.myFunction}>&#9776;</a>
-            </div>
           </nav>
 
 

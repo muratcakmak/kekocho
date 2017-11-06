@@ -198,18 +198,15 @@
   }
 }
 
-
-@media screen and (max-width: 800px){
-  .header.responsive {position: relative;}
-  .header-hamburger-icon {
-    position: absolute;
-    right: 0;
-    top: 0;
+@media screen and (max-width: 557px){
+  .header-item:nth-last-child(4) {
+    display: none;
   }
-
   .header-item:last-child {
-    float: none;
-    display: block;
-    text-align: left;
+    display: none;
   }
+}
+
+.header-logout{
+  font-size: 12px;
 }
