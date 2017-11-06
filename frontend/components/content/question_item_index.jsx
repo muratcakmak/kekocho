@@ -21,7 +21,6 @@ class QuestionIndexItem extends React.Component {
     const answer = this.props.firstAnswer;
 
     const question = this.props.question;
-    console.log(`first answer ${JSON.stringify(answer)}`);
       return (
         <div className="question-box">
           <div className="question-item">

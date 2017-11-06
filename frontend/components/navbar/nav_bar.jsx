@@ -90,9 +90,9 @@ class NavBar extends React.Component{
 
             <div className="header-item">
               <div className="header-avatar">
-                <div class="comment-editor-header">
+                <div className="comment-editor-header">
                   {initials}
-                  <div class="header-avatar-dropdown">
+                  <div className="header-avatar-dropdown">
                     <a onClick={this.logout} className="header-logout">Logout</a>
                   </div>
                 </div>
