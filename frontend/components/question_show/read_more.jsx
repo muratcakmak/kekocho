@@ -14,6 +14,11 @@ class ReadMore extends Component {
 
         this.handleTruncate = this.handleTruncate.bind(this);
         this.toggleLines = this.toggleLines.bind(this);
+        this.rawMarkup = this.rawMarkup.bind(this);
+    }
+
+    rawMarkup(rawMarkup){
+      return { __html: rawMarkup };
     }
 
     handleTruncate(truncated) {
@@ -52,7 +57,7 @@ class ReadMore extends Component {
                     ellipsis={(
                         <span>... <a href='#' onClick={this.toggleLines}>{more}</a></span>
                     )} onTruncate={this.handleTruncate}>
-                    {ReactHtmlParser(children)}
+                    <span dangerouslySetInnerHTML={this.rawMarkup(children)} />
                 </Truncate>
                 {!truncated && expanded && (
                     <span> <a href='#' onClick={this.toggleLines}>{less}</a></span>
@@ -74,3 +79,11 @@ ReadMore.propTypes = {
 };
 
 export default ReadMore;
+
+
+
+
+
+
+
+// {ReactHtmlParser(children)}

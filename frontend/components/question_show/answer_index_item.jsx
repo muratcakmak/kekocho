@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import EditAnswerEditorContainer from '../edit-answer-editor/edit_answer_editor_container';
 import CommentEditorContainer from '../comment_editor/comment_editor_container';
 import CommentIndexItemContainer from '../question_show/comment_index_item_container';
-import ReadMore from '../question_show/read_more';
 
 class AnswerIndexItem extends React.Component{
   constructor(props){
@@ -60,7 +59,6 @@ class AnswerIndexItem extends React.Component{
       });
     }
     if(!this.state.editMode){
-      debugger
       return (
         <div className="answer-comment-wrapper">
 
@@ -76,11 +74,7 @@ class AnswerIndexItem extends React.Component{
             </div>
             <div className="as-content-holder">
             <div className="as-body">
-              <li>
-                <ReadMore>
-                  {answer.body}
-                </ReadMore>
-              </li>
+              <li><span dangerouslySetInnerHTML={this.rawMarkup(answer.body)} /></li>
             </div>
             <div className="as-footer">
               { this.props.currentUser.id === answer.answerAuthorId ?
