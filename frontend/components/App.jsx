@@ -23,10 +23,11 @@ const App = (props) => {
         <AuthRoute path="/signup" component={SignupFormContainer} />
         <ProtectedRoute exact path="/" component={Content} />
         <Route exact path="/questions/:questionId" component={QuestionShowContainer}/>
-        // <Route path="/" render={() => <Redirect to="/"/>} />
       </Switch>
     </div>
   );
 };
 
 export default withRouter(App);
+
+// <Route path="/" render={() => <Redirect to="/"/>} />
