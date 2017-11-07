@@ -23,9 +23,10 @@ class CommentIndexItem extends React.Component{
   }
 
   render(){
-
+    debugger
     const comment = this.props.comment;
     const initials = comment.authorName.split(" ").map((n)=>n[0]).join("");
+    console.log(comment.commentAuthorId + "  " + this.props.currentUserId);
     return (
       <div className="comment-wrapper">
         <div className="comment-editor-header">
@@ -37,7 +38,10 @@ class CommentIndexItem extends React.Component{
               <div className="comment-author">{comment.authorName}</div>
               <div className="comment-item">{comment.date}</div>
             </div>
-            <a onClick={this.deleteComment} className="comment-item">Delete Comment</a>
+            { comment.commentAuthorId === this.props.currentUserId ?
+              <a onClick={this.deleteComment} className="comment-item">Delete Comment</a>
+              : null
+             }
           </div>
           <div className="comment-body">
             <li><span dangerouslySetInnerHTML={this.rawMarkup(comment.body)} /></li>

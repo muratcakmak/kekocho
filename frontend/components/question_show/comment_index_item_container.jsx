@@ -4,8 +4,9 @@ import { deleteComment } from '../../actions/comment_actions';
 import CommentIndexItem from './comment_index_item';
 
 const mapStateToProps = (state, ownProps) => {
-  
+  debugger
   return{
+    currentUserId: state.session.currentUser.id,
     comment: ownProps.comment
   };
 };

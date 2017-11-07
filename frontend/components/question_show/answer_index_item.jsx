@@ -53,7 +53,7 @@ class AnswerIndexItem extends React.Component{
     const initials = answer.authorName.split(" ").map((n)=>n[0]).join("");
     let comments = [];
     if(this.props.comments){
-      comments = this.props.comments.reverse().map((comment) =>{
+      comments = this.props.comments.map((comment) =>{
         return (
           <CommentIndexItemContainer key={comment.id} comment={ comment } />
         );

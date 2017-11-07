@@ -3,6 +3,7 @@ json.authorName @question.question_author.first_name + " " + @question.question_
 json.answerIds @question.answers.pluck(:id)
 json.topicIds @question.topics.pluck(:id)
 json.date @question.created_at.strftime("%d %b %Y")
+json.questionAuthorId @question.question_author_id
 
 json.answers do
   @question.answers.each do |answer|
@@ -35,6 +36,7 @@ else
         json.authorName comment.comment_author.first_name + " " + comment.comment_author.last_name
         json.answerId comment.answer_id
         json.date comment.created_at.strftime("%d %b %Y")
+        json.authorId comment.comment_author_id
       end
     end
   end
