@@ -56,7 +56,7 @@ class EditAnswerEditor extends React.Component {
                         formats={EditAnswerEditor.formats} />
         </div>
         <div className="answer-footer">
-          <button className="session-submit-button answer-button">Submit</button>
+          <button type="submit" className="session-submit-button answer-button">Submit</button>
           <a onClick={this.toggleEditorComponent} style={{marginLeft: "10px"}} >Cancel</a>
         </div>
       </form>

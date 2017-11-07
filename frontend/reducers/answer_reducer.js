@@ -18,6 +18,7 @@ const AnswerReducer = (state = defaultState, action) => {
       newState[action.answer.id] = action.answer;
       return newState;
     case REMOVE_ANSWER:
+      
       newState = merge({}, state);
       delete newState[action.answer.id];
       return newState;

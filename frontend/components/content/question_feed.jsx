@@ -10,10 +10,12 @@ class QuestionFeed extends React.Component{
   }
   render(){
     const questionIndexItems = [];
+    const answers = this.props.answers;
     Object.values(this.props.questions).reverse().map((question) => {
-      questionIndexItems.push(<QuestionIndexItem currentUser={this.props.currentUser} deleteQuestion={this.props.deleteQuestion} key={question.id} question={question} firstAnswer={question.firstAnswer}/>);
+      const firstAnswer = answers[question.answerIds[0]];
+      questionIndexItems.push(<QuestionIndexItem currentUser={this.props.currentUser} deleteQuestion={this.props.deleteQuestion} key={question.id} question={question} firstAnswer={firstAnswer}/>);
     });
-    
+
     return (
       <section className="content-main">
         <FeedAddQuestionPromptContainer />

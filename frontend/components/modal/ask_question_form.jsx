@@ -72,7 +72,7 @@ class AskQuestionForm extends React.Component{
             </div>
             <div className="modal-footer">
               <a onClick={this.close}>Cancel</a>
-              <button className="session-submit-button modal-button">
+              <button type="submit" className="session-submit-button modal-button">
                 {
                   this.props.formType === "edit" ?
                    "Edit Question" : "Add Question"

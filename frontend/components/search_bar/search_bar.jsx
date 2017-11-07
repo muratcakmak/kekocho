@@ -30,7 +30,7 @@ class SearchBar extends React.Component{
 
   render(){
     return (
-      <div clasName="nav-search-container">
+      <div className="nav-search-container">
 
       <form
         className="nav-search"
