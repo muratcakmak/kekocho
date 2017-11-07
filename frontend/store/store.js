@@ -16,7 +16,6 @@ import thunk from 'redux-thunk';
 let middleware;
 
 if (process.env.NODE_ENV !== 'production') {
-  debugger
     middleware =[thunk,logger];
 } else {
     middleware = [thunk];
