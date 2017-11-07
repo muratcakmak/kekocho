@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import GreetingContainer from '../greeting/greeting_container';
 import SearchBarContainer from '../search_bar/search_bar_container';
 import QuestionButtonContainer from './question_button_container';
+import onClickOutside from 'react-onclickoutside';
 
 class NavBar extends React.Component{
   constructor(props){
@@ -10,6 +11,13 @@ class NavBar extends React.Component{
     this.state = { showDropdown: false};
     this.logout = this.logout.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.myClickOutsideHandler = this.myClickOutsideHandler.bind(this);
+
+  }
+
+  myClickOutsideHandler(evt) {
+    $("#dropdown").removeClass("header-avatar-dropdown-show");
+    this.setState({showDropdown: false});
   }
 
   logout(){
@@ -117,16 +125,13 @@ class NavBar extends React.Component{
   }
 }
 
-export default NavBar;
+var clickOutsideConfig = {
+  handleClickOutside: function(instance) {
+    return instance.myClickOutsideHandler;
+  }
+};
 
-
-
-
-
-
-
-
-
+export default onClickOutside(NavBar, clickOutsideConfig);
 
 // <div className="header-item">
 //
