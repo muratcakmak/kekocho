@@ -7,22 +7,22 @@ import QuestionButtonContainer from './question_button_container';
 class NavBar extends React.Component{
   constructor(props){
     super(props);
-
-    this.myFunction = this.myFunction.bind(this);
+    this.state = { showDropdown: false};
     this.logout = this.logout.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
   logout(){
     this.props.logout().then(() => this.props.history.push('/login'));
   }
 
-  myFunction() {
-      // let x = document.getElementById("myTopnav");
-      // if (x.className === "header-item") {
-      //     x.className += " responsive";
-      // } else {
-      //     x.className = "header-item";
-      // }
+  toggleDropdown(){
+    if(this.state.showDropdown){
+      $("#dropdown").addClass("header-avatar-dropdown-show");
+    }else{
+      $("#dropdown").removeClass("header-avatar-dropdown-show");
+    }
+    this.setState({showDropdown: !this.state.showDropdown});
   }
 
   render(){
@@ -89,10 +89,10 @@ class NavBar extends React.Component{
             </div>
 
             <div className="header-item">
-              <div className="header-avatar">
-                <div className="comment-editor-header">
+              <div className="header-avatar" onClick={this.toggleDropdown}>
+                <div className="comment-editor-header" >
                   {initials}
-                  <div className="header-avatar-dropdown">
+                  <div className="header-avatar-dropdown" id="dropdown" >
                     <a onClick={this.logout} className="header-logout">Logout</a>
                   </div>
                 </div>
