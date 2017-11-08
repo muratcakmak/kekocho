@@ -46,5 +46,6 @@
   "bugs": {
     "url": "https://github.com/muratcakmak/kekocho/issues"
   },
-  "homepage": "https://github.com/muratcakmak/kekocho#readme"
+  "homepage": "https://github.com/muratcakmak/kekocho#readme",
+  "devDependencies": {}
 }
