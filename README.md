@@ -7,7 +7,7 @@
 
 ### TLDR;
 
-Kekocho, a Single-Page Application(SPA) Quora clone, is a platform "to gain and share knowledge" that allows users to ask questions and get answers from people who have experience and knowledge in the domain.
+Kekocho, is a fully responsive Single-Page Application(SPA) Quora clone, is a platform "to gain and share knowledge" that allows users to ask questions and get answers from people who have experience and knowledge in the domain.
 
 
 ---
@@ -31,7 +31,7 @@ Authentication part of the app has two separate parts.
 ---
 
 ### Hosting
-  It is hosted on heroku. According to heroku.com, "Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud".
+  Kekocho is hosted on heroku. According to heroku.com, "Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud".
 
   Technology: Heroku
 
@@ -39,13 +39,13 @@ Authentication part of the app has two separate parts.
 
 ### Model Layer
 
-  In Quora, user has many questions. Questions have many answers and topics. Answers have many comments and belongs to a particular question. A comment belongs to an answer and a topic has many questions.
+  In Quora, a user has many questions. Questions have many answers and topics. Answers have many comments and belong to a particular question. A comment belongs to an answer and a topic has many questions.
 
-  Topic and question relationship is established by a joint table called topicQuestions. question_ids and corresponded topic ids are stored on the table.
+  Topic and question relationship is established by a join table called topicQuestions. question_ids and corresponding topic_ids are stored on the table.
 
-  When user wants to create a topic while editing a question, the request hits to the question_topic_controller. The controller checks whether the topic is already existed, and grabs the question id and create question_topic record on the table. Thanks to rails's inverse of association, everything works even though there is no database record exists while creating a joint table record.
+  When a user wants to create a topic while editing a question, the request hits the question_topic_controller. The controller checks whether the topic already exists, and grabs the question_id and creates a question_topic record on the table. With the aid of rails's ```inverse_of``` association, the backend is able to operate fluidly and consistently.
 
-  Technologies:
+#### Technologies:
     - Postgresql
     - Ruby on Rails
 
@@ -55,7 +55,7 @@ Authentication part of the app has two separate parts.
 
 ![Alt text](/readme_images/search.gif?raw=true "Search")
 
-  pg_search handles the search part of the app. It uses improved algorithms to make search faster.
+  ```pg_search``` handles the search part of the app. It uses improved algorithms to make search faster.
 
 ---
 
@@ -67,10 +67,8 @@ Authentication part of the app has two separate parts.
 
 ### Future
 
-- User should add new topics
+- User should be able to add new topics
 
 - Smoother UI
-
-- Mobile compatibility
 
 - Instant Search Results
