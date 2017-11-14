@@ -15,13 +15,13 @@ Kekocho, a Single-Page Application(SPA) Quora clone, is a platform "to gain and 
 
 Authentication part of the app has two separate parts.
 
-- Backend Authentication
-  It is controlled by Ruby on Rails framework which provides powerful libraries and secure environment. Encryption library BCrypt is repsonsible to create session tokens whenever user attempts to login. This session token is also stored in browser and send back appended every REST request.
+#### Backend Authentication
+  It is controlled by the Ruby on Rails framework which provides powerful libraries and secure environment. Encryption library BCrypt is repsonsible for the creation of session tokens whenever a user attempts to login. This session token is stored in the browser as well as the backend.
 
-- Frontend Authentication
-  react-router-dom has methods to enable the apps control the routes. Thanks to rails application.html.erb file which has is the literally the page, database is check whether user is previously logged in or not. If there is logged-in user, they are directed to the main page, otherwise they can just see the login/signup page.
+#### Frontend Authentication
+  ```react-router-dom``` is a wrapper that controls the React routes. Using rails' application.html.erb file Kekocho allows a user's session to persist. 
 
-  Technologies:
+####  Technologies:
     - Ruby on Rails
     - React
     - Redux
