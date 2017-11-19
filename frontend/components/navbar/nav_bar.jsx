@@ -98,7 +98,7 @@ class NavBar extends React.Component{
 
             <div className="header-item">
               <div className="header-avatar" onClick={this.toggleDropdown}>
-                <div className="comment-editor-header" >
+                <div className="comment-editor-header header-profile" >
                   {initials}
                   <div className="header-avatar-dropdown" id="dropdown" >
                     <a onClick={this.logout} className="header-logout">Logout</a>
