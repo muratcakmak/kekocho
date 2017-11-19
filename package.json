@@ -18,6 +18,7 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
+    "typed.js": "^2.0.6",
     "webpack": "^3.8.1"
   },
   "description": "--- ## kekocho Kekocho, a Quora clone, is a platform \"to gain and share knowledge\" that allows users to ask questions and get answers from people who have experience and knowledge in the domain.",

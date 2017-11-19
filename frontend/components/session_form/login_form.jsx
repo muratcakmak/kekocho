@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import GreetingContainer from '../greeting/greeting_container';
 import SignupFormContainer from './signup_form_container';
+import Typed from 'typed.js';
+
 class LoginForm extends React.Component {
 
   constructor(props) {
@@ -30,13 +32,25 @@ class LoginForm extends React.Component {
     this.props.login(user);
   }
   handleDemoLogin(e){
+    debugger
     e.preventDefault();
+    new Typed("#login", {
+      strings: ['oguzhanmc@gmail.com'],
+      typeSpeed: 30,
+    });
+
+    setTimeout(()=> {
+      new Typed("#password", {
+        strings: ['password'],
+        typeSpeed: 30
+      });},1000);
+
     const demoUser = {
       email: "oguzhanmc@gmail.com",
       password: "password"
     };
     this.setState(demoUser);
-    this.props.login(demoUser);
+    setTimeout(()=> this.props.login(demoUser), 2100);
   }
 
   toggleSignup(){
@@ -78,8 +92,8 @@ class LoginForm extends React.Component {
                     <h2 value={formType}><Link to={route}></Link></h2>
                     <form className="login-form" onSubmit={this.handleSubmit}>
                       <div className="login-form-inputs">
-                        <label><input className="session-input session-email-password" type={'email'} placeholder={"Email"} onChange={this.update("email")} /> </label>
-                        <label><input className="session-input session-email-password" type={'password'} placeholder={"Password"} onChange={this.update("password")} /> </label>
+                        <label><input id="login" className="session-input session-email-password" type={'email'} placeholder={"Email"} onChange={this.update("email")} /> </label>
+                        <label><input id="password" className="session-input session-email-password" type={'password'} placeholder={"Password"} onChange={this.update("password")} /> </label>
                           <div className="session-form-actions">
                           <a>Forgot Password?</a>
                           <input  type="submit" value={this.props.formType} className="session-submit-button login-signup-button"/>

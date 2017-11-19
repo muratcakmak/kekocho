@@ -158,7 +158,7 @@
 .search-input{
   border: none;
   font-size: 14px;
-  color: #e2e2e2;
+  color: black;
 }
 
 .header-avatar{
@@ -214,4 +214,8 @@
 
 .header-profile{
   cursor: pointer;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #e2e2e2;
 }
