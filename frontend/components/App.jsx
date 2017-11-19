@@ -11,7 +11,7 @@ import TopicShowContainer from './topic/topic_show_container';
 import SearchResultContainer from '../components/search_bar/search_result_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = (props) => {
-  debugger
+  
   return(
     <div>
       <ProtectedRoute path="/" component={NavBarContainer} />

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AnswerEditorContainer from '../answer_editor/answer_editor_container';
 import AnswerIndexItemContainer from './answer_index_item_container';
+import { compare } from '../../util/util';
 
 class QuestionShow extends React.Component{
   constructor(props){
@@ -46,24 +47,14 @@ class QuestionShow extends React.Component{
         //TODO: fix
         let answers = [];
 
-        const compare = (a,b) => {
-          if (a.id < b.id){
-            return -1;
-          }
-          if (a.id > b.id){
-            return 1;
-          }
-          return 0;
-        };
-
         if(this.props.answers){
-          answers = this.props.answers.sort(compare).reverse().map((answer) =>{
+          answers = this.props.answers.sort(compare).map((answer) =>{
             return (
               <AnswerIndexItemContainer key={answer.id} answer={answer} currentUser={this.props.currentUser} />
             );
           });
         }
-        debugger
+
         console.log( question.questionAuthorId + "  " + this.props.currentUser.id )
         return (
           <div className="qs-wrapper">

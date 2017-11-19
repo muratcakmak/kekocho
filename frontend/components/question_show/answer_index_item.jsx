@@ -4,6 +4,7 @@ import EditAnswerEditorContainer from '../edit-answer-editor/edit_answer_editor_
 import CommentEditorContainer from '../comment_editor/comment_editor_container';
 import CommentIndexItemContainer from '../question_show/comment_index_item_container';
 import ReadMore from '../question_show/read_more';
+import { compare } from '../../util/util';
 
 class AnswerIndexItem extends React.Component{
   constructor(props){
@@ -53,7 +54,7 @@ class AnswerIndexItem extends React.Component{
     const initials = answer.authorName.split(" ").map((n)=>n[0]).join("");
     let comments = [];
     if(this.props.comments){
-      comments = this.props.comments.map((comment) =>{
+      comments = this.props.comments.sort(compare).map((comment) =>{
         return (
           <CommentIndexItemContainer key={comment.id} comment={ comment } />
         );

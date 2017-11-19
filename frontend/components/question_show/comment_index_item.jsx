@@ -23,7 +23,7 @@ class CommentIndexItem extends React.Component{
   }
 
   render(){
-    debugger
+    
     const comment = this.props.comment;
     const initials = comment.authorName.split(" ").map((n)=>n[0]).join("");
     console.log(comment.commentAuthorId + "  " + this.props.currentUserId);

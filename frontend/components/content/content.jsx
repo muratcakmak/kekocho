@@ -5,7 +5,7 @@ import SideBarContainer from './side_bar_container';
 
 class Content extends React.Component{
   render(){
-    debugger
+    
     return (
       <div>
         <div className="content">

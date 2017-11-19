@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
     this.props.login(user);
   }
   handleDemoLogin(e){
-    debugger
+    
     e.preventDefault();
     new Typed("#login", {
       strings: ['oguzhanmc@gmail.com'],
