@@ -10,6 +10,13 @@
   box-shadow: 0 1px 1px 0 rgba(200, 200, 200, 0.6);
   font-size: 12px;
   line-height: 1.4;
+  cursor: pointer;;
+}
+
+.session-submit-button:disabled,
+.session-submit-button[disabled]{
+  background: #96bfe4;
+  cursor: default;
 }
 
 .session-form-container {

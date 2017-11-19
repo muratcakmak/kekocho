@@ -64,14 +64,8 @@
 
 .header-question-button {
   font-size: 14px;
-  padding: 5px;
   white-space: nowrap;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   transition: opacity ease-in-out 100ms,color ease-in-out 100ms,background-color ease-in-out 100ms,border-color ease-in-out 100ms;
   border-radius: 3px;
@@ -79,7 +73,6 @@
   display: inline-block;
   font-weight: 500;
   outline: 0;
-  padding: 3px 7px 4px 7px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -87,6 +80,8 @@
   background: #b92b27;
   color: #fff;
   padding: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .header-hide{
