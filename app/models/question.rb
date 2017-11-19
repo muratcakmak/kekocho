@@ -5,6 +5,8 @@ class Question < ApplicationRecord
    foreign_key: :question_author_id,
    class_name: :User
 
+  validates :body, presence:true
+
   has_many :answers, dependent: :destroy
 
   has_many :question_topics, dependent: :destroy, inverse_of: :question
