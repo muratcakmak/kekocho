@@ -5,6 +5,7 @@ export const RECEIVE_TOPIC = 'RECEIVE_TOPIC';
 export const RECEIVE_TOPIC_QUESTIONS = "RECEIVE_TOPIC_QUESTIONS";
 
 export const receiveTopic = topic => {
+  debugger
   return ({
     type: RECEIVE_TOPIC,
     topic

@@ -2,16 +2,19 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
+import { createTopic } from '../../actions/topic_actions';
 
 class Topic extends React.Component{
   constructor(props){
     super(props);
     this.state = {
       addTopic: false,
+      topicName: "",
     };
     this.toggleInput = this.toggleInput.bind(this);
     this.myClickOutsideHandler = this.myClickOutsideHandler.bind(this);
-
+    this.createTopic = this.createTopic.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   toggleInput(){
@@ -20,6 +23,18 @@ class Topic extends React.Component{
   myClickOutsideHandler(evt) {
     console.log(evt);
     this.setState({addTopic: false});
+  }
+
+
+  handleChange(e){
+    this.setState({ topicName: e.target.value});
+    console.log(this.state.topicName);
+  }
+
+  createTopic(e){
+    e.preventDefault();
+    console.log(this.state.topicName);
+    this.props.createTopic({topic_name: this.state.topicName, question_id: this.props.question.id});
   }
 
   render(){
@@ -38,13 +53,12 @@ class Topic extends React.Component{
             topicLists ?
             topicLists :
             "Nothing to show"
-
           }
 
             {
               this.state.addTopic ?
-              <form>
-                <input></input>
+              <form onChange={this.handleChange} onSubmit={this.createTopic}>
+                <input value={this.state.topicName} ></input>
               </form>
               :
               <button onClick={this.toggleInput} className="header-question-button">Add Topic</button>
@@ -62,6 +76,7 @@ var clickOutsideConfig = {
 
 const mapStateToProps = (state, ownProps) => {
   return{
+    question: state.entities.questions[ownProps.match.params.questionId],
     topicIds : state.entities.questions[ownProps.match.params.questionId].topicIds,
     topics : state.entities.questions[ownProps.match.params.questionId].topics,
   };
@@ -69,6 +84,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
+    createTopic: (topic) => dispatch(createTopic(topic))
   };
 };
 

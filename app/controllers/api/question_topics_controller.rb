@@ -20,7 +20,9 @@ class Api::QuestionTopicsController < ApplicationController
   end
 
   # TODO: Destroy
+  def destroy
 
+  end
 
   def question_topic_params
     params.require(:question_topic).permit(:question_id, :topic_name)

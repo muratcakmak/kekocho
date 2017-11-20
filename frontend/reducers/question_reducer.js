@@ -27,7 +27,6 @@ const QuestionReducer = (state = defaultState, action) => {
       array.indexOf(newItem) === -1 ? array.push(newItem) : console.log("This item already exists");
       return newState;
     case REMOVE_ANSWER:
-
       newState = merge({}, state);
       const idx = newState[action.answer.questionId].answerIds.indexOf(action.answer.id);
       newState[action.answer.questionId].answerIds.splice(idx, 1);
@@ -35,6 +34,7 @@ const QuestionReducer = (state = defaultState, action) => {
     case RECEIVE_TOPIC:
       newState = merge({}, state);
       newState[action.topic.questionId].topicIds.push(action.topic.id);
+      newState[action.topic.questionId].topics[action.topic.topicId] = {id: action.topicId, name: action.topic.name};
       return newState;
     default:
       return state;
