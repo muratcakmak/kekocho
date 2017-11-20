@@ -6,6 +6,13 @@ export const createTopic = (question_topic)=> {
   });
 };
 
+export const deleteTopic = (topicId)=> {
+  return $.ajax({
+    method: "delete",
+    url: `api/question_topics/${topicId}`,
+  });
+};
+
 export const requestTopicQuestions = (topicId) => {
   return $.ajax({
     method: "get",

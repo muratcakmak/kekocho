@@ -2,7 +2,7 @@ import merge from 'lodash/merge';
 
 import { RECEIVE_FEED_DATA } from '../actions/feed_actions';
 import { RECEIVE_QUESTION } from '../actions/question_actions';
-import { RECEIVE_TOPIC } from '../actions/topic_actions';
+import { RECEIVE_TOPIC, REMOVE_TOPIC } from '../actions/topic_actions';
 
 const defaultState = { };
 
@@ -17,6 +17,11 @@ const TopicReducer = (state = defaultState, action) => {
     case RECEIVE_TOPIC:
       newState = merge({}, state);
       newState[action.topic.id] = action.topic;
+      return newState;
+    case REMOVE_TOPIC:
+      debugger
+      newState = merge({}, state);
+      delete newState[action.topicId];
       return newState;
     default:
       return state;

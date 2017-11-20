@@ -4,7 +4,7 @@ import difference from 'lodash/difference';
 import { RECEIVE_QUESTION, REMOVE_QUESTION } from '../actions/question_actions';
 import { RECEIVE_FEED_DATA } from '../actions/feed_actions';
 import { RECEIVE_ANSWER, REMOVE_ANSWER } from '../actions/answer_actions';
-import { RECEIVE_TOPIC } from '../actions/topic_actions';
+import { RECEIVE_TOPIC, REMOVE_TOPIC } from '../actions/topic_actions';
 
 const defaultState = { };
 
@@ -35,6 +35,14 @@ const QuestionReducer = (state = defaultState, action) => {
       newState = merge({}, state);
       newState[action.topic.questionId].topicIds.push(action.topic.id);
       newState[action.topic.questionId].topics[action.topic.topicId] = {id: action.topicId, name: action.topic.name};
+      return newState;
+
+    case REMOVE_TOPIC:
+    debugger
+      newState = merge({}, state);
+      const index = newState[action.topic.questionId].topicIds.indexOf(state.topicId);
+      newState[action.topic.questionId].topicIds.splice(index,1);
+      delete newState[action.topic.questionId].topics[action.topicId];
       return newState;
     default:
       return state;

@@ -21,7 +21,12 @@ class Api::QuestionTopicsController < ApplicationController
 
   # TODO: Destroy
   def destroy
-
+    @question_topic = QuestionTopic.find(params[:id])
+    if @question_topic.destroy
+      render :show
+    else
+      render json: @question_topic.full_messages, status: 422
+    end
   end
 
   def question_topic_params
