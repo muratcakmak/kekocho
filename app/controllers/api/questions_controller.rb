@@ -34,7 +34,7 @@ class Api::QuestionsController < ApplicationController
   def destroy
     @question = Question.find(params[:id])
     if @question.destroy
-      render :destroy
+      render :show
     else
       render json: @question.errors.full_messages, status: 422
     end
