@@ -23,10 +23,9 @@ class CommentIndexItem extends React.Component{
   }
 
   render(){
-    
+
     const comment = this.props.comment;
     const initials = comment.authorName.split(" ").map((n)=>n[0]).join("");
-    console.log(comment.commentAuthorId + "  " + this.props.currentUserId);
     return (
       <div className="comment-wrapper">
         <div className="comment-editor-header">

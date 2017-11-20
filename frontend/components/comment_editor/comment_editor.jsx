@@ -35,7 +35,6 @@ class CommentEditor extends React.Component {
   }
 
   handleChange(html){
-    console.log(html);
     if(html === "<p><br></p>"){
       this.setState({ body: ""});
     }else{

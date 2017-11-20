@@ -60,8 +60,6 @@ class QuestionShow extends React.Component{
             );
           });
         }
-
-        console.log( question.questionAuthorId + "  " + this.props.currentUser.id )
         return (
           <div className="qs-wrapper">
             <div className="qs-content">

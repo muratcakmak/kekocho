@@ -6,8 +6,6 @@ import { createAnswer } from '../../actions/answer_actions';
 import { showModal } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
-  console.log(Object.keys(state.entities.questions));
   if( Object.keys(state.entities.questions).length !== 0){
     return {
       answers: state.entities.questions[ownProps.match.params.questionId].answerIds.map(id => state.entities.answers[id]),
