@@ -11,7 +11,6 @@ export const receiveQuestion = question => {
 };
 
 export const removeQuestion = question => {
-  
   return({
     type: REMOVE_QUESTION,
     question
@@ -31,6 +30,5 @@ export const deleteQuestion = questionId => dispatch => {
 };
 
 export const updateQuestion = question => dispatch => {
-  
   return QuestionApiUtil.updateQuestion(question).then(question => dispatch(receiveQuestion(question)));
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import AnswerEditorContainer from '../answer_editor/answer_editor_container';
 import AnswerIndexItemContainer from './answer_index_item_container';
 import { compare } from '../../util/util';
@@ -14,6 +14,7 @@ class QuestionShow extends React.Component{
     };
     this.openEditModal = this.openEditModal.bind(this);
     this.toggleAnswerComponent = this.toggleAnswerComponent.bind(this);
+    this.deleteQuestion = this.deleteQuestion.bind(this);
   }
 
   componentDidMount(){
@@ -38,6 +39,11 @@ class QuestionShow extends React.Component{
     this.props.showModal("edit", this.props.question.id);
   }
 
+  deleteQuestion(){
+    //It needs to wait until promise returns, it is hotfix
+    this.props.deleteQuestion(this.props.question.id).then(()=> {} );
+    this.props.history.push("/");
+  }
   render(){
     const question = this.props.question;
     if (!question) {
@@ -67,6 +73,7 @@ class QuestionShow extends React.Component{
                   {question.questionAuthorId === this.props.currentUser.id ?
                     <div className="header-question-button-container">
                       <a onClick={this.openEditModal} className="qs-edit">Edit Question</a>
+                      <a onClick={this.deleteQuestion} className="qs-delete">Delete Question</a>
                     </div>  :
                     null
                   }

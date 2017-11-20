@@ -59,7 +59,7 @@ class AnswerEditor extends React.Component {
             />
         </div>
         <div className="answer-footer">
-          <button className="session-submit-button answer-button">Submit</button>
+          <button disabled={!this.state.body} className="session-submit-button answer-button">Submit</button>
           <a onClick={this.toggleAnswerComponent} style={{marginLeft: "10px"}} >Cancel</a>
         </div>
       </form>
