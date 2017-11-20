@@ -27,7 +27,7 @@ const QuestionReducer = (state = defaultState, action) => {
       array.indexOf(newItem) === -1 ? array.push(newItem) : console.log("This item already exists");
       return newState;
     case REMOVE_ANSWER:
-      
+
       newState = merge({}, state);
       const idx = newState[action.answer.questionId].answerIds.indexOf(action.answer.id);
       newState[action.answer.questionId].answerIds.splice(idx, 1);

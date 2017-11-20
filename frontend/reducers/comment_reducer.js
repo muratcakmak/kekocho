@@ -20,7 +20,7 @@ const CommentReducer = ( state = defaultState, action ) => {
       delete newState[action.comment.id];
       return newState;
     case RECEIVE_QUESTION:
-    
+
       return merge({}, state, action.question.comments);
     default:
       return state;
