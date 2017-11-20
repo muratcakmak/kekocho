@@ -72,7 +72,7 @@ class CommentEditor extends React.Component {
         </div>
         <div className="comment-editor-footer">
           <button disabled={!this.state.body} type="submit" className="session-submit-button answer-button">Comment</button>
-          <a onClick={this.toggleShowComments} style={{marginLeft: "10px", fontFamily: "Arial"}}>Show</a>
+          <a onClick={this.toggleShowComments} style={{marginLeft: "10px", fontFamily: "Arial"}}>{this.props.show ? "Hide" : "Show"}</a>
         </div>
       </form>
       </div>

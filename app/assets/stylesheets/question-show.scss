@@ -60,16 +60,20 @@
 }
 
 .qs-answer-button{
-  padding-left: 26px;
-  background-image: url(//qsf.ec.quoracdn.net/-3-images.new_grid.ask_blue.svg-26-dfa8709bc22d57f8.svg);
-  background-repeat: no-repeat;
-  background-size: 15px 15px;
-  background-position: 6px center;
+  background-color: #f1f8fb;
+  display: flex;
+  align-items: center;
   color: #2b6dad;
+  border: 1px solid #bbcadc;
 }
 
 .qs-answer-editor{
   margin-bottom: 10px;
+}
+
+.answer-label{
+  font-size: 13px;
+  font-weight: 500;
 }
 
 

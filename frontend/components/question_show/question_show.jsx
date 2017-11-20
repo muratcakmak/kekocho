@@ -67,7 +67,7 @@ class QuestionShow extends React.Component{
                 <div className="qs-q-text">{question.body}</div>
                 <div className="qs-ask">Asked by {question.authorName} </div>
                 <div className="qs-button-wrapper">
-                  <button onClick={ this.toggleAnswerComponent } className="qs-answer-button"> Answer </button>
+                  <button onClick={ this.toggleAnswerComponent } className="qs-answer-button"><span className="answer-icon"><img src={window.answerIcon}></img></span> <span className="answer-label">Answer</span> </button>
                   {question.questionAuthorId === this.props.currentUser.id ?
                     <div className="header-question-button-container">
                       <a onClick={this.openEditModal} className="qs-edit">Edit Question</a>

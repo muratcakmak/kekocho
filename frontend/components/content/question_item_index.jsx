@@ -39,8 +39,7 @@ class QuestionIndexItem extends React.Component {
               <h2><Link to={`/questions/${this.props.question.id}`}>{this.props.question.body}</Link></h2>
               { answer ?
                 <AnswerIndexItemContainer key={answer.id} answer={answer} currentUser={this.props.currentUser} />:
-                  <button onClick={ this.toggleAnswerComponent } className="qs-answer-button"> Answer </button>
-
+                  <button onClick={ this.toggleAnswerComponent } className="qs-answer-button"><span className="answer-icon"><img src={window.answerIcon}></img></span> <span className="answer-label">Answer</span> </button>
               }
             </div>
             <footer className="question-footer">
