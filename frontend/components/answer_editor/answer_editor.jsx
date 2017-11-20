@@ -42,11 +42,15 @@ class AnswerEditor extends React.Component {
 
   render () {
     const user = this.props.user;
+    const initials = user.userName.split(" ").map((n)=>n[0]).join("");
     return (
       <div className="answer-wrapper">
       <form className="answer-form" onSubmit={this.handleAnswer} >
         <div className="answer-header">
-          <p>{user.firstName} {user.lastName}</p>
+          <div className="comment-editor-header">
+            {initials}
+          </div>
+          <p className="answer-header-username">{user.firstName} {user.lastName}</p>
         </div>
         <div className="answer-body">
           <ReactQuill

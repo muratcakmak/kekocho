@@ -7,10 +7,16 @@
 }
 
 .comment-editor-body{
-  width: 360px;
+  min-width: 100px;
+  max-width: 474px;
+  width: 100%;
 }
 
 .comment-editor-footer{
+  display: flex;
+  margin-right: 5px;
+  align-items: center;
+  align-content: center;
 }
 
 .comment-editor-body  p {
