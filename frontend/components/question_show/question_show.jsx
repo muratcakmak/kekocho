@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import AnswerEditorContainer from '../answer_editor/answer_editor_container';
 import AnswerIndexItemContainer from './answer_index_item_container';
 import { compare } from '../../util/util';
+import Topic from './topic';
 
 class QuestionShow extends React.Component{
   constructor(props){
@@ -64,6 +65,9 @@ class QuestionShow extends React.Component{
           <div className="qs-wrapper">
             <div className="qs-content">
               <section className="qs-content-main">
+                <div>
+                  <Topic />
+                </div>
                 <div className="qs-q-text">{question.body}</div>
                 <div className="qs-ask">Asked by {question.authorName} </div>
                 <div className="qs-button-wrapper">
