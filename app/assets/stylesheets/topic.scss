@@ -1,0 +1,38 @@
+.topic-wrapper{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.topic-item{
+  margin-right: 5px;
+  background: #f4f4fa;
+  border-radius: 10px;
+  padding: 5px;
+  color: #808393;
+}
+
+.topic-button{
+  background-color: #f1f8fb;
+  display: flex;
+  align-items: center;
+  color: #2b6dad;
+  border: 1px solid #bbcadc;
+}
+
+.close-btn {
+    margin-left: 4px;
+    font-size: 8px;
+    color: black;
+    border-radius: 20px;
+}
+
+.close-btn > a {
+    font-size: 8px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.close-btn > a:hover {
+  background: gray;
+}

@@ -2,7 +2,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
-import { createTopic } from '../../actions/topic_actions';
+import { createTopic, deleteTopic } from '../../actions/topic_actions';
 
 class Topic extends React.Component{
   constructor(props){
@@ -14,6 +14,7 @@ class Topic extends React.Component{
     this.toggleInput = this.toggleInput.bind(this);
     this.myClickOutsideHandler = this.myClickOutsideHandler.bind(this);
     this.createTopic = this.createTopic.bind(this);
+    this.deleteTopic = this.deleteTopic.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -21,34 +22,40 @@ class Topic extends React.Component{
     this.setState({addTopic: !this.state.addTopic});
   }
   myClickOutsideHandler(evt) {
-    console.log(evt);
     this.setState({addTopic: false});
   }
 
+  deleteTopic(topicId){
+    const questionId = this.props.question.id;
+    return () => {
+      return this.props.deleteTopic({ topicId, questionId });
+    };
+  }
 
   handleChange(e){
     this.setState({ topicName: e.target.value});
-    console.log(this.state.topicName);
   }
 
   createTopic(e){
     e.preventDefault();
-    console.log(this.state.topicName);
     this.props.createTopic({topic_name: this.state.topicName, question_id: this.props.question.id});
   }
 
   render(){
     const topics = this.props.topics;
+    const topicIds = this.props.topicIds;
     let topicLists = [];
-    if(topics){
-      Object.values(topics).map((topic)=> {
+    if(topicIds.length > 0){
+      topicIds.map((topicId)=> {
+        const topic = topics[topicId];
+
         topicLists.push(
-          <li>{topic.name}</li>
+          <li key={topic.id} className="topic-item">{topic.name}<span><a onClick={this.deleteTopic(topic.id)} className="close-btn">X</a></span></li>
         );
       });
       }
     return (
-        <div>
+        <div className="topic-wrapper">
           {
             topicLists ?
             topicLists :
@@ -61,8 +68,8 @@ class Topic extends React.Component{
                 <input value={this.state.topicName} ></input>
               </form>
               :
-              <button onClick={this.toggleInput} className="header-question-button">Add Topic</button>
-            }
+              <button onClick={ this.toggleInput } className="topic-button"><span className="answer-icon"><img src={window.answerIcon}></img></span> <span className="answer-label">Add Topic</span> </button>
+          }
         </div>
     );
   }
@@ -75,16 +82,18 @@ var clickOutsideConfig = {
 };
 
 const mapStateToProps = (state, ownProps) => {
+
   return{
     question: state.entities.questions[ownProps.match.params.questionId],
     topicIds : state.entities.questions[ownProps.match.params.questionId].topicIds,
-    topics : state.entities.questions[ownProps.match.params.questionId].topics,
+    topics : state.entities.topics ? state.entities.topics : state.entities.questions[ownProps.match.params.questionId].topics,
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    createTopic: (topic) => dispatch(createTopic(topic))
+    createTopic: (topic) => dispatch(createTopic(topic)),
+    deleteTopic: (topicId) => dispatch(deleteTopic(topicId)),
   };
 };
 

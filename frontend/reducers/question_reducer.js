@@ -32,17 +32,17 @@ const QuestionReducer = (state = defaultState, action) => {
       newState[action.answer.questionId].answerIds.splice(idx, 1);
       return newState;
     case RECEIVE_TOPIC:
-      newState = merge({}, state);
-      newState[action.topic.questionId].topicIds.push(action.topic.id);
-      newState[action.topic.questionId].topics[action.topic.topicId] = {id: action.topicId, name: action.topic.name};
-      return newState;
 
-    case REMOVE_TOPIC:
-    debugger
       newState = merge({}, state);
-      const index = newState[action.topic.questionId].topicIds.indexOf(state.topicId);
-      newState[action.topic.questionId].topicIds.splice(index,1);
-      delete newState[action.topic.questionId].topics[action.topicId];
+      newState[action.topic.questionId].topicIds.push(action.topic.topicId);
+      newState[action.topic.questionId].topics[action.topic.topicId] = {id: action.topic.topicId, name: action.topic.name};
+      return newState;
+    case REMOVE_TOPIC:
+
+      newState = merge({}, state);
+      const index = newState[action.questionTopic.questionId].topicIds.indexOf(action.questionTopic.topicId);
+      newState[action.questionTopic.questionId].topicIds.splice(index,1);
+      delete newState[action.questionTopic.questionId].topics[action.topicId];
       return newState;
     default:
       return state;

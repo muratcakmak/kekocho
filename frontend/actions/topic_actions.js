@@ -6,8 +6,6 @@ export const REMOVE_TOPIC = 'REMOVE_TOPIC';
 
 export const RECEIVE_TOPIC_QUESTIONS = "RECEIVE_TOPIC_QUESTIONS";
 
-
-
 export const receiveTopic = topic => {
   return ({
     type: RECEIVE_TOPIC,
@@ -15,10 +13,10 @@ export const receiveTopic = topic => {
   });
 };
 
-export const removeTopic = topicId => {
+export const removeTopic = questionTopic => {
   return ({
     type: REMOVE_TOPIC,
-    topicId
+    questionTopic
   });
 };
 
@@ -33,8 +31,8 @@ export const createTopic = questionTopic => dispatch => {
   return TopicApiUtil.createTopic(questionTopic).then(questionTopic => dispatch(receiveTopic(questionTopic)));
 };
 
-export const deleteTopic = topicId => dispatch => {
-  return TopicApiUtil.deleteTopic(topicId).then(questionTopic => dispatch(removeTopic(topicId)));
+export const deleteTopic = questionTopic => dispatch => {
+  return TopicApiUtil.deleteTopic(questionTopic).then(questionTopic => dispatch(removeTopic(questionTopic)));
 };
 
 export const requestTopicQuestions = topicId => dispatch => {

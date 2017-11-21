@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :question_topics, only: [:create, :destroy]
   end
 
+  delete '/api/question_topics/:topic_id/:question_id', to: 'api/question_topics#destroy'
+
+
   namespace :api do
       get 'search/:query', to: 'search#index'
   end

@@ -15,13 +15,14 @@ const TopicReducer = (state = defaultState, action) => {
     case RECEIVE_QUESTION:
       return merge({}, state, action.question.topics);
     case RECEIVE_TOPIC:
+
       newState = merge({}, state);
-      newState[action.topic.id] = action.topic;
+      newState[action.topic.topicId] = {id: action.topic.topicId, name: action.topic.name};
       return newState;
     case REMOVE_TOPIC:
-      debugger
+
       newState = merge({}, state);
-      delete newState[action.topicId];
+      delete newState[action.questionTopic.topicId];
       return newState;
     default:
       return state;

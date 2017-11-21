@@ -21,7 +21,7 @@ class Api::QuestionTopicsController < ApplicationController
 
   # TODO: Destroy
   def destroy
-    @question_topic = QuestionTopic.find(params[:id])
+    @question_topic = QuestionTopic.find_by(topic_id: params[:topic_id], question_id: params[:question_id])
     if @question_topic.destroy
       render :show
     else
