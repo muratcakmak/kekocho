@@ -40,11 +40,10 @@ class SearchBar extends React.Component{
         method: "GET",
         url: `api/search/${value}`
       }).then((searchResult) => {
-        if(searchResult.Question.length > 0){
-          this.setState({
-            suggestions: searchResult.Question
-          });
-        }
+        console.log(searchResult);
+        this.setState({
+          suggestions: searchResult.Question
+        });
       });
     }
   }
