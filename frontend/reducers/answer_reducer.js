@@ -12,7 +12,7 @@ const AnswerReducer = (state = defaultState, action) => {
   let newState = {};
   switch (action.type) {
     case RECEIVE_FEED_DATA:
-      return merge({}, defaultState, action.answers);
+      return merge({}, state, action.answers);
     case RECEIVE_ANSWER:
       newState = merge({}, state);
       newState[action.answer.id] = action.answer;

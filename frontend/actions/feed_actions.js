@@ -18,3 +18,10 @@ export const requestFeedData = () => dispatch => {
     (errors) => dispatch(receiveErrors(errors))
   );
 };
+
+export const requestFeedDataWithPage = (page) => dispatch => {
+  return FeedApiUtil.requestFeedDataWithPage(page).then(
+    (feedData) => dispatch(receiveFeedData(feedData)),
+    (errors) => dispatch(receiveErrors(errors))
+  );
+};

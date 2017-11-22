@@ -1,9 +1,10 @@
 class Api::QuestionsController < ApplicationController
   def index
-    @questions = Question.all.includes(:answers)
+    @questions = Question.order('created_at DESC').paginate(:page => params[:page], per_page: 5).includes(:answers)
   end
 
   def new
+
   end
 
   def create

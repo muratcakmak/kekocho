@@ -35,6 +35,8 @@ gem 'pg_search'
 gem 'pry-rails'
 
 gem 'jquery-rails'
+
+gem 'will_paginate'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'rails_12factor'
