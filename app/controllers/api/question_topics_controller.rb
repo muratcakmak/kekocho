@@ -7,7 +7,7 @@ class Api::QuestionTopicsController < ApplicationController
     question = Question.find(params[:question_topic][:question_id])
     topic_name = params[:question_topic][:topic_name]
 # To prevent duplication of the topic
-    topic = Topic.find_or_create_by(name: topic_name)
+    topic = Topic.find_or_create_by(name: topic_name.downcase.titleize)
     @question_topic = QuestionTopic.new()
     @question_topic.question = question
     @question_topic.topic = topic
