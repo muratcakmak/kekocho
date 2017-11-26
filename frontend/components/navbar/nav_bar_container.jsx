@@ -6,6 +6,7 @@ import { logout } from '../../actions/session_actions';
 const mapStateToProps = (state, ownProps) => {
   return{
     user: state.session.currentUser,
+    path: ownProps.location.pathname,
   };
 };
 
