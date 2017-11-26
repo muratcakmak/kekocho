@@ -6,11 +6,11 @@ import { deleteAnswer } from '../../actions/answer_actions';
 import { deleteQuestion } from '../../actions/question_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  
   return{
     currentUser: state.session.currentUser,
     questions: state.entities.questions,
     answers: state.entities.answers,
+    path: ownProps.history.location.pathname,
   };
 };
 
