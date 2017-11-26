@@ -8,7 +8,7 @@
   padding-left: 18px;
   padding-right: 18px;
   padding-top: 16px;
-  font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
+  // font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
 }
 
 .question-topic{
@@ -88,4 +88,7 @@
   align-items: center;
   justify-content: center;
   height: 24px;
+}
+#question{
+  font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
 }

@@ -19,9 +19,9 @@ const App = (props) => {
     <Switch>
         <Route path="/search" component={SearchResultContainer} />
         <Route exact path="/topics/:topicId" component={TopicShowContainer}/>
+        <Route path="/answers" component={Content} />
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
-        <AuthRoute path="/answers" component={Content} />
         <ProtectedRoute exact path="/" component={Content} />
         <Route exact path="/questions/:questionId" component={QuestionShowContainer}/>
       </Switch>
