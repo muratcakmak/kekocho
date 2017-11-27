@@ -8,7 +8,6 @@ const UserTopicReducer = (state = defaultState, action) => {
   let newState = {};
   switch (action.type) {
     case RECEIVE_FEED_DATA:
-      debugger
       return merge({}, state, action.userTopics);
     default:
       return state;

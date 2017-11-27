@@ -20,7 +20,6 @@ class Content extends React.Component{
   }
 
   componentDidMount(){
-    debugger
     if(this.props.path === "/answers"){
       this.props.requestFeedDataWithPage(1);
     }
