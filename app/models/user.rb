@@ -5,6 +5,7 @@ class User < ApplicationRecord
   attr_reader :password
 
   has_many :questions, dependent: :destroy
+  has_many :upvotes, dependent: :destroy
   has_many :user_topics
 
   has_many :topics,
