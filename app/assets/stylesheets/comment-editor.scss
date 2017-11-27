@@ -1,7 +1,7 @@
 .comment-editor-form{
   display: flex;
   background: #f6f6f6;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   min-height: 50px;
 }
@@ -36,6 +36,23 @@
   background: #b92b27;
   position: relative;
   display: inline-block;
+}
+
+.comment-editor-avatar{
+  // font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  min-width: 30px;
+  min-height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 100%;
+  color: rgb(255, 255, 255);
+  background: #b92b27;
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
 

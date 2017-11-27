@@ -54,11 +54,12 @@
   display: flex;
   flex-direction: row-reverse;
   min-width: 180px;
-  background: image-url('search.png') no-repeat 10px center;
+  // background: image-url('search.png') no-repeat 10px center;
   background-size: 15px 15px;
   outline: 0;
   border: 1px solid #e2e2e2;
   border-radius: 3px;
+  border: none;
   box-shadow: inset 0 1px 1px rgba(200, 200, 200, 0.3);
 }
 
@@ -136,6 +137,21 @@
   line-height: 50px;
 }
 
+
+.header-avatar-red{
+  // font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  min-width: 32px;
+  min-height: 32px;
+  font-size: 16px;
+  line-height: 32px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 100%;
+  color: rgb(255, 255, 255);
+  background: #b92b27;
+  position: relative;
+  display: inline-block;
+}
 
 .nav-bar-title{
   font-size: 14px;
