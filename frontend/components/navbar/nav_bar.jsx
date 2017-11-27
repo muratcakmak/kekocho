@@ -25,7 +25,7 @@ class NavBar extends React.Component{
   }
 
   toggleDropdown(){
-    if(this.state.showDropdown){
+    if(!this.state.showDropdown){
       $("#dropdown").addClass("header-avatar-dropdown-show");
     }else{
       $("#dropdown").removeClass("header-avatar-dropdown-show");
