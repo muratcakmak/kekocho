@@ -75,3 +75,20 @@ else
     end
   end
 end
+
+user_topics = []
+@topics.each do |topic|
+  user_topics.push(topic)
+end
+
+if user_topics.empty?
+  json.topics({})
+else
+  json.userTopics do
+    user_topics.each do |topic|
+      json.set! topic.id do
+        json.extract! topic, :id, :name
+      end
+    end
+  end
+end

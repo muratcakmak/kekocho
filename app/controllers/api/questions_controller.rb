@@ -1,6 +1,7 @@
 class Api::QuestionsController < ApplicationController
   def index
     @questions = Question.order('created_at DESC').paginate(:page => params[:page], per_page: 5).includes(:answers)
+    @topics = Topic.limit(5)
   end
 
   def new
