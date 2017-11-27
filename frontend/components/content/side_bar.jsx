@@ -6,7 +6,7 @@ class SideBar extends React.Component{
   render(){
     const topicElements = this.props.topics.map((topic) => {
       return (
-        <Link to={`topics/${topic.id}`} className="sidebar-item" key={topic.id}> {topic.name} </Link>
+        <Link to={`/topics/${topic.id}`} className="sidebar-item" key={topic.id}> {topic.name} </Link>
       );
     });
     return (
