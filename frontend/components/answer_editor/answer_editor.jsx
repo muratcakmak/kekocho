@@ -31,7 +31,11 @@ class AnswerEditor extends React.Component {
   }
 
   handleChange(html){
-    this.setState({ body: html});
+    if(html === "<p><br></p>"){
+      this.setState({ body: ""});
+    }else{
+      this.setState({ body: html});
+    }
   }
 
 

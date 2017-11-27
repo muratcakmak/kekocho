@@ -58,13 +58,13 @@ class CommentEditor extends React.Component {
     return (
       <div className="answer-wrapper">
       <form className="comment-editor-form" onSubmit={this.handleComment} >
-        <div className="comment-editor-header">
+        <div className="comment-editor-avatar">
           {initials}
         </div>
         <div className="comment-editor-body">
           <ReactQuill
             onChange={this.handleChange}
-            placeholder="Write your comment"
+            placeholder="Your comment"
             theme={ null }
             width="320"
             value={ this.state.body }

@@ -19,17 +19,22 @@ class Content extends React.Component{
     };
   }
 
+  componentDidMount(){
+    debugger
+    if(this.props.path === "/answers"){
+      this.props.requestFeedDataWithPage(1);
+    }
+  }
+
   componentWillReceiveProps(newProps){
     //TODO: Request answers
-    debugger
     that.setState({ loading: false });
   }
 
   atTheEndOfThePage(){
     const that = this;
-    console.log(this.props.path);
     $(window).scroll(function () {
-      if (($(window).scrollTop() >= $(document).height() - $(window).height() - 10) &&( Date.now() > (that.lastCall + 1000) )) {
+      if (that.props.path === '/' && ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) &&( Date.now() > (that.lastCall + 1000) )) {
         const nextPage = that.state.page + 1;
         if(that.state.root){
           that.setState({ loading: true });
@@ -52,7 +57,6 @@ class Content extends React.Component{
 
   render(){
     const root = this.props.path === "/";
-    console.log(root);
     return (
       <div>
         { this.atTheEndOfThePage() }
