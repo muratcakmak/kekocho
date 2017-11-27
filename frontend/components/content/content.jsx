@@ -4,6 +4,7 @@ import QuestionFeedContainer from './question_feed_container';
 import SideBarContainer from './side_bar_container';
 import { requestFeedDataWithPage } from '../../actions/feed_actions';
 import { connect } from 'react-redux';
+import { PulseLoader } from 'react-spinners';
 
 class Content extends React.Component{
   constructor(props){
@@ -14,12 +15,14 @@ class Content extends React.Component{
     this.state = {
       root: root,
       page: 1,
+      loading: false,
     };
   }
 
   componentWillReceiveProps(newProps){
     //TODO: Request answers
     debugger
+    that.setState({ loading: false });
   }
 
   atTheEndOfThePage(){
@@ -29,10 +32,18 @@ class Content extends React.Component{
       if (($(window).scrollTop() >= $(document).height() - $(window).height() - 10) &&( Date.now() > (that.lastCall + 1000) )) {
         const nextPage = that.state.page + 1;
         if(that.state.root){
+          that.setState({ loading: true });
+          setTimeout(()=>{
+            if(that.state.loading){
+              that.setState({ loading: false });
+              that.lastCall = Date.now();
+            }
+          }, 5000);
           that.props.requestFeedDataWithPage(nextPage);
           that.setState({
             page: nextPage,
           });
+
         }
         that.lastCall = Date.now();
       }
@@ -49,6 +60,12 @@ class Content extends React.Component{
           <SideBarContainer />
           <QuestionFeedContainer />
         </div>
+        { this.state.loading ?
+          <div style={{ textAlign: "center", marginBottom: "10px"}}>
+            <PulseLoader color={'#80808070'} loading={ this.state.loading } />
+          </div>
+          :
+          null }
       </div>
     );
   }
