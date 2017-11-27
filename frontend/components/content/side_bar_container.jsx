@@ -4,7 +4,7 @@ import SideBar from './side_bar';
 
 const mapStateToProps = (state, ownProps) =>{
   return {
-    topics: Object.values(state.entities.topics)
+    topics: Object.values(state.entities.userTopics)
   };
 };
 
