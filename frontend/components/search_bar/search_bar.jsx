@@ -40,7 +40,6 @@ class SearchBar extends React.Component{
         method: "GET",
         url: `api/search/${value}`
       }).then((searchResult) => {
-        console.log(searchResult);
         this.setState({
           suggestions: searchResult.Question
         });

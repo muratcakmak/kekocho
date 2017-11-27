@@ -5,6 +5,8 @@ import { RECEIVE_QUESTION, REMOVE_QUESTION } from '../actions/question_actions';
 import { RECEIVE_FEED_DATA } from '../actions/feed_actions';
 import { RECEIVE_ANSWER, REMOVE_ANSWER } from '../actions/answer_actions';
 import { RECEIVE_TOPIC, REMOVE_TOPIC } from '../actions/topic_actions';
+import { RECEIVE_TOPIC_QUESTIONS } from '../actions/topic_actions';
+
 
 const defaultState = { };
 
@@ -38,12 +40,13 @@ const QuestionReducer = (state = defaultState, action) => {
       newState[action.topic.questionId].topics[action.topic.topicId] = {id: action.topic.topicId, name: action.topic.name};
       return newState;
     case REMOVE_TOPIC:
-
       newState = merge({}, state);
       const index = newState[action.questionTopic.questionId].topicIds.indexOf(action.questionTopic.topicId);
       newState[action.questionTopic.questionId].topicIds.splice(index,1);
       delete newState[action.questionTopic.questionId].topics[action.topicId];
       return newState;
+    case RECEIVE_TOPIC_QUESTIONS:
+      return merge({}, defaultState, action.topicQuestions.questions);
     default:
       return state;
   }
