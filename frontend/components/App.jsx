@@ -11,14 +11,13 @@ import TopicShowContainer from './topic/topic_show_container';
 import SearchResultContainer from '../components/search_bar/search_result_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = (props) => {
-
   return(
     <div>
       <ProtectedRoute path="/" component={NavBarContainer} />
       <ModalContainer />
     <Switch>
         <Route path="/search" component={SearchResultContainer} />
-        <Route exact path="/topics/:topicId" component={TopicShowContainer}/>
+        <Route exact path="/topics/:topicId" component={Content}/>
         <Route path="/answers" component={Content} />
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
