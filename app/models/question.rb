@@ -9,8 +9,6 @@ class Question < ApplicationRecord
 
   has_many :answers, dependent: :destroy
 
-  has_many :upvotes, dependent: :destroy
-
   has_many :question_topics, dependent: :destroy, inverse_of: :question
 
   has_many :topics,
