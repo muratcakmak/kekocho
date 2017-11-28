@@ -12,18 +12,45 @@ class AnswerIndexItem extends React.Component{
     this.rawMarkup = this.rawMarkup.bind(this);
     this.deleteAnswer = this.deleteAnswer.bind(this);
     this.updateAnswer = this.updateAnswer.bind(this);
+    let answerId = null;
+    if(this.props.answer){
+      answerId = this.props.answer.id;
+    }
+    const userId = this.props.userId;
+    //Fix upvoted
     this.state = {
       editMode: false,
       showCommentEditor: false,
       showComments: false,
+      upvoted: false,
+      answerId: answerId,
+      userId: userId,
     };
     this.toggleEditMode = this.toggleEditMode.bind(this);
     this.toggleComments = this.toggleComments.bind(this);
+    this.toggleUpvote = this.toggleUpvote.bind(this);
   }
 
   componentDidMount(){
 
   }
+
+  toggleUpvote(){
+    debugger
+  if(this.state.upvoted){
+    debugger
+    this.props.deleteUpvote({ userId: this.state.userId, answerId: this.state.answerId });
+    this.setState({
+      upvoted: false
+    });
+  }else{
+    debugger
+    this.props.createUpvote({ user_id: this.state.userId, answer_id: this.state.answerId });
+    this.setState({
+      upvoted: true
+    });
+  }
+}
 
   componentWillReceiveProps(nextProps) {
 
@@ -83,6 +110,7 @@ class AnswerIndexItem extends React.Component{
                 </ReadMore>
               </li>
             </div>
+            <button onClick={ this.toggleUpvote } className="upvote-button">Upvote | { this.props.upvotes > 0 ? this.props.upvotes : 0}</button>
             <div className="as-footer">
               { this.props.currentUser.id === answer.answerAuthorId ?
                 <div className="as-footer-button">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import QuestionIndexItem from './question_item_index';
+import QuestionIndexItem from './question_index_item';
 import FeedAddQuestionPromptContainer from './feed_add_question_prompt_container';
 import { compare } from '../../util/util';
 

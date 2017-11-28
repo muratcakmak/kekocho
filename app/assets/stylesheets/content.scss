@@ -92,3 +92,17 @@
 #question{
   font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
 }
+
+.upvote-button{
+  box-sizing: border-box;
+  border-radius: 3px;
+  display: inline-block;
+  text-align: center;
+  background: #3e78ad;
+  color: #fff;
+  border: 1px solid #3a66ad;
+  box-shadow: 0 1px 1px 0 rgba(200, 200, 200, 0.6);
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 5px;
+}
