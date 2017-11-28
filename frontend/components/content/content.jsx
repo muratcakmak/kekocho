@@ -27,7 +27,7 @@ class Content extends React.Component{
 
   componentWillReceiveProps(newProps){
     //TODO: Request answers
-    that.setState({ loading: false });
+    this.setState({ loading: false });
   }
 
   atTheEndOfThePage(){
