@@ -5,4 +5,5 @@ class Answer < ApplicationRecord
     foreign_key: :answer_author_id,
     class_name: :User
   has_many :comments, dependent: :destroy
+  has_many :upvotes, dependent: :destroy
 end

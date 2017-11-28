@@ -1,11 +1,10 @@
 class Api::UpvotesController < ApplicationController
   def create
     debugger
-    question = Question.find(params[:upvote][:question_id])
+    answer = Answer.find(params[:upvote][:answer_id])
     user = User.find(params[:upvote][:user_id])
-# To prevent duplication of the topic
     @upvote = Upvote.new()
-    @upvote.question = question
+    @upvote.answer = answer
     @upvote.user = user
 
     if @upvote.save
@@ -17,8 +16,7 @@ class Api::UpvotesController < ApplicationController
 
   def destroy
     debugger
-    @upvote = Upvote.find_by(user_id: params[:user_id], question_id: params[:question_id])
-    debugger
+    @upvote = Upvote.find_by(user_id: params[:user_id], answer_id: params[:answer_id])
     if @upvote.destroy
       render :show
     else

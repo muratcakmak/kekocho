@@ -1,7 +1,7 @@
 class Upvote < ApplicationRecord
-  validates :question, :user, presence: true
-  validates :user_id, uniqueness: { scope: :question_id }
+  validates :answer, :user, presence: true
+  validates :user_id, uniqueness: { scope: :answer_id }
 
-  belongs_to :question
+  belongs_to :answer
   belongs_to :user
 end
