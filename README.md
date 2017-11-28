@@ -65,10 +65,17 @@ Authentication part of the app has two separate parts.
 
 ---
 
-### Future
+### DONE
 
 - User should be able to add new topics
 
 - Smoother UI
 
 - Instant Search Results
+
+- Mobile Responsive
+
+- Infinite Scrolling/Pagination
+
+### FUTURE IMPLEMENTATION
+
