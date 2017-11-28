@@ -16,13 +16,14 @@ class AnswerIndexItem extends React.Component{
     if(this.props.answer){
       answerId = this.props.answer.id;
     }
-    const userId = this.props.userId;
+    const userId = this.props.user.id;
+    const upvoted = this.props.user.upvotes.includes(this.props.answer.id);
     //Fix upvoted
     this.state = {
       editMode: false,
       showCommentEditor: false,
       showComments: false,
-      upvoted: false,
+      upvoted: upvoted,
       answerId: answerId,
       userId: userId,
     };
@@ -36,15 +37,12 @@ class AnswerIndexItem extends React.Component{
   }
 
   toggleUpvote(){
-    debugger
   if(this.state.upvoted){
-    debugger
     this.props.deleteUpvote({ userId: this.state.userId, answerId: this.state.answerId });
     this.setState({
       upvoted: false
     });
   }else{
-    debugger
     this.props.createUpvote({ user_id: this.state.userId, answer_id: this.state.answerId });
     this.setState({
       upvoted: true
@@ -110,7 +108,7 @@ class AnswerIndexItem extends React.Component{
                 </ReadMore>
               </li>
             </div>
-            <button onClick={ this.toggleUpvote } className="upvote-button">Upvote | { this.props.upvotes > 0 ? this.props.upvotes : 0}</button>
+            <button onClick={ this.toggleUpvote } className="upvote-button">{ this.props.user.upvotes.includes(answer.id) ? "Downvote" : "Upvote" } | { answer.upvotes }</button>
             <div className="as-footer">
               { this.props.currentUser.id === answer.answerAuthorId ?
                 <div className="as-footer-button">

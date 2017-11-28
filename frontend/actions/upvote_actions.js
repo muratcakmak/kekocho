@@ -4,10 +4,10 @@ export const RECEIVE_UPVOTE= 'RECEIVE_UPVOTE';
 
 export const REMOVE_UPVOTE = 'REMOVE_UPVOTE';
 
-export const receiveUpvote = topic => {
+export const receiveUpvote = upvote => {
   return ({
     type: RECEIVE_UPVOTE,
-    topic
+    upvote
   });
 };
 

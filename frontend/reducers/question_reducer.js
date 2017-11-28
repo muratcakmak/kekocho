@@ -34,7 +34,6 @@ const QuestionReducer = (state = defaultState, action) => {
       newState[action.answer.questionId].answerIds.splice(idx, 1);
       return newState;
     case RECEIVE_TOPIC:
-
       newState = merge({}, state);
       newState[action.topic.questionId].topicIds.push(action.topic.topicId);
       newState[action.topic.questionId].topics[action.topic.topicId] = {id: action.topic.topicId, name: action.topic.name};

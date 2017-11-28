@@ -105,4 +105,9 @@
   font-size: 12px;
   line-height: 1.4;
   margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.upvote-button:disabled{
+  background: #96bfe4;
 }

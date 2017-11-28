@@ -1,5 +1,4 @@
 export const createUpvote = (upvote)=> {
-  debugger
   return $.ajax({
     method:"post",
   	url:"api/upvotes",

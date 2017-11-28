@@ -1,13 +1,27 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import merge from 'lodash/merge';
 const defaultState = { currentUser: null };
+import { RECEIVE_UPVOTE, REMOVE_UPVOTE } from '../actions/upvote_actions';
 
 
 const SessionReducer = (state = defaultState, action) => {
   Object.freeze(state);
+  let newState = {};
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return merge({}, state, {currentUser: action.currentUser } );
+    case RECEIVE_UPVOTE:
+      debugger
+      newState = merge({}, state);
+      console.log(newState.currentUser.upvotes);
+      newState.currentUser.upvotes.push(action.upvote.answerId);
+      return newState;
+    case REMOVE_UPVOTE:
+      debugger
+      newState = merge({}, state);
+      const idx = newState.currentUser.upvotes.indexOf(action.upvote.answerId);
+      newState.currentUser.upvotes.splice(idx, 1);
+      return newState;
     default:
       return state;
   }
