@@ -24,6 +24,7 @@ json.answers do
           json.questionId answer.question_id
           json.authorName (answer.answer_author.first_name + " " + answer.answer_author.last_name)
           json.commentIds answer.comments.pluck(:id)
+          json.upvotes answer.upvotes.count
           json.date answer.created_at.strftime("%d %b %Y")
         end
       end

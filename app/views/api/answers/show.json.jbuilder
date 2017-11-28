@@ -2,6 +2,7 @@ json.extract! @answer, :id, :body
 json.answerAuthorId @answer.answer_author_id
 json.questionId @answer.question_id
 json.body @answer.body
+json.upvotes @answer.upvotes.count
 json.authorName @answer.answer_author.first_name + " " + @answer.answer_author.last_name
 json.commentIds @answer.comments.pluck(:id)
 # json.questions do

@@ -1,6 +1,5 @@
 class Api::UpvotesController < ApplicationController
   def create
-    debugger
     answer = Answer.find(params[:upvote][:answer_id])
     user = User.find(params[:upvote][:user_id])
     @upvote = Upvote.new()
@@ -15,7 +14,6 @@ class Api::UpvotesController < ApplicationController
   end
 
   def destroy
-    debugger
     @upvote = Upvote.find_by(user_id: params[:user_id], answer_id: params[:answer_id])
     if @upvote.destroy
       render :show

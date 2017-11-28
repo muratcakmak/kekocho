@@ -4,6 +4,7 @@ json.answers do
       json.extract! answer, :id, :body
       json.answerAuthorId answer.answer_author_id
       json.questionId answer.question_id
+      json.upvotes answer.upvotes.count
       json.commentIds answer.comments.pluck(:id)
     end
   end
