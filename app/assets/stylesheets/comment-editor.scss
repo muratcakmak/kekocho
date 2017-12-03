@@ -54,6 +54,22 @@
   margin-top: 5px;
   margin-left: 5px;
 }
+.comment-avatar{
+  // font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  width: 30px;
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 100%;
+  color: rgb(255, 255, 255);
+  background: #b92b27;
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+  margin-left: 5px;
+}
 
 
 .header-avatar-dropdown{

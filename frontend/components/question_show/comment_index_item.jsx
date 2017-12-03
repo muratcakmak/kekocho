@@ -28,7 +28,7 @@ class CommentIndexItem extends React.Component{
     const initials = comment.authorName.split(" ").map((n)=>n[0]).join("");
     return (
       <div className="comment-wrapper">
-        <div className="comment-editor-header">
+        <div className="comment-avatar">
             {initials}
         </div>
         <div className="comment-content">
