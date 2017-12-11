@@ -1,7 +1,4 @@
-export const sendSearch = (query) => {
-  
-  return $.ajax({
-    method: "GET",
-    url: `api/search/${query}`
-  });
-};
+export const sendSearch = query => $.ajax({
+  method: 'GET',
+  url: `api/search/${query}`,
+});
