@@ -1,35 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import EditAnswerEditorContainer from '../edit-answer-editor/edit_answer_editor_container';
-import CommentEditorContainer from '../comment_editor/comment_editor_container';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { deleteComment } from '../../actions/comment_actions';
 
-class CommentIndexItem extends React.Component{
-  constructor(props){
+
+class CommentIndexItem extends React.Component {
+  constructor(props) {
     super(props);
     this.rawMarkup = this.rawMarkup.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
     this.state = {
       editMode: false,
-      showCommentEditor: false
+      showCommentEditor: false,
     };
   }
 
-  deleteComment(){
+  deleteComment() {
     this.props.deleteComment(this.props.comment.id);
   }
 
-  rawMarkup(rawMarkup){
+  rawMarkup(rawMarkup) {
     return { __html: rawMarkup };
   }
 
-  render(){
-
+  render() {
     const comment = this.props.comment;
-    const initials = comment.authorName.split(" ").map((n)=>n[0]).join("");
+    const initials = comment.authorName.split(' ').map(n => n[0]).join('');
     return (
       <div className="comment-wrapper">
         <div className="comment-avatar">
-            {initials}
+          {initials}
         </div>
         <div className="comment-content">
           <div className="comment-header">
@@ -51,4 +51,16 @@ class CommentIndexItem extends React.Component{
   }
 }
 
-export default CommentIndexItem;
+const mapStateToProps = (state, ownProps) => ({
+    currentUserId: state.session.currentUser.id,
+    comment: ownProps.comment
+  });
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    deleteComment: (comment) => dispatch(deleteComment(comment)),
+  });
+
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CommentIndexItem));

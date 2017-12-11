@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import AnswerEditorContainer from '../answer_editor/answer_editor_container';
-import AnswerIndexItemContainer from '../question_show/answer_index_item_container';
+import AnswerIndexItem from '../entity_show/answer_index_item';
 
 class QuestionIndexItem extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class QuestionIndexItem extends React.Component {
             <div className="question-body">
               <h2 id="question"><Link to={`/questions/${this.props.question.id}`}>{this.props.question.body}</Link></h2>
               { answer ?
-                <AnswerIndexItemContainer key={answer.id} answer={answer} currentUser={this.props.currentUser} />:
+                <AnswerIndexItem key={answer.id} answer={answer} currentUser={this.props.currentUser} />:
                   <button onClick={ this.toggleAnswerComponent } className="qs-answer-button"><span className="answer-icon"><img src={window.answerIcon}></img></span> <span className="answer-label">Answer</span> </button>
               }
             </div>
@@ -57,11 +57,3 @@ class QuestionIndexItem extends React.Component {
 
 
   export default QuestionIndexItem;
-
-
-
-
-  // <AnswerIndexItemContainer key={answer.id} answer={answer} currentUser={this.props.currentUser} />
-  // <p>
-  //   {answer ? <span dangerouslySetInnerHTML={this.rawMarkup(answer.body)} /> : null}
-  // </p>

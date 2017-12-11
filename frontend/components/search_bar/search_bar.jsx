@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import GreetingContainer from '../greeting/greeting_container';
 import Autosuggest from 'react-autosuggest';
+import { connect } from 'react-redux';
+import { sendSearch } from '../../actions/search_actions';
 
-class SearchBar extends React.Component{
-
-  constructor(props){
+class SearchBar extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
-     value: '',
-     suggestions: []
+      value: '',
+      suggestions: [],
     };
     this.handleSearch = this.handleSearch.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -18,48 +18,45 @@ class SearchBar extends React.Component{
     this.renderSuggestion = this.renderSuggestion.bind(this);
     this.getSuggestionValue = this.getSuggestionValue.bind(this);
     this.onChange = this.onChange.bind(this);
-
   }
 
   handleSearch(e) {
     e.preventDefault();
-    this.props.sendSearch(this.state.value).then(
-      (action) => {
-        this.props.history.push(`/search`);
-        this.setState({value: ""});
-      }
-    );
+    this.props.sendSearch(this.state.value).then((action) => {
+      this.props.history.push('/search');
+      this.setState({ value: '' });
+    });
   }
   getSuggestionValue(suggestion) {
     return suggestion.body;
   }
 
-  onSuggestionsFetchRequested({ value }){
-    if(value.length > 2){
+  onSuggestionsFetchRequested({ value }) {
+    if (value.length > 2) {
       $.ajax({
-        method: "GET",
-        url: `api/search/${value}`
+        method: 'GET',
+        url: `api/search/${value}`,
       }).then((searchResult) => {
         this.setState({
-          suggestions: searchResult.Question
+          suggestions: searchResult.Question,
         });
       });
     }
   }
 
-  onSuggestionsClearRequested (){
+  onSuggestionsClearRequested() {
     this.setState({
-      suggestions: []
+      suggestions: [],
     });
   }
 
   handleChange(field) {
-    return (e) => this.setState({ [field]: e.target.value });
+    return e => this.setState({ [field]: e.target.value });
   }
 
-  onChange (event, { newValue, method }){
+  onChange(event, { newValue, method }) {
     this.setState({
-      value: newValue
+      value: newValue,
     });
   }
 
@@ -68,45 +65,43 @@ class SearchBar extends React.Component{
     return (
       <h2>
         <Link to={`/questions/${suggestion.id}`}>{body}</Link>
-        </h2>
+      </h2>
     );
   }
 
-  render(){
+  render() {
     const { value, suggestions } = this.state;
     const inputProps = {
-      placeholder: "Search Kekocho",
+      placeholder: 'Search Kekocho',
       value,
-      onChange: this.onChange
+      onChange: this.onChange,
     };
     return (
       <div className="nav-search-container">
-      <Autosuggest
-        suggestions={suggestions}
-        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-        getSuggestionValue={this.getSuggestionValue}
-        renderSuggestion={this.renderSuggestion}
-        inputProps={inputProps} />
-    </div>
+        <Autosuggest
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          getSuggestionValue={this.getSuggestionValue}
+          renderSuggestion={this.renderSuggestion}
+          inputProps={inputProps}
+        />
+      </div>
 
 
     );
   }
 }
 
-export default SearchBar;
+const mapStateToProps = (state, ownProps) => ({
+});
 
-// <textarea className="selector-input text" type="text" rows="1" autoFocus="True" data-group="js-editable" placeholder="Search Quora" w2cid="ks8utXH" id="__w2_ks8utXH_input" style={{ overflowX: "hidden", wordWrap: "break-word", height: "29px" }}></textarea>
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  sendSearch: query => dispatch(sendSearch(query)),
+});
 
-// <input className="search-input" placeholder="search Quora"/>
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SearchBar));
 
-
-
-
-// <form
-//   className="nav-search"
-//   onChange={this.handleChange('query')}
-//   onSubmit={this.handleSearch}>
-//   <input className="search-input" placeholder="Search Kekocho" value={this.state.query}/>
-// </form>

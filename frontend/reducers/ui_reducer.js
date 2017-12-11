@@ -1,5 +1,5 @@
 import merge from 'lodash/merge';
-import { SHOW_MODAL, HIDE_MODAL } from '../actions/session_actions';
+import { SHOW_MODAL, HIDE_MODAL } from '../actions/ui_actions';
 
 const defaultState = {
   modal: {

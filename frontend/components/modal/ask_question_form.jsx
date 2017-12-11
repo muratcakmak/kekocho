@@ -4,29 +4,26 @@ import Textarea from 'react-textarea-autosize';
 import onClickOutside from 'react-onclickoutside';
 import merge from 'lodash/merge';
 
-class AskQuestionForm extends React.Component{
-
-  constructor(props){
+class AskQuestionForm extends React.Component {
+  constructor(props) {
     super(props);
     this.close = this.close.bind(this);
     this.handleQuestion = this.handleQuestion.bind(this);
     this.state = {
-      body: "",
+      body: '',
       question_author_id: this.props.user.id,
     };
     this.myClickOutsideHandler = this.myClickOutsideHandler.bind(this);
   }
 
-  componentDidMount(){
-
-    if (this.props.formType === "edit"){
+  componentDidMount() {
+    if (this.props.formType === 'edit') {
       this.setState({ body: this.props.question.body });
     }
   }
 
-  componentWillReceiveProps(newProps){
-
-    if(this.props.question && (this.props.question.body !== newProps.question.body)){
+  componentWillReceiveProps(newProps) {
+    if (this.props.question && (this.props.question.body !== newProps.question.body)) {
       this.setState({ body: newProps.question.body });
     }
   }
@@ -35,16 +32,16 @@ class AskQuestionForm extends React.Component{
     this.close();
   }
 
-  close(){
+  close() {
     this.props.hideModal();
   }
 
-  handleQuestion(e){
+  handleQuestion(e) {
     e.preventDefault();
 
-    if (this.props.formType === "edit"){
+    if (this.props.formType === 'edit') {
       this.props.updateQuestion(merge({}, this.state, { id: this.props.question.id }));
-    }else{
+    }else {
       this.props.createQuestion(this.state);
     }
 
@@ -52,30 +49,29 @@ class AskQuestionForm extends React.Component{
   }
 
 
-  update(field){
-    return (e)=> this.setState( { [field]: e.target.value } );
+  update(field) {
+    return e => this.setState({ [field]: e.target.value });
   }
 
-  render(){
-
-    if(this.props.show){
+  render() {
+    if (this.props.show) {
       return (
 
-        <div className={"modal-content"}>
+        <div className="modal-content">
           <form className="modal-form" onSubmit={this.handleQuestion}>
             <div>
               <span onClick={this.close} className="model-close">&times;</span>
             </div>
             <div className="modal-header">
-              {this.props.user.firstName + " " + this.props.user.lastName} added
-              <Textarea value={ this.state.body } style={{overflow:"hidden"}} maxRows={5} placeholder="What is your question?" onChange={this.update("body")} className="modal-textarea"></Textarea>
+              {`${this.props.user.firstName  } ${  this.props.user.lastName}`} added
+              <Textarea value={this.state.body} style={{ overflow: 'hidden' }} maxRows={5} placeholder="What is your question?" onChange={this.update('body')} className="modal-textarea" />
             </div>
             <div className="modal-footer">
               <a onClick={this.close}>Cancel</a>
               <button disabled={!this.state.body} type="submit" className="session-submit-button modal-button">
                 {
-                  this.props.formType === "edit" ?
-                   "Edit Question" : "Add Question"
+                  this.props.formType === 'edit' ?
+                   'Edit Question' : 'Add Question'
                 }
               </button>
             </div>
@@ -88,10 +84,10 @@ class AskQuestionForm extends React.Component{
 }
 
 
-var clickOutsideConfig = {
-  handleClickOutside: function(instance) {
+let clickOutsideConfig = {
+  handleClickOutside(instance) {
     return instance.myClickOutsideHandler;
-  }
+  },
 };
 
 export default onClickOutside(AskQuestionForm, clickOutsideConfig);

@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signup, receiveErrors } from '../../actions/session_actions';
-import GreetingContainer from '../greeting/greeting_container';
 
 class SignupForm extends React.Component {
   constructor(props) {
