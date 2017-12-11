@@ -45,7 +45,7 @@ class SignupForm extends React.Component {
     return (
       <div>
         <div className="signup-form-container">
-          <div className="session-title">{this.props.formType}</div>
+          <div className="session-title">{formType}</div>
           <h2 value={formType}><Link to={route} /></h2>
           <form className="session-form" onSubmit={this.handleSubmit}>
             <div className="session-form-inputs">
@@ -78,7 +78,7 @@ class SignupForm extends React.Component {
               </div>
               <div className="session-form-actions">
                 <a onClick={this.toggleSignup}>Cancel</a>
-                <input type="submit" value={this.props.formType} className="session-submit-button login-signup-button" />
+                <input type="submit" value={formType} className="session-submit-button login-signup-button" />
               </div>
             </div>
           </form>
