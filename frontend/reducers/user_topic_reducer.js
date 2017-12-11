@@ -5,7 +5,6 @@ import { RECEIVE_FEED_DATA } from '../actions/feed_actions';
 const defaultState = { };
 
 const UserTopicReducer = (state = defaultState, action) => {
-  let newState = {};
   switch (action.type) {
     case RECEIVE_FEED_DATA:
       return merge({}, state, action.userTopics);

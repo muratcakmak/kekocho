@@ -1,8 +1,8 @@
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import merge from 'lodash/merge';
-const defaultState = { currentUser: null };
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_UPVOTE, REMOVE_UPVOTE } from '../actions/upvote_actions';
 
+const defaultState = { currentUser: null };
 
 const SessionReducer = (state = defaultState, action) => {
   Object.freeze(state);

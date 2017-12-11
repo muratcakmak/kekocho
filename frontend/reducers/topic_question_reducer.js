@@ -1,4 +1,3 @@
-import merge from 'lodash/merge';
 import { RECEIVE_TOPIC_QUESTIONS } from '../actions/topic_actions';
 
 const defaultState = { };

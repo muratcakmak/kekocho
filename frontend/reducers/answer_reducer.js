@@ -1,6 +1,4 @@
 import merge from 'lodash/merge';
-import difference from 'lodash/difference';
-
 import { RECEIVE_ANSWER, REMOVE_ANSWER } from '../actions/answer_actions';
 import { RECEIVE_COMMENT, REMOVE_COMMENT } from '../actions/comment_actions';
 import { RECEIVE_FEED_DATA } from '../actions/feed_actions';
@@ -33,7 +31,6 @@ const AnswerReducer = (state = defaultState, action) => {
       return newState;
     case RECEIVE_QUESTION:
       return merge({}, state, action.question.answers);
-
     case RECEIVE_UPVOTE:
       newState = merge({}, state);
       newState[action.upvote.answerId].upvotes = action.upvote.upvotes;

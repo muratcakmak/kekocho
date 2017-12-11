@@ -5,7 +5,7 @@ const defaultState = { };
 
 const SearchReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case "SEND_SEARCH":
+    case SEND_SEARCH:
       return merge({}, action.searchResult.Question);
     default:
       return state;
