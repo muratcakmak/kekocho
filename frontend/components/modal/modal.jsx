@@ -1,30 +1,33 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import AskQuestionFormContainer from './ask_question_form_container';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { hideModal } from '../../actions/ui_actions';
-import { createQuestion } from '../../actions/question_actions';
+import { withRouter } from 'react-router-dom';
+import AskQuestionFormContainer from './ask_question_form_container';
 
-class Modal extends React.Component {
-  render() {
-    if (this.props.show) {
-      return (
-        <div className="modal-wrapper">
-          <AskQuestionFormContainer />
-        </div>
-      );
-    }
-    return null;
+
+const Modal = (props) => {
+  const { show } = props;
+  if (show) {
+    return (
+      <div className="modal-wrapper">
+        <AskQuestionFormContainer />
+      </div>
+    );
   }
-}
+  return null;
+};
 
-const mapStateToProps = (state, ownProps) => ({
-    show: state.ui.modal.show,
-  });
+Modal.propTypes = {
+  show: PropTypes.bool.isRequired,
+};
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapStateToProps = state => ({
+  show: state.ui.modal.show,
+});
 
-  });
+const mapDispatchToProps = () => ({
+
+});
 
 export default withRouter(connect(
   mapStateToProps,

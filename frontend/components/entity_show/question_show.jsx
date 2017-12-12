@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import AnswerEditorContainer from '../answer_editor/answer_editor_container';
+import AnswerEditor from '../editors/answer_editor';
 import AnswerIndexItem from './answer_index_item';
 import { compare } from '../../util/util';
 import Topic from './topic';
@@ -82,7 +82,7 @@ class QuestionShow extends React.Component {
                   }
                 </div>
                 <div className={this.state.showAnswerEditor ? '' : 'hidden-signup'}>
-                  <AnswerEditorContainer question_id={question.id} cancel={() => this.toggleAnswerComponent()} />
+                  <AnswerEditor question_id={question.id} cancel={() => this.toggleAnswerComponent()} />
                 </div>
 
                 <div className="qs-answer-number">

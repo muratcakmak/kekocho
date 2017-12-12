@@ -2,8 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compare } from '../../util/util';
-import EditAnswerEditorContainer from '../edit-answer-editor/edit_answer_editor_container';
-import CommentEditorContainer from '../comment_editor/comment_editor_container';
+import EditAnswerEditor from '../editors/edit_answer_editor';
+import CommentEditorContainer from '../editors/comment_editor';
 import CommentIndexItem from '../entity_show/comment_index_item';
 import ReadMore from '../entity_show/read_more';
 import { deleteAnswer, updateAnswer } from '../../actions/answer_actions';
@@ -138,7 +138,7 @@ class AnswerIndexItem extends React.Component {
     }
 
     return (
-      <EditAnswerEditorContainer answerId={answer.id} question_id={answer.questionId} content={answer.body} cancel={() => this.toggleEditMode()} />
+      <EditAnswerEditor answerId={answer.id} question_id={answer.questionId} content={answer.body} cancel={() => this.toggleEditMode()} />
     );
   }
 }

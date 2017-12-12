@@ -1,54 +1,62 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { requestFeedData } from '../../actions/feed_actions';
+import { deleteAnswer } from '../../actions/answer_actions';
+import { deleteQuestion } from '../../actions/question_actions';
+import { requestTopicQuestions } from '../../actions/topic_actions';
 import QuestionIndexItem from './question_index_item';
-import FeedAddQuestionPromptContainer from './feed_add_question_prompt_container';
+import FeedAddQuestionPrompt from './feed_add_question_prompt';
 import { compare } from '../../util/util';
 
-class QuestionFeed extends React.Component{
-
-  constructor(props){
+class QuestionFeed extends React.Component {
+  constructor(props) {
     super(props);
+    const { topicId } = this.props;
     this.state = {
-      topicId: this.props.topicId,
+      topicId,
     };
   }
 
-  componentDidMount(){
-    if(this.props.path.slice(0, 7) === "/topics"){
-      this.props.requestTopicQuestions(this.props.topicId);
+  componentDidMount() {
+    const { requestTopicQuestions, requestFeedData, path} = this.props;
+    if (path.slice(0, 7) === '/topics') {
+      requestTopicQuestions(this.props.topicId);
       this.setState({ topicId: this.props.topicId });
-    }else{
-      this.props.requestFeedData();
+    } else {
+      requestFeedData();
     }
   }
 
-  componentWillReceiveProps(newProps){
-    if(newProps.match.params.topicId !== this.state.topicId){
+  componentWillReceiveProps(newProps) {
+    if (newProps.match.params.topicId !== this.state.topicId) {
       this.props.requestTopicQuestions(this.props.topicId);
       this.setState({ topicId: this.props.topicId });
     }
   }
 
-  render(){
+  render() {
     const questionIndexItems = [];
-    const answers = this.props.answers;
-    const path = this.props.path;
-    Object.values(this.props.questions).sort(compare).map((question) => {
+    const {
+      answers, path, questions, currentUser, deleteQuestion,
+    } = this.props;
+
+    Object.values(questions).sort(compare).map((question) => {
       const firstAnswer = answers[question.answerIds[0]];
-      if(path === "/answers"){
-        if(typeof firstAnswer === "undefined"){
-          questionIndexItems.push(<QuestionIndexItem currentUser={this.props.currentUser} deleteQuestion={this.props.deleteQuestion} key={question.id} question={question} firstAnswer={firstAnswer}/>);
+      if (path === '/answers') {
+        if (typeof firstAnswer === 'undefined') {
+          questionIndexItems.push(<QuestionIndexItem currentUser={currentUser} deleteQuestion={deleteQuestion} key={question.id} question={question} firstAnswer={firstAnswer} />);
         }
-      }else if (path.slice(0,7) === "/topics") {
-        //topic
-        questionIndexItems.push(<QuestionIndexItem currentUser={this.props.currentUser} deleteQuestion={this.props.deleteQuestion} key={question.id} question={question} firstAnswer={firstAnswer}/>);
-      }else{
-        questionIndexItems.push(<QuestionIndexItem currentUser={this.props.currentUser} deleteQuestion={this.props.deleteQuestion} key={question.id} question={question} firstAnswer={firstAnswer}/>);
+      } else if (path.slice(0, 7) === '/topics') {
+        // topic
+        questionIndexItems.push(<QuestionIndexItem currentUser={currentUser} deleteQuestion={deleteQuestion} key={question.id} question={question} firstAnswer={firstAnswer} />);
+      } else {
+        questionIndexItems.push(<QuestionIndexItem currentUser={currentUser} deleteQuestion={deleteQuestion} key={question.id} question={question} firstAnswer={firstAnswer} />);
       }
     });
     return (
       <section className="content-main">
-        <FeedAddQuestionPromptContainer />
+        <FeedAddQuestionPrompt />
         <ul>
           {questionIndexItems}
         </ul>
@@ -57,4 +65,29 @@ class QuestionFeed extends React.Component{
   }
 }
 
-export default QuestionFeed;
+
+const mapStateToProps = (state, ownProps) => {
+  const { currentUser } = state.session;
+  const { answers, questions } = state.entities;
+  const { path } = ownProps.match;
+  const { topicId } = ownProps.match.params;
+  return {
+    currentUser,
+    answers,
+    questions,
+    path,
+    topicId,
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  requestFeedData: () => dispatch(requestFeedData()),
+  deleteAnswer: answerId => dispatch(deleteAnswer(answerId)),
+  deleteQuestion: answerId => dispatch(deleteQuestion(answerId)),
+  requestTopicQuestions: topicId => dispatch(requestTopicQuestions(topicId)),
+});
+
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(QuestionFeed));
