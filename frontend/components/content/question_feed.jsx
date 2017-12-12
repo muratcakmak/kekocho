@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { requestFeedData } from '../../actions/feed_actions';
 import { deleteAnswer } from '../../actions/answer_actions';
 import { deleteQuestion } from '../../actions/question_actions';
@@ -64,6 +65,17 @@ class QuestionFeed extends React.Component {
     );
   }
 }
+
+QuestionFeed.propTypes = {
+  answers: PropTypes.object,
+  questions: PropTypes.object,
+  currentUser: PropTypes.object,
+  path: PropTypes.string,
+  requestFeedData: PropTypes.func.isRequired,
+  deleteAnswer: PropTypes.func.isRequired,
+  deleteQuestion: PropTypes.func.isRequired,
+  requestTopicQuestions: PropTypes.func.isRequired,
+};
 
 
 const mapStateToProps = (state, ownProps) => {

@@ -62,6 +62,7 @@ class LoginForm extends React.Component {
     const formType = this.props.formType === 'signup' ? 'login' : 'signup';
     const route = `/${formType}`;
     const errors = this.props.errors.map(error => <li key={error}>{error}</li>);
+    const { showSignup } = this.state;
     return (
       <div>
         <div className="bg_container">
@@ -74,10 +75,10 @@ class LoginForm extends React.Component {
             <div className="signup-login">
               <div className="signup">
                 <div className="signup-explanation">
-                  <div className={!this.state.showSignup ? 'hidden-signup' : ''}>
+                  <div className={!showSignup ? 'hidden-signup' : ''}>
                     <SignupForm cancel={() => this.toggleSignup()} />
                   </div>
-                  <div className={this.state.showSignup ? 'hidden-signup' : ''} >
+                  <div className={showSignup ? 'hidden-signup' : ''} >
                     <a onClick={this.toggleSignup}>Continue With Email.</a> By signing up you indicate that you have read and agree to the Terms of Service and Privacy Policy.
                   </div>
                 </div>
@@ -120,13 +121,13 @@ class LoginForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   loggedIn: !!state.current_user,
   errors: state.errors.session,
   formType: 'Login',
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   login: user => dispatch(login(user)),
   clearErrors: () => dispatch(receiveErrors([])),
 });

@@ -91,13 +91,13 @@ class SignupForm extends React.Component {
 }
 
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   loggedIn: !!state.current_user,
   errors: state.errors.session,
   formType: 'Signup',
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   signup: user => dispatch(signup(user)),
   clearErrors: () => dispatch(receiveErrors([])),
 });

@@ -20,15 +20,16 @@ class SearchBar extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  getSuggestionValue(suggestion) {
+    return suggestion.body;
+  }
+  
   handleSearch(e) {
     e.preventDefault();
     this.props.sendSearch(this.state.value).then((action) => {
       this.props.history.push('/search');
       this.setState({ value: '' });
     });
-  }
-  getSuggestionValue(suggestion) {
-    return suggestion.body;
   }
 
   onSuggestionsFetchRequested({ value }) {
