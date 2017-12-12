@@ -3,10 +3,10 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { PulseLoader } from 'react-spinners';
 import QuestionFeed from './question_feed';
-import SideBar from './side_bar';
+import TopicSideBar from './topic_side_bar';
 import { requestFeedDataWithPage } from '../../actions/feed_actions';
 
-class Content extends React.Component {
+class Container extends React.Component {
   constructor(props) {
     super(props);
     const root = this.props.path === '/';
@@ -33,7 +33,7 @@ class Content extends React.Component {
   atTheEndOfThePage() {
     const that = this;
     $(window).scroll(() => {
-      if (that.props.path === '/' && ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) && (Date.now() > (that.lastCall + 1000))) {
+      if (that.props.path === '/' && ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) && !that.state.loading) {
         const nextPage = that.state.page + 1;
         if (that.state.root) {
           that.setState({ loading: true });
@@ -59,7 +59,7 @@ class Content extends React.Component {
       <div>
         { this.atTheEndOfThePage() }
         <div className="content">
-          <SideBar />
+          <TopicSideBar />
           <QuestionFeed />
         </div>
         { this.state.loading ?
@@ -82,4 +82,4 @@ const mapDispatchToProps = dispatch => ({
   requestFeedDataWithPage: page => dispatch(requestFeedDataWithPage(page)),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Content));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Container));

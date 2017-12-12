@@ -8,6 +8,7 @@ import { deleteQuestion } from '../../actions/question_actions';
 import { requestTopicQuestions } from '../../actions/topic_actions';
 import QuestionIndexItem from './question_index_item';
 import FeedAddQuestionPrompt from './feed_add_question_prompt';
+import TopicHeader from './topic_header';
 import { compare } from '../../util/util';
 
 class QuestionFeed extends React.Component {
@@ -20,7 +21,7 @@ class QuestionFeed extends React.Component {
   }
 
   componentDidMount() {
-    const { requestTopicQuestions, requestFeedData, path} = this.props;
+    const { requestTopicQuestions, requestFeedData, path } = this.props;
     if (path.slice(0, 7) === '/topics') {
       requestTopicQuestions(this.props.topicId);
       this.setState({ topicId: this.props.topicId });
@@ -39,7 +40,7 @@ class QuestionFeed extends React.Component {
   render() {
     const questionIndexItems = [];
     const {
-      answers, path, questions, currentUser, deleteQuestion,
+      answers, path, questions, currentUser, deleteQuestion, topic,
     } = this.props;
 
     Object.values(questions).sort(compare).map((question) => {
@@ -57,7 +58,12 @@ class QuestionFeed extends React.Component {
     });
     return (
       <section className="content-main">
-        <FeedAddQuestionPrompt />
+        {
+          ((path.slice(0, 7) === '/topics') && topic) ?
+            <TopicHeader topic={topic.name} />
+          :
+            <FeedAddQuestionPrompt />
+        }
         <ul>
           {questionIndexItems}
         </ul>
@@ -75,20 +81,23 @@ QuestionFeed.propTypes = {
   deleteAnswer: PropTypes.func.isRequired,
   deleteQuestion: PropTypes.func.isRequired,
   requestTopicQuestions: PropTypes.func.isRequired,
+  topic: PropTypes.string,
 };
 
 
 const mapStateToProps = (state, ownProps) => {
   const { currentUser } = state.session;
-  const { answers, questions } = state.entities;
+  const { answers, questions, topics } = state.entities;
   const { path } = ownProps.match;
   const { topicId } = ownProps.match.params;
+  const topic = topics[topicId];
   return {
     currentUser,
     answers,
     questions,
     path,
     topicId,
+    topic,
   };
 };
 

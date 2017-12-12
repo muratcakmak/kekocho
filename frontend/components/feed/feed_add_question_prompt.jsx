@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { showModal } from '../../actions/ui_actions';
-
 
 class FeedAddQuestionPrompt extends React.Component {
   constructor(props) {
@@ -15,27 +15,33 @@ class FeedAddQuestionPrompt extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.props;
     let initials = '';
-    if (this.props.currentUser) {
-      initials = this.props.currentUser.firstName.charAt(0) + this.props.currentUser.lastName.charAt(0);
+    if (currentUser) {
+      initials = currentUser.firstName.charAt(0) + currentUser.lastName.charAt(0);
     }
     return (
       <div className="feed-add-question-prompt">
         <div className="feed-add-name-wrapper">
           <div className="comment-editor-header">
-            {this.props.currentUser ? initials : null}
+            {currentUser ? initials : null}
           </div>
           <div className="feed-add-name">
-            {this.props.currentUser ? `${this.props.currentUser.firstName} ${this.props.currentUser.lastName}` : ''}
+            {currentUser ? `${currentUser.firstName} ${currentUser.lastName}` : ''}
           </div>
         </div>
         <div className="feed-add-question">
-          <div onClick={this.showModal}>What is your question?</div>
+          <div onClick={this.showModal} role="button">What is your question?</div>
         </div>
       </div>
     );
   }
 }
+
+FeedAddQuestionPrompt.propTypes = {
+  currentUser: PropTypes.object.isRequired,
+  showModal: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,

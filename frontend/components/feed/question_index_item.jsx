@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AnswerEditor from '../editors/answer_editor';
 import AnswerIndexItem from '../entity_show/answer_index_item';
+import TopicHeader from '../feed/topic_header';
 
 class QuestionIndexItem extends React.Component {
   constructor(props) {
