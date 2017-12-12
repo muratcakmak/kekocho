@@ -20,7 +20,8 @@ const mapStateToProps = state => ({
   topics: Object.values(state.entities.userTopics),
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = () => ({
+
 });
 
 export default withRouter(connect(
