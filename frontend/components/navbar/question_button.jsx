@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { showModal } from '../../actions/ui_actions';
+import { showModal } from '../../actions/ui';
 
 class QuestionButton extends React.Component {
   constructor(props) {

@@ -1,4 +1,4 @@
-import * as TopicApiUtil from '../util/topic_api_util';
+import * as TopicApiUtil from '../api/topics';
 
 export const RECEIVE_TOPIC = 'RECEIVE_TOPIC';
 

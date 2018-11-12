@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import { connect } from 'react-redux';
-import { createComment } from '../../actions/comment_actions';
+import { createComment } from '../../actions/comments';
 
 class CommentEditor extends React.Component {
   constructor(props) {

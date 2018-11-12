@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { PulseLoader } from 'react-spinners';
 import QuestionFeed from './question_feed';
 import TopicSideBar from './topic_side_bar';
-import { requestFeedDataWithPage } from '../../actions/feed_actions';
+import { requestFeedDataWithPage } from '../../actions/feed';
 
 class Container extends React.Component {
   constructor(props) {

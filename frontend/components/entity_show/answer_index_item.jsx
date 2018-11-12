@@ -1,13 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { compare } from '../../util/util';
+import { compare } from '../../utils';
 import EditAnswerEditor from '../editors/edit_answer_editor';
 import CommentEditorContainer from '../editors/comment_editor';
 import CommentIndexItem from '../entity_show/comment_index_item';
 import ReadMore from '../entity_show/read_more';
-import { deleteAnswer, updateAnswer } from '../../actions/answer_actions';
-import { createUpvote, deleteUpvote } from '../../actions/upvote_actions';
+import { deleteAnswer, updateAnswer } from '../../actions/answers';
+import { createUpvote, deleteUpvote } from '../../actions/upvotes';
 
 class AnswerIndexItem extends React.Component {
   constructor(props) {

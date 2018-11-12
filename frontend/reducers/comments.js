@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
-import { RECEIVE_COMMENT, REMOVE_COMMENT } from '../actions/comment_actions';
-import { RECEIVE_FEED_DATA } from '../actions/feed_actions';
-import { RECEIVE_QUESTION } from '../actions/question_actions';
+import { RECEIVE_COMMENT, REMOVE_COMMENT } from '../actions/comments';
+import { RECEIVE_FEED_DATA } from '../actions/feed';
+import { RECEIVE_QUESTION } from '../actions/questions';
 
 const defaultState = { };
 

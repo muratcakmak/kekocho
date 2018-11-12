@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { requestFeedData } from '../../actions/feed_actions';
-import { deleteAnswer } from '../../actions/answer_actions';
-import { deleteQuestion } from '../../actions/question_actions';
-import { requestTopicQuestions } from '../../actions/topic_actions';
+import { requestFeedData } from '../../actions/feed';
+import { deleteAnswer } from '../../actions/answers';
+import { deleteQuestion } from '../../actions/questions';
+import { requestTopicQuestions } from '../../actions/topics';
 import QuestionIndexItem from './question_index_item';
 import FeedAddQuestionPrompt from './feed_add_question_prompt';
 import TopicHeader from './topic_header';
-import { compare } from '../../util/util';
+import { compare } from '../../utils';
 
 class QuestionFeed extends React.Component {
   constructor(props) {

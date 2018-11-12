@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import LoginForm from './session_form/login_form';
-import SignupForm from './session_form/signup_form';
-import NavBarContainer from './navbar/nav_bar_container';
-import Container from './feed/container';
-import QuestionShow from './entity_show/question_show';
-import Modal from './modal/modal';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import LoginForm from '../components/session_form/login_form';
+import SignupForm from '../components/session_form/signup_form';
+import NavBarContainer from '../components/navbar/nav_bar_container';
+import Container from '../components/feed/container';
+import QuestionShow from '../components/entity_show/question_show';
+import Modal from '../components/modal/modal';
+import { AuthRoute, ProtectedRoute } from './utils';
 
 const App = () => (
   <div>

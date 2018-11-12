@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_UPVOTE, REMOVE_UPVOTE } from '../actions/upvote_actions';
+import { RECEIVE_CURRENT_USER } from '../actions/session';
+import { RECEIVE_UPVOTE, REMOVE_UPVOTE } from '../actions/upvotes';
 
 const defaultState = { currentUser: null };
 

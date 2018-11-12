@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import AskQuestionForm from './ask_question_form';
-import { hideModal } from '../../actions/ui_actions';
-import { createQuestion, updateQuestion } from '../../actions/question_actions';
+import { hideModal } from '../../actions/ui';
+import { createQuestion, updateQuestion } from '../../actions/questions';
 
 const mapStateToProps = (state) => {
   const { currentUser } = state.session;

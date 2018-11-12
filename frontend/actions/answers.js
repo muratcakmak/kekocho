@@ -1,4 +1,4 @@
-import * as AnswerApiUtil from '../util/answer_api_util';
+import * as AnswerApiUtil from '../api/answers';
 
 export const RECEIVE_ANSWER = 'RECEIVE_ANSWER';
 export const RECEIVE_ALL_ANSWERS = 'RECEIVE_ALL_ANSWERS';

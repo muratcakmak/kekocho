@@ -1,5 +1,5 @@
 import merge from 'lodash/merge';
-import { SEND_SEARCH } from '../actions/question_actions';
+import { SEND_SEARCH } from '../actions/questions';
 
 const defaultState = { };
 

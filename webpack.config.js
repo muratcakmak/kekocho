@@ -20,7 +20,7 @@ const prodPlugins = [
 plugins = plugins.concat(process.env.NODE_ENV === 'production' ? prodPlugins : devPlugins);
 
 module.exports = {
-  entry: './frontend/kekocho.jsx',
+  entry: './frontend/index.js',
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: 'bundle.js',

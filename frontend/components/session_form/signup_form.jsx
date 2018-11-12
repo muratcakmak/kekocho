@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signup, receiveErrors } from '../../actions/session_actions';
+import { signup, receiveErrors } from '../../actions/session';
 
 class SignupForm extends React.Component {
   constructor(props) {

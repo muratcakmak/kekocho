@@ -1,8 +1,8 @@
 import merge from 'lodash/merge';
 
-import { RECEIVE_FEED_DATA } from '../actions/feed_actions';
-import { RECEIVE_QUESTION } from '../actions/question_actions';
-import { RECEIVE_TOPIC, REMOVE_TOPIC } from '../actions/topic_actions';
+import { RECEIVE_FEED_DATA } from '../actions/feed';
+import { RECEIVE_QUESTION } from '../actions/questions';
+import { RECEIVE_TOPIC, REMOVE_TOPIC } from '../actions/topics';
 
 const defaultState = { };
 

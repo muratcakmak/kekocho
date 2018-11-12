@@ -1,4 +1,4 @@
-import * as UpvoteApiUtil from '../util/upvote_api_util';
+import * as UpvoteApiUtil from '../api/upvotes';
 
 export const RECEIVE_UPVOTE = 'RECEIVE_UPVOTE';
 

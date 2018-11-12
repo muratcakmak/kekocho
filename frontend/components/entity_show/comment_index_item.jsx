@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { deleteComment } from '../../actions/comment_actions';
+import { deleteComment } from '../../actions/comments';
 
 
 class CommentIndexItem extends React.Component {

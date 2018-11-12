@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 import { connect } from 'react-redux';
-import { sendSearch } from '../../actions/search_actions';
+import { sendSearch } from '../../actions/search';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -94,10 +94,10 @@ class SearchBar extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
   sendSearch: query => dispatch(sendSearch(query)),
 });
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { showModal } from '../../actions/ui_actions';
+import { showModal } from '../../actions/ui';
 
 class FeedAddQuestionPrompt extends React.Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
 
-import { RECEIVE_FEED_DATA } from '../actions/feed_actions';
+import { RECEIVE_FEED_DATA } from '../actions/feed';
 
 const defaultState = { };
 

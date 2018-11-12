@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import { connect } from 'react-redux';
-import { updateAnswer } from '../../actions/answer_actions';
+import { updateAnswer } from '../../actions/answers';
 
 class EditAnswerEditor extends React.Component {
   constructor(props) {

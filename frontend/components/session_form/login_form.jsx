@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Typed from 'typed.js';
 import { Link, withRouter } from 'react-router-dom';
 import SignupForm from './signup_form';
-import { login, receiveErrors } from '../../actions/session_actions';
+import { login, receiveErrors } from '../../actions/session';
 
 class LoginForm extends React.Component {
   constructor(props) {

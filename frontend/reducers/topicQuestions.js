@@ -1,4 +1,4 @@
-import { RECEIVE_TOPIC_QUESTIONS } from '../actions/topic_actions';
+import { RECEIVE_TOPIC_QUESTIONS } from '../actions/topics';
 
 const defaultState = { };
 

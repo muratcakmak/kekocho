@@ -3,11 +3,11 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AnswerEditor from '../editors/answer_editor';
 import AnswerIndexItem from './answer_index_item';
-import { compare } from '../../util/util';
+import { compare } from '../../utils';
 import Topic from './topic';
-import { deleteQuestion, fetchQuestion } from '../../actions/question_actions';
-import { createAnswer } from '../../actions/answer_actions';
-import { showModal } from '../../actions/ui_actions';
+import { deleteQuestion, fetchQuestion } from '../../actions/questions';
+import { createAnswer } from '../../actions/answers';
+import { showModal } from '../../actions/ui';
 
 class QuestionShow extends React.Component {
   constructor(props) {

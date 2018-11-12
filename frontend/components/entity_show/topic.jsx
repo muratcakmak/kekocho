@@ -2,7 +2,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
-import { createTopic, deleteTopic } from '../../actions/topic_actions';
+import { createTopic, deleteTopic } from '../../actions/topics';
 
 class Topic extends React.Component {
   constructor(props) {
