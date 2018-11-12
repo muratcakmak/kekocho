@@ -7,7 +7,7 @@ const defaultState = {
   },
 };
 
-const UIReducer = (state = defaultState, action) => {
+const ui = (state = defaultState, action) => {
   switch (action.type) {
     case SHOW_MODAL:
       return { modal: action.modal };
@@ -18,4 +18,4 @@ const UIReducer = (state = defaultState, action) => {
   }
 };
 
-export default UIReducer;
+export default ui;

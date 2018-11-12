@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import ErrorsReducer from './errors_reducer';
-import SessionReducer from './session_reducer';
-import EntityReducer from './entity_reducer';
-import UIReducer from './ui_reducer';
-import SearchReducer from './search_reducer';
+import ErrorsReducer from './errors';
+import SessionReducer from './session';
+import EntityReducer from './entity';
+import UIReducer from './ui';
+import SearchReducer from './search';
 
 const RootReducer = combineReducers({
   session: SessionReducer,

@@ -5,7 +5,7 @@ import { RECEIVE_QUESTION } from '../actions/question_actions';
 
 const defaultState = { };
 
-const CommentReducer = ( state = defaultState, action ) => {
+const comments = (state = defaultState, action) => {
   let newState = {};
   switch (action.type) {
     case RECEIVE_FEED_DATA:
@@ -25,4 +25,4 @@ const CommentReducer = ( state = defaultState, action ) => {
   }
 };
 
-export default CommentReducer;
+export default comments;

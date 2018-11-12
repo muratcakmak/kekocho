@@ -2,8 +2,7 @@ import { RECEIVE_TOPIC_QUESTIONS } from '../actions/topic_actions';
 
 const defaultState = { };
 
-const TopicQuestionReducer = (state = defaultState, action) => {
-  let newState = {};
+const topicQuestions = (state = defaultState, action) => {
   switch (action.type) {
     case RECEIVE_TOPIC_QUESTIONS:
       return action.topicQuestions;
@@ -12,4 +11,4 @@ const TopicQuestionReducer = (state = defaultState, action) => {
   }
 };
 
-export default TopicQuestionReducer;
+export default topicQuestions;

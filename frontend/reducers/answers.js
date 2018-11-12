@@ -7,7 +7,7 @@ import { RECEIVE_UPVOTE, REMOVE_UPVOTE } from '../actions/upvote_actions';
 
 const defaultState = { };
 
-const AnswerReducer = (state = defaultState, action) => {
+const answers = (state = defaultState, action) => {
   let newState = {};
   switch (action.type) {
     case RECEIVE_FEED_DATA:
@@ -24,11 +24,12 @@ const AnswerReducer = (state = defaultState, action) => {
       newState = merge({}, state);
       newState[action.comment.answerId].commentIds.push(action.comment.id);
       return newState;
-    case REMOVE_COMMENT:
+    case REMOVE_COMMENT: {
       newState = merge({}, state);
       const idx = newState[action.comment.answerId].commentIds.indexOf(action.comment.id);
       newState[action.comment.answerId].commentIds.splice(idx, 1);
       return newState;
+    }
     case RECEIVE_QUESTION:
       return merge({}, state, action.question.answers);
     case RECEIVE_UPVOTE:
@@ -44,4 +45,4 @@ const AnswerReducer = (state = defaultState, action) => {
   }
 };
 
-export default AnswerReducer;
+export default answers;
