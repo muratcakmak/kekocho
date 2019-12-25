@@ -2,7 +2,7 @@
 ---
 ## kekocho
 
-### IT. IS. LIVE.
+### Live Version
  [live version](https://kekocho.herokuapp.com/)
 
 ### TLDR;
