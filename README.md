@@ -1,4 +1,4 @@
-# README
+Not maintained 
 ---
 ## kekocho
 
